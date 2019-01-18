@@ -44,7 +44,7 @@ public class HomeServlet extends HttpServlet {
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.HOME_JSP.toString())
                     .forward(request, response);
-        } else {
+        } else { //TODO change to sendRedirect
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

@@ -2,6 +2,7 @@ package com.it.academy.controllers;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.common.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.dto.LoginDto;
@@ -17,9 +18,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * LoginServlet configures login page
+ * LoginServlet configures the first page
  */
-@WebServlet({"/", "/login"})  //  ROOT_SERVLET,  LOGIN_SERVLET
+@WebServlet({"/", "/login"})  //  ROOT_SERVLET, LOGIN_SERVLET
 public class LoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -31,22 +32,17 @@ public class LoginServlet extends HttpServlet {
     }
 
     /**
-     * Shows the login form
+     * Shows the login form or the home page
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletConfig().getServletContext();
-//        System.out.println(request.getSession(false) == null);
-        if (request.isRequestedSessionIdFromCookie()
-                && request.isRequestedSessionIdValid()
-                && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {
-//            context.getRequestDispatcher(ViewUrls.HOME_JSP.toString())
-//                    .include(request, response);
+        if (RequestValidator.isValid(request)) {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.HOME_SERVLET.toString());
 
         } else {
             context.getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
-                    .include(request, response);
+                    .forward(request, response);
         }
 
 //        PrintWriter out = new PrintWriter(response.getWriter());
@@ -62,20 +58,28 @@ public class LoginServlet extends HttpServlet {
                 request.getParameter(UserConstants.PASSWORD.toString()));
 
         if (userService.isValid(loginDto)){
-            // Create session
-            HttpSession session = request.getSession(true);
-            session.setAttribute(UserConstants.LOGIN_DTO.toString(), loginDto);
+            if(!userService.isBlocked(loginDto)) {
+                // Create session
+                HttpSession session = request.getSession(true);
+                session.setAttribute(UserConstants.LOGIN_DTO.toString(), loginDto);
 
-            response.sendRedirect(request.getContextPath()
-                    + ControllerUrls.HOME_SERVLET.toString());
+                response.sendRedirect(request.getContextPath()
+                        + ControllerUrls.HOME_SERVLET.toString());
 
+            } else {
+                request.setAttribute("error", "You are blocked user!");
+            }
         } else {
-            // Show Error Validator
-            request.setAttribute("error", "Bad Login or Password");
+            request.setAttribute("error", "Bad Login or Password!");
+        }
+
+        // Show Error Validator
+        if(request.getAttribute("error") != null){
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
                     .forward(request, response);
         }
+
     }
 }

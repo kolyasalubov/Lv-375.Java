@@ -2,6 +2,7 @@ package com.it.academy.controllers;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.common.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.dto.UserDto;
@@ -30,18 +31,13 @@ public class RegistrationServlet extends HttpServlet {
     }
 
     /**
-     * Shows the registration form
+     * Shows the registration form or the main page
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletConfig().getServletContext();
-        if (request.isRequestedSessionIdFromCookie()
-                && request.isRequestedSessionIdValid()
-                && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {
-//            context.getRequestDispatcher(ViewUrls.HOME_JSP.toString())
-//                    .include(request, response);
+        if (RequestValidator.isValid(request)) {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.HOME_SERVLET.toString());
-
         } else {
             context.getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
                     .forward(request, response);
@@ -50,16 +46,12 @@ public class RegistrationServlet extends HttpServlet {
 
 
     /**
-     * Sign ups the user
+     * Signs up the user
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter(UserConstants.EMAIL.toString());
         String password = request.getParameter(UserConstants.PASSWORD.toString());
         String passwordRepeat = request.getParameter(UserConstants.PASSWORD_REPEAT.toString());
-
-        RequestDispatcher toRegistration = getServletConfig()
-                .getServletContext()
-                .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString());
 
         if (password.equals(passwordRepeat)) {
             UserDto userDto = new UserDto(email, password,
@@ -69,18 +61,29 @@ public class RegistrationServlet extends HttpServlet {
                     request.getParameter(UserConstants.PHONE.toString()));
 
             if (userService.createUser(userDto)) {
+                if(userService.isFirst()){
+                    userDto.setAdmin(true);
+                    userService.adminToUser(userDto);
+                }
+                // To call doPost from LoginServlet --- to log in the user after registration
                 getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ControllerUrls.LOGIN_SERVLET.toString())
-                    .forward(request, response);
+                        .getServletContext()
+                        .getRequestDispatcher(request.getContextPath()
+                                + ControllerUrls.LOGIN_SERVLET.toString())
+                        .forward(request, response);
             } else {
-                // Show Error Validator
-                request.setAttribute("error", "This Email already exists");
-                toRegistration.forward(request, response);
+                request.setAttribute("error", "This email already exists!");
             }
         } else {
-            request.setAttribute("error", "Password did not match");
-            toRegistration.forward(request, response);
+            request.setAttribute("error", "Passwords do not match!");
+        }
+
+        // Show Error Validator
+        if(request.getAttribute("error") != null){
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
+                    .forward(request, response);
         }
     }
 }

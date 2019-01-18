@@ -31,6 +31,7 @@ public class UserService {
         user.setLastName(userDto.getLastName());
         user.setPosition(userDto.getPosition());
         user.setPhone(userDto.getPhone());
+        user.setAdmin(userDto.isAdmin());
         return user;
     }
 
@@ -50,6 +51,16 @@ public class UserService {
         user.setEmail(loginDto.getEmail());
         user.setPassword(loginDto.getPassword());
         return userDao.isExist(user);
+    }
+
+    public boolean isFirst(){
+        boolean isFirst = false;
+        try {
+            userDao.getById(1); // get the first user
+        } catch (RuntimeException e){ // if id=1 is not exist
+            isFirst = true;
+        }
+        return isFirst;
     }
 
     public boolean createUser(UserDto userDto){
@@ -75,8 +86,19 @@ public class UserService {
     }
 
     public UserDto getUserDto(LoginDto loginDto){
-        User user = userDao.getByFieldName("email", loginDto.getEmail()).get(0);
-        return userToDto(user);
+        return userToDto(getUserByLoginDto(loginDto));
+    }
+
+    public boolean isBlocked(LoginDto loginDto){
+        return getUserByLoginDto(loginDto).isBlocked();
+    }
+
+    public boolean isAdmin(LoginDto loginDto){
+        return getUserByLoginDto(loginDto).isAdmin();
+    }
+
+    private User getUserByLoginDto(LoginDto loginDto){
+        return userDao.getByFieldName("email", loginDto.getEmail()).get(0);
     }
 
     public CollectionDto<UserDto> getUserCollectionDto() {
@@ -102,6 +124,7 @@ public class UserService {
         return giveRightsToUser(userDto, "is_blocked", userDto.isBlocked());
     }
 
+    //TODO check if works boolean -> String
     private boolean giveRightsToUser(UserDto userDto, String fieldName, boolean fieldValue){
         boolean result = true;
         try{
