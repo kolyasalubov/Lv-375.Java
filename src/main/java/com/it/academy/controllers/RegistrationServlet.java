@@ -8,6 +8,7 @@ import com.it.academy.dto.UserDto;
 import com.it.academy.service.UserService;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -32,10 +33,19 @@ public class RegistrationServlet extends HttpServlet {
      * Shows the registration form
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getServletConfig()
-                .getServletContext()
-                .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
-                .forward(request, response);
+        ServletContext context = getServletConfig().getServletContext();
+        if (request.isRequestedSessionIdFromCookie()
+                && request.isRequestedSessionIdValid()
+                && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {
+//            context.getRequestDispatcher(ViewUrls.HOME_JSP.toString())
+//                    .include(request, response);
+            response.sendRedirect(request.getContextPath()
+                    + ControllerUrls.HOME_SERVLET.toString());
+
+        } else {
+            context.getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
+                    .forward(request, response);
+        }
     }
 
 

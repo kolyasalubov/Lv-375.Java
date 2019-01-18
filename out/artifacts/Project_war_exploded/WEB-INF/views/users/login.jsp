@@ -11,6 +11,12 @@
 <head>
     <title>LOGIN</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css">--%>
+    <%--<link rel="stylesheet" type="text/css" href=" <c:url value = "/resources/css/login.css"/> ">--%>
+
+    <style type="text/css">
+        <%@include file="../../../resources/css/login.css" %>
+    </style>
 </head>
 <body>
 LOGIN
@@ -21,13 +27,10 @@ LOGIN
     </p>
 </c:if>
 
-    <form action = "/login" method = "POST">
+    <form action = "${pageContext.request.contextPath}/login" method = "POST">
         <%--<div class="imgcontainer">--%>
             <%--<img src="img_avatar2.png" alt="Avatar" class="avatar">--%>
         <%--</div>--%>
-
-            <%--<%= pageContext.getRequest().getServletContext().getContextPath()  %>--%>
-            <%--"${pageContext.request.contextPath}/login.jsp"--%>
 
         <div class="container">
             <label ><b>Email</b></label>
@@ -37,14 +40,12 @@ LOGIN
             <input type="password" placeholder="Enter Password" name="password" required>
 
             <button type="submit">Login</button>
-            <%--<label>--%>
-                <%--<input type="checkbox" checked="checked" name="remember"> Remember me--%>
-            <%--</label>--%>
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <%--<span class="psw">Forgot <a href="#">password?</a></span>--%>
+            <div type="button" class="cancelbtn">
+                <a href="${pageContext.request.contextPath}/registration" > Registration </a>
+            </div>
         </div>
     </form>
 </body>

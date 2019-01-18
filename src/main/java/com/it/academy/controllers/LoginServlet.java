@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletConfig().getServletContext();
-        System.out.println(request.getSession(false) == null);
+//        System.out.println(request.getSession(false) == null);
         if (request.isRequestedSessionIdFromCookie()
                 && request.isRequestedSessionIdValid()
                 && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {

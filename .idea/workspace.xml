@@ -7,7 +7,91 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c182d4ec-83f9-4d35-a04b-a3f66b50e4af" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/users/login.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/users/login.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/web/resources/css/login.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/0b35ec2d-ea04-43c7-a8f9-3057b95e95ce.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/users/hello.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/users/hello.jsp" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Project.iml" afterPath="$PROJECT_DIR$/Project.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/users/login.jsp" afterPath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/users/login.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/users/userProfileEdit.jsp" afterPath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/users/userProfileEdit.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/MainDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/MainDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/MainService.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/MainService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/common/ControllerUrls.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/common/ControllerUrls.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/common/ObjContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/common/ObjContainer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/common/ViewUrls.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/common/ViewUrls.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/constants/BookingConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/constants/BookingConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/constants/RoomConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/constants/RoomConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/constants/UserConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/constants/UserConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/BookingsArchiveServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/BookingsArchiveServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/BookingsServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/BookingsServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/HomeServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/HomeServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/LoginServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/LoginServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/LogoutServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/LogoutServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/RegistrationServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RegistrationServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/RoomArchiveServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RoomArchiveServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllers/RoomServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RoomServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/controllersEX/UserLoginServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllersEX/UserLoginServlet.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/ADaoCRUD.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoCRUD.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/ADaoExist.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoExist.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/ADaoRead.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoRead.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/BookingDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/BookingDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/IDaoCRUD.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/IDaoCRUD.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/IDaoExist.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/IDaoExist.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/IDaoRead.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/IDaoRead.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/RoomDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/RoomDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/UserDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/daoOLD/BookingDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/daoOLD/BookingDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/daoOLD/IBookingDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/daoOLD/IBookingDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/daoOLD/IDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/daoOLD/IDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/daoOLD/IRoomDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/daoOLD/IRoomDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/daoOLD/IUserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/daoOLD/IUserDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/daoOLD/RoomDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/daoOLD/RoomDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/daoOLD/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/daoOLD/UserDao.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/db/ConnectionManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/db/ConnectionManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/db/DataSource.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/db/DataSource.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/db/DataSourceRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/db/DataSourceRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/db/PropertiesReader.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/db/PropertiesReader.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dto/BookingDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dto/BookingDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dto/BookingRoomDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dto/BookingRoomDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dto/BookingUserDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dto/BookingUserDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dto/CollectionDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dto/CollectionDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dto/LoginDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dto/LoginDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dto/RoomDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dto/RoomDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dto/UserDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dto/UserDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dtoEX/ItemDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dtoEX/ItemDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dtoEX/LoginDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dtoEX/LoginDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dtoEX/RoleDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dtoEX/RoleDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dtoEX/UserDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dtoEX/UserDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/dtoEX/UserItemsDto.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dtoEX/UserItemsDto.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/entity/Booking.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/entity/Booking.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/entity/IEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/entity/IEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/entity/QueryNames.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/entity/QueryNames.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/entity/Room.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/entity/Room.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/entity/User.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/service/BookingService.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/service/BookingService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/service/RoomService.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/service/RoomService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/service/UserService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/services/IocContainer.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/services/IocContainer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/services/ItemServise.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/services/ItemServise.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/services/UserItemsServise.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/services/UserItemsServise.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com.it.academy/services/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/services/UserService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/classes/DBconfig.properties" afterPath="$PROJECT_DIR$/src/web/WEB-INF/classes/DBconfig.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/admin/adminProfile.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminProfile.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/admin/adminRooms.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminRooms.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/admin/adminUsers.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminUsers.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/bookings/bookings.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/bookings/bookings.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/commons/home.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/commons/home.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/rooms/room.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/rooms/room.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/rooms/roomArchive.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/rooms/roomArchive.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/rooms/roomProfile.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/rooms/roomProfile.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/users/login.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/users/login.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/users/userProfile.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/users/userProfile.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/views/users/userProfileEdit.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/users/userProfileEdit.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/web/WEB-INF/web.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,23 +115,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com.it.academy/MainDao.java">
+      <file leaf-file-name="RegistrationServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RegistrationServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="527">
+              <caret line="64" column="58" lean-forward="false" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Project.iml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Project.iml">
+      <file leaf-file-name="ControllerUrls.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/common/ControllerUrls.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="34">
+              <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="userProfileEdit.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web/WEB-INF/views/users/userProfileEdit.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="47" column="66" lean-forward="false" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/web/WEB-INF/views/users/login.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="18" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -56,18 +168,27 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1744">
+            <state relative-caret-position="2645">
               <caret line="162" column="12" lean-forward="false" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/users/login.jsp">
+      <file leaf-file-name="users" pinned="false" current-in-tab="false">
+        <entry file="das://table:/2a39e6e9/6b97341b-90db-4c47-943c-c0f36106fb66/room_booking.users">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserConstants.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/constants/UserConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="34">
+              <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -78,10 +199,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JUnit4 Test Class" />
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -93,16 +214,12 @@
       <projects_view />
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/web/WEB-INF/views/users/login.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/myArticles/edu/Main.java" />
-        <option value="$PROJECT_DIR$/src/myArticles/edu/Services/AdminService.java" />
-        <option value="$PROJECT_DIR$/src/myArticles/edu/Services/UserArticlesService.java" />
-        <option value="$PROJECT_DIR$/src/myArticles/edu/Services/UserService.java" />
-        <option value="$PROJECT_DIR$/src/myArticles/edu/Services/ArticleService.java" />
-        <option value="$PROJECT_DIR$/src/myArticles/edu/DataBase/DAO/ADaoCRUD.java" />
-        <option value="$PROJECT_DIR$/src/myArticles/edu/DataBase/DAO/ADaoRead.java" />
         <option value="$PROJECT_DIR$/src/myArticles/edu/DataBase/DAO/ArticleDao.java" />
         <option value="$PROJECT_DIR$/src/myArticles/edu/DataBase/DAO/UserDao.java" />
         <option value="$PROJECT_DIR$/src/myArticles/edu/controllers/users/UserCreate.java" />
@@ -146,7 +263,14 @@
         <option value="$PROJECT_DIR$/src/main/java/myArticles/edu/DataBase/DAO/UserDao.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com.it.academy/MainDao.java" />
+        <option value="$PROJECT_DIR$/web/resources/css/login.css" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/users/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/service/BookingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RegistrationServlet.java" />
+        <option value="$PROJECT_DIR$/src/web/WEB-INF/views/users/userProfileEdit.jsp" />
+        <option value="$PROJECT_DIR$/src/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/web/WEB-INF/views/users/login.jsp" />
       </list>
     </option>
   </component>
@@ -187,10 +311,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-46" />
-    <option name="y" value="36" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-18" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -201,7 +324,7 @@
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages ProjectPane="true" />
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
@@ -211,8 +334,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -220,6 +341,41 @@
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Project_war_exploded" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Project_war_exploded" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Project_war_exploded" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
@@ -242,17 +398,55 @@
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="academy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="academy" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="academy" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="academy" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
@@ -260,15 +454,27 @@
             <path>
               <item name="Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,9 +502,11 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IT_Academy\First_Project\Project\src" />
+      <recent name="D:\IT_Academy\First_Project\Project\web" />
+      <recent name="D:\IT_Academy\First_Project\Project\web\WEB-INF" />
       <recent name="C:\Users\Сява\IdeaProjects\Project\web\WEB-INF\views\commons" />
       <recent name="C:\Users\Сява\IdeaProjects\Project\web\WEB-INF\views\users" />
-      <recent name="C:\Users\Сява\IdeaProjects\Project\web\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -319,7 +527,6 @@
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/" />
       <option name="BROWSER_ID" value="001eef46-1e47-4603-94d5-be532865aaa5" />
       <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="Project:war exploded">
           <settings>
@@ -585,7 +792,10 @@
       <workItem from="1547764393978" duration="368000" />
       <workItem from="1547764769698" duration="320000" />
       <workItem from="1547765334268" duration="2589000" />
-      <workItem from="1547769239309" duration="1476000" />
+      <workItem from="1547769239309" duration="1643000" />
+      <workItem from="1547788456500" duration="823000" />
+      <workItem from="1547790796789" duration="4400000" />
+      <workItem from="1547798795735" duration="6737000" />
     </task>
     <servers />
   </component>
@@ -622,7 +832,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55861000" />
+    <option name="totallyTimeSpent" value="67988000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -638,7 +848,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279483" sideWeight="0.49394855" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -646,15 +856,15 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279483" sideWeight="0.5060514" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.123298034" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40549272" sideWeight="0.49092284" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.123298034" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32956383" sideWeight="0.49092284" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279483" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10662359" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2344932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24205749" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16792738" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.037821483" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -712,11 +922,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/web/WEB-INF/views/users/Login.jsp</url>
-          <line>25</line>
-          <properties />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/myArticles/edu/Services/UserServiceTest.java</url>
           <line>13</line>
@@ -739,45 +944,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/users/Log.jsp" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/container/IocContainer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/dto/UsersArticleDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/dto/ArticleDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/Services/ArticleService.java" />
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/users/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.13-beta-1/junit-4.13-beta-1.jar!/org/junit/runner/JUnitCore.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/db/DataSource.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/net/sourceforge/jtds/jtds/1.3.1/jtds-1.3.1.jar!/net/sourceforge/jtds/jdbc/Driver.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar!/com/mysql/cj/jdbc/AbandonedConnectionCleanupThread.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/db/ConnectionManager.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/db/DataSourceRepository.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/Services/UserArticlesService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/controllers/articles/ArticleDelete.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/controllers/articles/ArticleEdit.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/controllers/articles/ArticleUpdate.java" />
@@ -800,7 +966,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/controllers/users/UserLogout.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/controllers/users/UserUpdate.java" />
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/commons/UserArticles.jsp" />
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/users/userProfile.jsp">
+    <entry file="file://$PROJECT_DIR$/src/web/WEB-INF/views/users/userProfile.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="44" lean-forward="false" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
@@ -814,35 +980,53 @@
     <entry file="das://table:/9a486125/0b35ec2d-ea04-43c7-a8f9-3057b95e95ce/projectdb.users" />
     <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/controllers/users/UserLogin.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/myArticles/edu/DataBase/DAO/UserDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.it.academy/services/UserItemsServise.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/services/UserItemsServise.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="34" lean-forward="false" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.it.academy/MainService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/MainService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/db/DataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/Project_war_exploded/resources/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/resources/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="70" column="1" lean-forward="false" selection-start-line="70" selection-start-column="1" selection-end-line="70" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/service/BookingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-500">
+          <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="72" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.it.academy/db/DataSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com.it.academy/MainDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="43" lean-forward="false" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -850,22 +1034,107 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/MainDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/6b97341b-90db-4c47-943c-c0f36106fb66/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/constants/UserConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/2a39e6e9/6b97341b-90db-4c47-943c-c0f36106fb66/room_booking.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/WEB-INF/views/users/userProfileEdit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="47" column="66" lean-forward="false" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1744">
+        <state relative-caret-position="2645">
           <caret line="162" column="12" lean-forward="false" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/users/login.jsp">
+    <entry file="file://$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RegistrationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="64" column="58" lean-forward="false" selection-start-line="64" selection-start-column="58" selection-end-line="64" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/common/ViewUrls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/common/ControllerUrls.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/constants/RoomConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/WEB-INF/views/users/login.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="18" selection-end-column="12" />
           <folding />
         </state>
       </provider>

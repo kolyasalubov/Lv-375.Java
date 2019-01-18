@@ -4,12 +4,14 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/web/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/" />
+          <root url="file://$MODULE_DIR$/src/web" relative="/" />
         </webroots>
-        <sourceRoots />
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/src/web/resources" />
+        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -20,10 +22,15 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com.it.academy/controllersEX" />
-      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com.it.academy/daoOLD" />
-      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com.it.academy/dtoEX" />
-      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com.it.academy/services" />
+      <sourceFolder url="file://$MODULE_DIR$/src/web/resources" type="java-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/academ/controllersEX" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/academ/daoOLD" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/academ/dtoEX" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/academ/services" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/it/academy/controllersEX" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/it/academy/daoOLD" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/it/academy/dtoEX" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/java/com/it/academy/services" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
