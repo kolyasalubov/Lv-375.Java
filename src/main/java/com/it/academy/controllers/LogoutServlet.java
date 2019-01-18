@@ -1,5 +1,6 @@
 package com.it.academy.controllers;
 
+import com.it.academy.common.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.UserConstants;
 
@@ -27,16 +28,10 @@ public class LogoutServlet extends HttpServlet{
      * Logs out the user
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.isRequestedSessionIdFromCookie()
-                && request.isRequestedSessionIdValid()
-                && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {
-
+        if (RequestValidator.isValid(request)) {
             HttpSession session = request.getSession();
             session.invalidate();
         }
-
-//        PrintWriter out = new PrintWriter(response.getWriter());
-//        out.println("This a test!!!");
 
         getServletConfig()
                 .getServletContext()
