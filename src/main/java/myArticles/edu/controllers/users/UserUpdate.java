@@ -20,7 +20,7 @@ public class UserUpdate extends HttpServlet {
     private static final long serialVersionUID = 4L;
     private UserService userService;
 
-    UserUpdate(){
+    public UserUpdate(){
         userService = IocContainer.get().getUserService();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

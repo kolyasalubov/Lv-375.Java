@@ -8,12 +8,12 @@
 </head>
 <body>
 <div id="container">
-    <form>
         <c:if test="${error ne null}">
             <p>
                 <font color="red">${error}</font>
             </p>
         </c:if>
+    <form action="${pageContext.request.contextPath}/login" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username">
         <label for="password">Password:</label>

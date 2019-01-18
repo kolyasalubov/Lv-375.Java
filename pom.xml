@@ -51,7 +51,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.connector.version}</version>
+            <version>5.1.39</version>
         </dependency>
 
         <dependency>
@@ -84,6 +84,11 @@
             <artifactId>testng</artifactId>
             <version>${org.testng.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
         </dependency>
 
     </dependencies>

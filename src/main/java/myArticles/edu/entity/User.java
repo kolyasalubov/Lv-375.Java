@@ -14,13 +14,13 @@ public class User implements IEntity {
     private boolean isAdmin;
 
 
-    public User(Long id, String userName, String password, String email, boolean isBlock, boolean isAdmin) {
+    public User(Long id, String userName, String password, String email, boolean isAdmin, boolean isBlock) {
         this.userID = id;
         this.userName = userName;
         this.password = password;
         this.email = email;
-        this.isBlock = isBlock;
         this.isAdmin = isAdmin;
+        this.isBlock = isBlock;
     }
 
     public User( String userName, String password, String email, boolean isBlock, boolean isAdmin) {

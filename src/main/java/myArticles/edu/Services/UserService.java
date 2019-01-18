@@ -41,8 +41,10 @@ public class UserService {
     private boolean checkValidUpdate(UserDto userDto){
         boolean result = true;
         try {
-            userDao.getByField(EMAIL_FIELD, userDto.getEmail());
-            result = false;
+            User user = userDao.getByField(EMAIL_FIELD, userDto.getEmail()).get(0);
+            if(!user.getUserName().equals(userDto.getUserName())){
+                result = false;
+            }
         } catch (Exception e){
             //can update user
         }

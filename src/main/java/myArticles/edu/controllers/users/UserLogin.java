@@ -22,7 +22,6 @@ public class UserLogin extends HttpServlet {
 
     public UserLogin() {
         super();
-        // TODO Auto-generated constructor stub
         userService = IocContainer.get().getUserService();
         isFirstStart = true;
     }
@@ -34,10 +33,15 @@ public class UserLogin extends HttpServlet {
             session.setAttribute(ControllersConstant.LOGIN_DTO.toString(), loginDto);
             session.setMaxInactiveInterval(300000);
             Cookie cookie = new Cookie(ControllersConstant.SESSION_ID.toString(), session.getId());
+            System.out.println(session.getId());
+
             response.addCookie(cookie);
-            request.isRequestedSessionIdFromCookie();
-            response.sendRedirect(request.getContextPath() +
-                    ControllerUrls.USER_ITEMS_SERVLET.toString());
+            //response.sendRedirect(request.getContextPath() +
+            //ControllerUrls.USER_ITEMS_SERVLET.toString());
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ControllerUrls.USER_EDIT_SERVLET.toString())//TODO Change to Main page
+                    .forward(request, response);
         } else {
             request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.LOGIN_ERROR.toString());
             getServletConfig()
@@ -50,15 +54,13 @@ public class UserLogin extends HttpServlet {
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         if (isFirstStart) {
             isFirstStart = false;
-            request.setAttribute(ControllersConstant.LOGIN_URL.toString(),	// TODO
-                    request.getRequestURL().toString());
-
-        } else {
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
-                    .forward(request, response);
+            //TODO initialize
         }
-        }
-
+        getServletConfig()
+                .getServletContext()
+                .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
+                .forward(request, response);
+    }
 }
+
+

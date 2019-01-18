@@ -2,6 +2,7 @@ package myArticles.edu.DataBase.DAO;
 
 
 import myArticles.edu.entity.User;
+import myArticles.edu.help.Helpers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public final class UserDao extends ADaoCRUD <User> {
     }
 
     protected User createInstance(String[] args) {
-        return new User(Long.parseLong(args[0] == null ? "0" : args[0]), args[1] == null ? "" : args[1], args[2] == null ? "" : args[2], args[3] == null ? "" : args[3], false, false);
+        return new User(Long.parseLong(args[0] == null ? "0" : args[0]), args[1] == null ? "" : args[1], args[2] == null ? "" : args[2], args[3] == null ? "" : args[3], args[4].equals("1"), args[5].equals("1"));
     }
 
     protected List getFields(User entity) {

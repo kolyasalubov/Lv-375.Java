@@ -1,7 +1,7 @@
 package myArticles.edu.controllers;
 
 public enum ControllersConstant {
-    USERNAME("userName"),
+    USERNAME("username"),
     PASSWORD("password"),
     EMAIL("email"),
     IS_ADMIN("isAdmin"),
