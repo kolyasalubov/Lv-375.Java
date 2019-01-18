@@ -51,9 +51,9 @@ userProfileEdit
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-        <div type="button" class="cancelbtn">
+        <button type="button" class="cancelbtn">
             <a href="${pageContext.request.contextPath}/login" > Cancel </a>
-        </div>
+        </button>
     </div>
 </form>
 </body>

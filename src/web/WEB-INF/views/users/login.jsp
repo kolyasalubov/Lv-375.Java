@@ -43,10 +43,14 @@ LOGIN
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <div type="button" class="cancelbtn">
-                <a href="${pageContext.request.contextPath}/registration" > Registration </a>
-            </div>
+            <button type="button" class="cancelbtn" onclick="openPage('${pageContext.request.contextPath}/registration')" >
+               Registration
+            </button>
         </div>
     </form>
+
+    <script type="text/javascript">
+        <%@include file="../../../resources/js/openPage.js" %>
+    </script>
 </body>
 </html>
