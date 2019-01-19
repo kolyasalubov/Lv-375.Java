@@ -40,6 +40,7 @@ public class HomeServlet extends HttpServlet {
             CollectionDto<RoomDto> rooms = roomService.getRoomCollectionDto();
             request.setAttribute(RoomConstants.ROOMS.toString(), rooms);
 
+            System.out.println("home");
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.HOME_JSP.toString())

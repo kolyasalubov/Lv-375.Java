@@ -33,7 +33,7 @@ public class ObjContainer {
     private void initServices(){
         userService = new UserService(userDao);
         roomService = new RoomService(roomDao);
-        bookingService = new BookingService(bookingDao);
+        bookingService = new BookingService(bookingDao, userDao, roomDao);
     }
 
     public static ObjContainer getInstance() {

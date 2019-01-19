@@ -43,7 +43,7 @@ LOGIN
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn" onclick="openPage('${pageContext.request.contextPath}/registration')">
+            <button type="button" class="cancelbtn" onclick="openPage('${pageContext.request.contextPath}/registration')" >
                Registration
             </button>
         </div>

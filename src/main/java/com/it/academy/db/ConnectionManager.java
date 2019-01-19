@@ -75,12 +75,11 @@ public class ConnectionManager {
         Connection connection = getAllConnections().get(Thread.currentThread().getId());
         if (connection == null) {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
                 connection = DriverManager.getConnection(
                         getDataSource().getConnectionUrl(),
                         getDataSource().getUsername(),
                         getDataSource().getPassword());
-            } catch (SQLException | ClassNotFoundException e) {
+            } catch (SQLException e) {
                 throw new RuntimeException(FAILED_CREATE_CONNECTION, e);
             }
             addConnection(connection);

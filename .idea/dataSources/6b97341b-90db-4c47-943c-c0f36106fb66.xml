@@ -11,15 +11,15 @@
     <schema id="6" parent="1" name="notesbase"/>
     <schema id="7" parent="1" name="performance_schema"/>
     <schema id="8" parent="1" name="queuedb"/>
-    <schema id="9" parent="1" name="room_booking">
+    <schema id="9" parent="1" name="shopcar"/>
+    <schema id="10" parent="1" name="sys"/>
+    <schema id="11" parent="1" name="testbase"/>
+    <schema id="12" parent="1" name="room_booking">
       <Visible>1</Visible>
     </schema>
-    <schema id="10" parent="1" name="shopcar"/>
-    <schema id="11" parent="1" name="sys"/>
-    <schema id="12" parent="1" name="testbase"/>
-    <table id="13" parent="9" name="bookings"/>
-    <table id="14" parent="9" name="rooms"/>
-    <table id="15" parent="9" name="users"/>
+    <table id="13" parent="12" name="bookings"/>
+    <table id="14" parent="12" name="rooms"/>
+    <table id="15" parent="12" name="users"/>
     <column id="16" parent="13" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>

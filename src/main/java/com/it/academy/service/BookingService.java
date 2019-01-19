@@ -20,10 +20,14 @@ public class BookingService {
 
     public BookingService(){
         bookingDao = ObjContainer.getInstance().getBookingDao();
+        userDao = ObjContainer.getInstance().getUserDao();
+        roomDao = ObjContainer.getInstance().getRoomDao();
     }
 
-    public BookingService(BookingDao bookingDao){
+    public BookingService(BookingDao bookingDao, UserDao userDao, RoomDao roomDao){
         this.bookingDao = bookingDao;
+        this.userDao = userDao;
+        this.roomDao = roomDao;
     }
 
     private Booking dtoToBooking(BookingDto bookingDto, UserDto userDto){
