@@ -4,6 +4,7 @@ package myArticles.edu.controllers.users;
 import myArticles.edu.Services.UserService;
 import myArticles.edu.container.IocContainer;
 import myArticles.edu.controllers.ControllersConstant;
+import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.UserDto;
 
@@ -24,7 +25,7 @@ public class UserUpdate extends HttpServlet {
         userService = IocContainer.get().getUserService();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
+        if(Security.isActiveSession(request, response)) {
             UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
                     request.getParameter(ControllersConstant.PASSWORD.toString()),
                     request.getParameter(ControllersConstant.EMAIL.toString()),

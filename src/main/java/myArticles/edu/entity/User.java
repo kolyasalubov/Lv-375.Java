@@ -88,8 +88,9 @@ public class User implements IEntity {
         GET_BY_TWO_FIELD(SqlQueries.GET_BY_TWO_FIELD, "SELECT * FROM USERS WHERE %s = '%s' OR %s = '%s' ;"),
         DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM USERS WHERE Id = %s ;"),
         UPDATE_FIELD_BY_ID(SqlQueries.UPDATE_FIELD_BY_ID, "UPDATE USERS SET %s = '%s' WHERE Id = %s ;"),
-        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE USERS SET Password = '%s', Email = '%s', isAdmin = %s, isBlock = %s WHERE Id = %s ;");
-
+        UPDATE_BY_ID(SqlQueries.UPDATE_BY_ID, "UPDATE USERS SET Password = '%s', Email = '%s', isAdmin = %s, isBlock = %s WHERE Id = %s ;"),
+        CREATE_ARTICLES_TABLE(SqlQueries.CREATE_ARTICLES_TABLE, "CREATE TABLE IF NOT EXISTS ARTICLES (id int NOT NULL PRIMARY KEY AUTO_INCREMENT, Name VARCHAR(50) NULL , Description VARCHAR(100) NULL , Url VARCHAR(100) NULL, UserId INT NOT NULL, FOREIGN KEY (UserId) REFERENCES users(id));"),
+        CREATE_USERS_TABLE (SqlQueries.CREATE_USERS_TABLE, "CREATE TABLE IF NOT EXISTS USERS (id int NOT NULL PRIMARY KEY AUTO_INCREMENT, Username VARCHAR(50) NOT NULL , Password VARCHAR(50) NOT NULL, Email VARCHAR(50) NOT NULL , isAdmin BOOL, isBlock BOOL);");
         private SqlQueries sqlQuery;
         private String query;
 

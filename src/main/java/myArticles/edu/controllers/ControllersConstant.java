@@ -10,6 +10,7 @@ public enum ControllersConstant {
     ERROR("error"),
     LOGIN_ERROR("Bad Login or Password"),
     REGISTER_ERROR("Bad Login or Email"),
+    WRITE_ALL_FIELD_ERROR("Please fill in all fields"),
     LOGIN_URL("loginUrl"),
     LOGIN_DTO("loginDto"),
     USER_DTO("userDto");

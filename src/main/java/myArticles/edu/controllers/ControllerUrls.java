@@ -28,7 +28,7 @@ public enum ControllerUrls {
 
     //MainPage
     ITEM_COUNT_SERVLET("/itemcount"), // Post
-    USER_ITEMS_SERVLET("/useritems"), // Post // and pagination
+    USER_ARTICLES_SERVLET("/userarticle"), // Post // and pagination
 
     //Initialization
     INITIALIZATION("/initialization");

@@ -1,6 +1,7 @@
 package myArticles.edu.controllers;
 
 import myArticles.edu.dto.LoginDto;
+import myArticles.edu.dto.UserDto;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -22,18 +23,6 @@ public class Security {
                 idSessionCookie = currentCookie;
                 break;
             }
-        }
-        if(session==null){
-            System.out.println("SESSION NULL");
-            return false;
-        }
-        if(idSessionCookie == null){
-            System.out.println("IDSESSIONCOOKIE NULL");
-            return false;
-        }
-        if(!(idSessionCookie.getValue().equals(session.getId()))){
-            System.out.println("TUPO XZ");
-            return false;
         }
         return (session != null)
                 && (session.getAttribute(ControllersConstant.LOGIN_DTO.toString()) != null)

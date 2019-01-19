@@ -915,7 +915,7 @@
     <table id="230" parent="5" name="users">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="231" parent="229" name="Id">
+    <column id="231" parent="229" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
@@ -948,16 +948,16 @@
     </index>
     <key id="237" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>Id</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="238" parent="229" name="articles_ibfk_1">
       <ColNames>UserId</ColNames>
       <RefSchemaName>projectdb</RefSchemaName>
       <RefTableName>users</RefTableName>
-      <RefColNames>Id</RefColNames>
+      <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="239" parent="230" name="Id">
+    <column id="239" parent="230" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
@@ -979,6 +979,7 @@
     <column id="242" parent="230" name="Email">
       <Position>4</Position>
       <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="243" parent="230" name="isAdmin">
@@ -993,7 +994,7 @@
     </column>
     <key id="245" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>Id</ColNames>
+      <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

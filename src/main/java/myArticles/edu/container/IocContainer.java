@@ -3,10 +3,7 @@ package myArticles.edu.container;
 
 import myArticles.edu.DataBase.DAO.ArticleDao;
 import myArticles.edu.DataBase.DAO.UserDao;
-import myArticles.edu.Services.AdminService;
-import myArticles.edu.Services.ArticleService;
-import myArticles.edu.Services.UserArticlesService;
-import myArticles.edu.Services.UserService;
+import myArticles.edu.Services.*;
 import myArticles.edu.controllers.Security;
 
 public final class IocContainer {
@@ -20,12 +17,11 @@ public final class IocContainer {
     private ArticleService articleService;
     private UserArticlesService userArticlesService;
     private AdminService adminService;
+    private DataBaseConnectionService dataBaseConnectionService;
 
-    private Security security;
     private IocContainer() {
         initDaos();
         initServices();
-        initSecurity();
     }
 
     private void initDaos() {
@@ -34,13 +30,11 @@ public final class IocContainer {
     }
 
     private void initServices() {
+        dataBaseConnectionService = new DataBaseConnectionService(userDao);
         userService = new UserService(userDao);
         articleService = new ArticleService(articleDao);
         userArticlesService = new UserArticlesService(userDao, articleDao);
         adminService = new AdminService(userDao);
-    }
-    private void initSecurity(){
-        security = new Security();
     }
 
     public static IocContainer get() {
@@ -54,8 +48,8 @@ public final class IocContainer {
         return instance;
     }
 
-    public Security getSecurity() {
-        return security;
+    public DataBaseConnectionService getDataBaseConnectionService() {
+        return dataBaseConnectionService;
     }
 
     public UserDao getUserDao() {

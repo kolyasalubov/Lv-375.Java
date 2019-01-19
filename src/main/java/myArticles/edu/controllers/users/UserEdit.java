@@ -22,11 +22,11 @@ import java.io.IOException;
 public class UserEdit extends HttpServlet {
     private static final long serialVersionUID = 3L;
     private UserService userService;
-    private Security security;
+
 
     public UserEdit(){
         super();
-        security = IocContainer.get().getSecurity();
+
         userService = IocContainer.get().getUserService();
     }
 
@@ -44,10 +44,6 @@ public class UserEdit extends HttpServlet {
                         .forward(request, response);
             }
             else{
-                System.out.println("NOU");
-                LoginDto loginDto = (LoginDto)request.getSession().getAttribute(ControllersConstant.LOGIN_DTO.toString());
-                System.out.println(loginDto.getUserName());
-                System.out.println(loginDto.getPassword());
                 Security.endSession(response);
                 getServletConfig()
                         .getServletContext()

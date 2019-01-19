@@ -17,7 +17,7 @@
 <div id="userform">
     <form action="${pageContext.request.contextPath}/userupdate" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" value="${pageContext.request.getAttribute("username")}">
+        <input type="text" id="username" name="username" value="${pageContext.request.getAttribute("username")}" readonly>
         <label for="password">Password:</label>
         <input type="text" id="password" name="password" value="${pageContext.request.getAttribute("password")}">
         <label for="email">Email:</label>

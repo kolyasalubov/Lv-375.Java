@@ -14,9 +14,6 @@ import java.util.List;
  * @param <TEntity>  - our Entity class User or Article
  */
 abstract class ADaoCRUD<TEntity extends IEntity> extends ADaoRead<TEntity> implements IDaoCRUD<TEntity> {
-
-    private static final String CREATE_USERS_TABLE = "CREATE TABLE IF NOT EXISTS USERS (id int NOT NULL PRIMARY KEY AUTO_INCREMENT, Username VARCHAR(50) NOT NULL , Password VARCHAR(50) NOT NULL, Email VARCHAR(50) NOT NULL , isAdmin BOOL, isBlock BOOL);";
-    private static final String CREATE_ARTICLES_TABLE = "CREATE TABLE IF NOT EXISTS ARTICLES (id int NOT NULL PRIMARY KEY AUTO_INCREMENT, Name VARCHAR(50) NULL , Description VARCHAR(100) NULL , Url VARCHAR(100) NULL, UserId INT NOT NULL, FOREIGN KEY (UserId) REFERENCES users(id));";
     protected ADaoCRUD() {
 
     }
@@ -98,10 +95,12 @@ abstract class ADaoCRUD<TEntity extends IEntity> extends ADaoRead<TEntity> imple
     }
 
     public boolean createUsersTable(){
-      return   executeQuery(CREATE_USERS_TABLE, SqlQueries.CREATE_USERS_TABLE);
+        String query = sqlQueries.get(SqlQueries.CREATE_USERS_TABLE).toString();
+      return   executeQuery(query, SqlQueries.CREATE_USERS_TABLE);
     }
 
     public boolean createArticlesTable(){
-        return executeQuery(CREATE_ARTICLES_TABLE, SqlQueries.CREATE_ARTICLES_TABLE);
+        String query = sqlQueries.get(SqlQueries.CREATE_ARTICLES_TABLE).toString();
+        return executeQuery(query, SqlQueries.CREATE_ARTICLES_TABLE);
     }
 }

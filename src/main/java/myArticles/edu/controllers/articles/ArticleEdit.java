@@ -20,12 +20,11 @@ public class ArticleEdit extends HttpServlet {
     private static final long serialVersionUID = 7L;
     private ArticleService articleService;
     private UserService userService;
-    private Security security;
 
     ArticleEdit(){
         articleService = IocContainer.get().getArticleService();
         userService = IocContainer.get().getUserService();
-        security = IocContainer.get().getSecurity();
+
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
@@ -44,7 +43,7 @@ public class ArticleEdit extends HttpServlet {
                     .forward(request, response);
         }
         else{
-            security.endSession(response).sendRedirect(ViewUrls.LOGIN_JSP.toString());
+
         }
     }
 

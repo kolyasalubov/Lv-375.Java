@@ -19,12 +19,10 @@ import java.io.IOException;
 public class ArticleDelete extends HttpServlet {
     private static final long serialVersionUID = 9L;
     private ArticleService articleService;
-    private Security security;
     private UserService userService;
 
     ArticleDelete(){
         articleService = IocContainer.get().getArticleService();
-        security = IocContainer.get().getSecurity();
         userService = IocContainer.get().getUserService();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -44,7 +42,7 @@ public class ArticleDelete extends HttpServlet {
                     .forward(request, response);
         }
         else{
-            security.endSession(response).sendRedirect(ViewUrls.LOGIN_JSP.toString());
+
         }
     }
 
