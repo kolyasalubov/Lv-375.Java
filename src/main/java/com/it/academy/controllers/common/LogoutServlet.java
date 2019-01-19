@@ -1,5 +1,6 @@
 package com.it.academy.controllers.common;
 
+import com.it.academy.common.ControllerUrls;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 
@@ -32,10 +33,8 @@ public class LogoutServlet extends HttpServlet{
             session.invalidate();
         }
 
-        getServletConfig()
-                .getServletContext()
-                .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
-                .include(request, response);
+        response.sendRedirect(request.getContextPath()
+                + ControllerUrls.LOGIN_SERVLET);
     }
 
 }
