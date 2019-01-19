@@ -1,6 +1,8 @@
 package com.it.academy.controllers;
 
+import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.common.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.RoomConstants;
 import com.it.academy.constants.UserConstants;
@@ -34,22 +36,20 @@ public class HomeServlet extends HttpServlet {
      * Shows the list of rooms
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.isRequestedSessionIdFromCookie()
-                && request.isRequestedSessionIdValid()
-                && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {
+        if (RequestValidator.isValid(request)) {
             CollectionDto<RoomDto> rooms = roomService.getRoomCollectionDto();
             request.setAttribute(RoomConstants.ROOMS.toString(), rooms);
 
-            System.out.println("home");
+            if (rooms == null)
+                request.setAttribute("error", "There are no rooms yet!");
+
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.HOME_JSP.toString())
                     .forward(request, response);
-        } else { //TODO change to sendRedirect
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
-                    .forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath()
+                    + ControllerUrls.LOGIN_SERVLET);
         }
     }
 

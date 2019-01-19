@@ -2,7 +2,7 @@ package com.it.academy.constants;
 
 public enum RoomConstants {
 
-    ID("idRoom"),
+    ID("id"),
     NUMBER("number"),
     TYPE("type"),
 

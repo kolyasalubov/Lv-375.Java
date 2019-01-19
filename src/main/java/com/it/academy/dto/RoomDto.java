@@ -36,4 +36,13 @@ public class RoomDto {
     public void setType(String type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "RoomDto{" +
+                "idRoom=" + idRoom +
+                ", number=" + number +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

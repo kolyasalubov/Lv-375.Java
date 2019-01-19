@@ -30,6 +30,7 @@ public class RoomService {
 
     private RoomDto roomToDto(Room room){
         RoomDto roomDto = new RoomDto();
+        roomDto.setIdRoom(room.getId());
         roomDto.setNumber(room.getNumber());
         roomDto.setType(room.getType());
         return roomDto;
@@ -70,6 +71,11 @@ public class RoomService {
             System.out.println("RuntimeException: " + e.getMessage());
         }
         return rooms;
+    }
+
+    public RoomDto fillRoomDtoInfo(RoomDto roomDto){
+        Room room = roomDao.getById(roomDto.getIdRoom());
+        return roomToDto(room);
     }
 
     public boolean deleteRoom(RoomDto roomDto){
