@@ -22,18 +22,18 @@ ROOM
     <h5> Room ${roomDto.number} </h5>
     <p> ${roomDto.type} </p>
 
-    <c:url value='${pageContext.request.contextPath}/booking-create-room' var="createUrl" scope="request">
+    <c:url value='${pageContext.request.contextPath}/booking-create-room' var="createUrl" >
         <c:param name='id' value='${room.idRoom}'/>
     </c:url>
 
-    <c:url value='${pageContext.request.contextPath}/room-archive' var="archiveUrl" scope="request">
+    <c:url value='${pageContext.request.contextPath}/room-archive' var="archiveUrl" >
         <c:param name='id' value='${room.idRoom}'/>
     </c:url>
 
-    <button type="button" class="addBtn" onclick="openPage('${requestScope.createUrl}')">
+    <button type="button" class="addBtn" onclick="openPage('${pageScope.createUrl}')">
         Add booking
     </button>
-    <button type="button" class="archive" onclick="openPage('${requestScope.archiveUrl}')">
+    <button type="button" class="archive" onclick="openPage('${pageScope.archiveUrl}')">
         Archive
     </button>
 </div>

@@ -2,9 +2,9 @@ package com.it.academy.common;
 
 public enum ViewUrls {
 
-    LOGIN_JSP("/WEB-INF/views/users/login.jsp"),
+    LOGIN_JSP("/WEB-INF/views/common/login.jsp"),
 
-    HOME_JSP("/WEB-INF/views/commons/home.jsp"),
+    HOME_JSP("/WEB-INF/views/common/home.jsp"),
     ROOM_JSP("/WEB-INF/views/rooms/room.jsp"),
     ROOM_ARCHIVE_JSP("/WEB-INF/views/rooms/roomArchive.jsp"),
     BOOKINGS_JSP("/WEB-INF/views/bookings/bookings.jsp"),
@@ -17,9 +17,7 @@ public enum ViewUrls {
     BOOKING_PROFILE_JSP("/WEB-INF/views/bookings/bookingProfile.jsp"),
 
     ADMIN_USERS_JSP("/WEB-INF/views/admin/adminUsers.jsp"),
-    ADMIN_ROOMS_JSP("/WEB-INF/views/admin/adminRooms.jsp"),
-
-    MESSAGE_JSP("/WEB-INF/views/commons/message.jsp");
+    ADMIN_ROOMS_JSP("/WEB-INF/views/admin/adminRooms.jsp");
 
     private String url;
 

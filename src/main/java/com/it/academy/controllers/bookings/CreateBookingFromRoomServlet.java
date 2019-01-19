@@ -1,4 +1,4 @@
-package com.it.academy.controllers;
+package com.it.academy.controllers.bookings;
 
 import javax.servlet.annotation.WebServlet;
 

@@ -1,16 +1,14 @@
-package com.it.academy.controllers;
+package com.it.academy.controllers.rooms;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
-import com.it.academy.common.RequestValidator;
+import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
 import com.it.academy.constants.RoomConstants;
-import com.it.academy.constants.UserConstants;
 import com.it.academy.dto.BookingUserDto;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.RoomDto;
-import com.it.academy.entity.Room;
 import com.it.academy.service.BookingService;
 import com.it.academy.service.RoomService;
 
@@ -20,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * RoomServlet configures bookings in particular room
@@ -42,14 +39,6 @@ public class RoomServlet extends HttpServlet {
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-
-    /**
-     * Shows the bookings in particular room
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (RequestValidator.isValid(request)) {
             RoomDto roomDto = new RoomDto();
             roomDto.setIdRoom(Long.parseLong(request.getParameter(RoomConstants.ID.toString())));
@@ -61,7 +50,7 @@ public class RoomServlet extends HttpServlet {
 
             if(bookings == null)
                 request.setAttribute("error", "There are no bookings!");
-            
+
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.ROOM_JSP.toString())
@@ -70,6 +59,13 @@ public class RoomServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.LOGIN_SERVLET);
         }
+    }
+
+
+    /**
+     * Shows the bookings in particular room
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
 }

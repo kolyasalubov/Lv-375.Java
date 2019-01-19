@@ -1,4 +1,4 @@
-package com.it.academy.controllers;
+package com.it.academy.controllers.bookings;
 
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;

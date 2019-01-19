@@ -1,8 +1,8 @@
-package com.it.academy.controllers;
+package com.it.academy.controllers.common;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
-import com.it.academy.common.RequestValidator;
+import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.dto.LoginDto;

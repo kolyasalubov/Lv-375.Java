@@ -1,4 +1,4 @@
-package com.it.academy.common;
+package com.it.academy.controllers;
 
 import com.it.academy.constants.UserConstants;
 
