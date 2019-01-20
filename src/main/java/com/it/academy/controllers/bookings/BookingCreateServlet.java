@@ -29,13 +29,11 @@ public class BookingCreateServlet extends HttpServlet {
     private static final long serialVersionUID = 10L;
     private BookingService bookingService;
     private RoomService roomService;
-    private UserService userService;
 
     public BookingCreateServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
-        userService = ObjContainer.getInstance().getUserService();
     }
 
     /**
@@ -48,6 +46,7 @@ public class BookingCreateServlet extends HttpServlet {
             if(number != null){
                 request.setAttribute(BookingConstants.ROOM_NUMBER.toString(), number);
             }
+            request.setAttribute(BookingConstants.URL_TO_POST.toString(), BookingConstants.BOOKING_CREATE.toString());
 
             getServletConfig()
                     .getServletContext()
@@ -98,6 +97,7 @@ public class BookingCreateServlet extends HttpServlet {
 
         // Show Error Validator
         if (request.getAttribute("error") != null) {
+            request.setAttribute(BookingConstants.URL_TO_POST.toString(), BookingConstants.BOOKING_CREATE.toString());
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.BOOKING_PROFILE_JSP.toString())

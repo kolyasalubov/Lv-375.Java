@@ -69,6 +69,7 @@ public class BookingService {
         dto.setEndTime(endDateTime.get("time"));
 
         dto.setPurpose(booking.getPurpose());
+        dto.setIdBooking(String.valueOf(booking.getId()));
         dto.setUserEmail(userDao.getById(booking.getUserId()).getEmail());
 
         return dto;
@@ -111,6 +112,11 @@ public class BookingService {
         return !bookingDao.isExist(booking);
     }
 
+    public boolean isFreeTimeExceptFromCurrent(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
+        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
+        return !bookingDao.isExistExceptFromCurrent(booking);
+    }
+
     private boolean saveBookingToDB(Booking booking) {
         boolean result = true;
         try {
@@ -126,12 +132,21 @@ public class BookingService {
         boolean result = true;
         Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
         try {
-            if (bookingDao.isExist(booking))
-                throw new RuntimeException();
             bookingDao.updateEntityById(booking);
         } catch (Exception e) {
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;
+        }
+        return result;
+    }
+
+    public BookingRoomDto getBookingRoomDto(BookingRoomDto bookingRoomDto){
+        BookingRoomDto result = null;
+        try {
+            Booking booking = bookingDao.getById(Long.parseLong(bookingRoomDto.getIdBooking()));
+            result = bookingToBookingRoomDto(booking);
+        } catch (Exception e) {
+            System.out.println("RuntimeException: " + e.getMessage());
         }
         return result;
     }

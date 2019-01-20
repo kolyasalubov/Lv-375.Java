@@ -85,7 +85,11 @@ public class UserService {
         boolean result = true;
         User user = dtoToUser(userDto);
         try{
-            userDao.updateEntityById(user);
+            if(userDao.isEmailExist(userDto.getEmail())){
+                result = false;
+            } else {
+                userDao.updateEntityById(user);
+            }
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;

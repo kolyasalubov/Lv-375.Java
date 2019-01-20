@@ -8,7 +8,12 @@ public enum BookingConstants {
     END_DATE("endDate"),
     PURPOSE("purpose"),
 
-    BOOKINGS("bookings");
+    BOOKINGS("bookings"),
+    BOOKING_CREATE("booking-create"),
+    BOOKING_EDIT("booking-edit"),
+
+    BOOKING_DTO("bookingDto"),
+    URL_TO_POST("urlToPost");
 
     private String constant;
 

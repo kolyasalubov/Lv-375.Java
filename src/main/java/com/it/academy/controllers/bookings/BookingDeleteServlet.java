@@ -8,5 +8,5 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet({"/booking-delete"})
 public class BookingDeleteServlet {
 
-    private static final long serialVersionUID = 12L;
+    private static final long serialVersionUID = 9L;
 }

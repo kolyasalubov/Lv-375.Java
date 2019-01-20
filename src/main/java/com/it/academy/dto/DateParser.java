@@ -28,7 +28,7 @@ public class DateParser {
     }
 
     private DateFormat getToDisplay(){
-        return new SimpleDateFormat("MMMM dd, yyyy hh:mm", Locale.ENGLISH);
+        return new SimpleDateFormat("MMMM dd, yyyy HH:mm", Locale.ENGLISH);
     }
 
     private DateFormat getDateToDisplay(){

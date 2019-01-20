@@ -69,4 +69,14 @@ public class UserDao extends ADaoExist<User> {
                 setFieldName, setFieldValue, whereFieldName, whereFieldValue);
         return executeQuery(sql, QueryNames.UPDATE_FIELD_BY_FIELD);
     }
+
+    public boolean isEmailExist(String email){
+        List<User> list = getByFieldName("email", email);
+        if(list == null){
+            return false;
+        } else {
+            boolean isCurrent = list.get(0).getEmail().equals(email);
+            return !((list.size() == 1) && isCurrent);
+        }
+    }
 }

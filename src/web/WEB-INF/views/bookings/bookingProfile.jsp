@@ -27,7 +27,7 @@
     </p>
 </c:if>
 
-<form action="${pageContext.request.contextPath}/booking-create" method="POST">
+<form action="${pageContext.request.contextPath}/${urlToPost}" method="POST">
 
     <div class="ui container">
         <h1>New Booking</h1>
@@ -38,8 +38,18 @@
                 <h3>Room Number</h3>
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
-                    <input type="number" min="1" placeholder="Input room number"
-                           name="roomNumber" value='${roomNumber}' required>
+                    <c:choose>
+                        <c:when test="${urlToPost eq 'booking-create'}">
+                            <input type="number" min="1" placeholder="Input room number"
+                                   name="roomNumber" value='${roomNumber}' required>
+                        </c:when>
+                        <c:otherwise>
+                            <input type="number" min="1" placeholder="Input room number"
+                                   name="roomNumber" value='${bookingDto.roomNumber}' required>
+                            <input type="hidden" name="idBooking" value='${bookingDto.idBooking}' >
+                        </c:otherwise>
+                    </c:choose>
+
                 </div>
             </div>
 
@@ -49,7 +59,8 @@
                     <div class="ui calendar" id="startDate">
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="text" placeholder="Click to select the start date" name="startDate" required>
+                            <input type="text" placeholder="Click to select the start date" name="startDate"
+                                   value='${bookingDto.startDate} ${bookingDto.startTime}' required>
                         </div>
                     </div>
                 </div>
@@ -58,7 +69,8 @@
                     <div class="ui calendar" id="endDate">
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="text" placeholder="Click to select the end date" name="endDate" required>
+                            <input type="text" placeholder="Click to select the end date" name="endDate"
+                                   value='${bookingDto.endDate} ${bookingDto.endTime}' required>
                         </div>
                     </div>
                 </div>
@@ -68,13 +80,14 @@
                 <h3>Purpose</h3>
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
-                    <input type="text" placeholder="Input purpose of booking" name="purpose" value="">
+                    <input type="text" placeholder="Input purpose of booking" name="purpose"
+                           value='${bookingDto.purpose}'>
                 </div>
             </div>
 
         </div>
 
-        <button class="negative ui button left floated" onclick="goBack()" >
+        <button class="negative ui button left floated" type="button" onclick="goBack()" >
             Cancel
         </button>
         <button class="positive ui button right floated" type="submit" > Save </button>

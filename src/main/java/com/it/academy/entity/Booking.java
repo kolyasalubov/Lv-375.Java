@@ -1,6 +1,6 @@
 package com.it.academy.entity;
 
-public class Booking {
+public class Booking implements IEntity {
 
     public static enum BookingQueries {
 
@@ -22,10 +22,10 @@ public class Booking {
         GET_BY_ID(QueryNames.GET_BY_ID, "SELECT * FROM bookings WHERE id = %s;"),
         GET_BY_FIELD(QueryNames.GET_BY_FIELD, "SELECT * FROM bookings WHERE %s = '%s';"),
         GET_FUTURE_BY_FIELD(QueryNames.GET_FUTURE_BY_FIELD, "SELECT * FROM bookings " +
-                "WHERE %s = '%s' AND start_date >= '%s' " +      // '%s' --> current date
+                "WHERE %s = '%s' AND end_date >= '%s' " +      // '%s' --> current date
                 "ORDER BY start_date;"),
         GET_PAST_BY_FIELD(QueryNames.GET_PAST_BY_FIELD, "SELECT * FROM bookings " +
-                "WHERE %s = '%s' AND start_date <= '%s' " +      // '%s' --> current date
+                "WHERE %s = '%s' AND end_date <= '%s' " +      // '%s' --> current date
                 "ORDER BY start_date DESC;"),
 
         // TODO complicated query with FOREIGN KEYS
@@ -41,7 +41,7 @@ public class Booking {
 
         IS_EXIST(QueryNames.IS_EXIST, "SELECT id FROM bookings " +
                 "WHERE ((start_date <= '%s' AND end_date >= '%s') " +  // current start_date
-                "OR (start_date BETWEEN '%s' AND '%s')) AND (room_id = '%s');");    // current start_date AND current end_date
+                "OR (start_date BETWEEN '%s' AND '%s')) AND (room_id = %s);");    // current start_date AND current end_date
 
 
         private QueryNames queryName;

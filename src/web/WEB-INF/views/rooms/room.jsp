@@ -22,11 +22,10 @@ ROOM
     <h5> Room ${roomDto.number} </h5>
     <p> ${roomDto.type} </p>
 
-    <c:url value='${pageContext.request.contextPath}/booking-create?room=' var="createUrl">
+    <c:url value='${pageContext.request.contextPath}/booking-create' var="createUrl">
         <c:param name='room' value='${roomDto.number}'/>
     </c:url>
-    <button type="button" class="addBtn" onclick="openPage('${pageContext.request.contextPath}/booking-create?room=${roomDto.number}')">
-    <%--<button type="button" class="addBtn" onclick="openPage('${pageScope.createUrl}')">--%>
+    <button type="button" class="addBtn" onclick="openPage('${pageScope.createUrl}')">
         Add booking
     </button>
 

@@ -1,6 +1,6 @@
 package com.it.academy.entity;
 
-public class Room {
+public class Room implements IEntity {
 
     public static enum RoomQueries {
 
