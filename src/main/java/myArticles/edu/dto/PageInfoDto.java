@@ -2,18 +2,18 @@ package myArticles.edu.dto;
 
 public class PageInfoDto {
     private int pageNumber;
-    private int visibleArticles;
+    private int visible;
 
-    public PageInfoDto(int pageNumber, int visibleArticles){
+    public PageInfoDto(int pageNumber, int visible){
         this.pageNumber = pageNumber;
-        this.visibleArticles = visibleArticles;
+        this.visible = visible;
     }
 
     public int getPageNumber() {
         return pageNumber;
     }
 
-    public int getVisibleArticles() {
-        return visibleArticles;
+    public int getVisible() {
+        return visible;
     }
 }

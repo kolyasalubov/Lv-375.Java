@@ -50,14 +50,14 @@ public class UserArticlesService {
 
     public UsersArticleDto getPageUsers(UserDto userDto, PageInfoDto pageInfoDto){
         UsersArticleDto usersArticleDto= getUsersArticlesDto(userDto);
-        if(pageInfoDto.getVisibleArticles() == 100000){
+        if(pageInfoDto.getVisible() == 100000){
             return  usersArticleDto;
         }
-        int start = usersArticleDto.getArticles().size() > pageInfoDto.getVisibleArticles()* (pageInfoDto.getPageNumber()-1)
-                ? pageInfoDto.getVisibleArticles()* (pageInfoDto.getPageNumber()-1)
+        int start = usersArticleDto.getArticles().size() > pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()-1)
+                ? pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()-1)
                 : -1;
-        int end = usersArticleDto.getArticles().size() > (pageInfoDto.getVisibleArticles()* (pageInfoDto.getPageNumber()))
-                ? (pageInfoDto.getVisibleArticles()* (pageInfoDto.getPageNumber()))
+        int end = usersArticleDto.getArticles().size() > (pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()))
+                ? (pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()))
                 : -1;
         if(start != -1){
             if(end != -1){

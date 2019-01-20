@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <style type="text/css">
-        <%@include file="../../../resources/Login.css" %>
+        <%@include file="../../../resources/css/Login.css" %>
     </style>
     <meta http-equiv="Content-Type" content="text/html;">
     <meta charset="utf-8">

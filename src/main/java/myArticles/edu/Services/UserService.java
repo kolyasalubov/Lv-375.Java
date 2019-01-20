@@ -132,7 +132,9 @@ public class UserService {
      *
      */
     public boolean changeBlockStatus(UserDto userDto){
-        return updateUser(userDto);
+        User user = userDao.getUserEntityByUsername(userDto.getUserName());
+        user.setBlock(!user.isBlocked());
+        return userDao.updateAllByEntity(user);
     }
     /**
      * make user admin or take the right
@@ -140,6 +142,8 @@ public class UserService {
      *
      */
     public boolean changeAdminStatus(UserDto userDto){
-        return updateUser(userDto);
+        User user = userDao.getUserEntityByUsername(userDto.getUserName());
+        user.setAdmin(!user.isAdmin());
+        return userDao.updateAllByEntity(user);
     }
 }

@@ -6,10 +6,10 @@ html, body {
     -webkit-font-smoothing: antialiased;    background: #f0f0f0;
 }
 
-#container {
+#articleform  {
     position: fixed;
     width: 340px;
-    height: 400px;
+    height: 350px;
     top: 50%;
     left: 50%;
     margin-top: -200px;

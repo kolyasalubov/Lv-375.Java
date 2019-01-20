@@ -3,22 +3,22 @@ package myArticles.edu.controllers.common;
 import javax.servlet.http.HttpServletRequest;
 
 public class PageConfiguration {
-    public static String getVisibleArticle(HttpServletRequest request){
-        String visibleArticle;
-        if(request.getParameter("visibleArticle")!=null){
-            visibleArticle = request.getParameter("visibleArticle");
-            request.getSession().setAttribute("visibleArticle", visibleArticle);
+    public static String getVisible(HttpServletRequest request , String value){
+        String visible;
+        if(request.getParameter(value)!=null){
+            visible = request.getParameter(value);
+            request.getSession().setAttribute(value, visible);
         }
         else {
-            if(request.getSession().getAttribute("visibleArticle")!=null){
-                visibleArticle = (String)request.getSession().getAttribute("visibleArticle");
-                request.setAttribute("visibleArticle", visibleArticle);
+            if(request.getSession().getAttribute(value)!=null){
+                visible = (String)request.getSession().getAttribute(value);
+                request.setAttribute(value, visible);
             }
             else {
-                visibleArticle = "100000";
+                visible = "100000";
             }
         }
-        return visibleArticle;
+        return visible;
     }
 
     public static int getPageNumber(HttpServletRequest request){

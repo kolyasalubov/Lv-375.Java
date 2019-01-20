@@ -27,24 +27,29 @@ public class UserUpdate extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(Security.isActiveSession(request, response)) {
-            UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
-                    request.getParameter(ControllersConstant.PASSWORD.toString()),
-                    request.getParameter(ControllersConstant.EMAIL.toString()),
-                    Boolean.valueOf(request.getParameter(ControllersConstant.IS_ADMIN.toString())),
-                    Boolean.valueOf(request.getParameter(ControllersConstant.IS_BLOCK.toString())));
+            if(Security.checkCorrectData(request)) {
+                UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
+                        request.getParameter(ControllersConstant.PASSWORD.toString()),
+                        request.getParameter(ControllersConstant.EMAIL.toString()),
+                        Boolean.valueOf(request.getParameter(ControllersConstant.IS_ADMIN.toString())),
+                        Boolean.valueOf(request.getParameter(ControllersConstant.IS_BLOCK.toString())));
 
-            if(userService.updateUser(userDto)){
-                request.getSession().setAttribute(ControllersConstant.USER_DTO.toString(), userDto);
-                getServletConfig()
-                        .getServletContext()
-                        .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
-                        .forward(request, response);
+                if (userService.updateUser(userDto)) {
+                    request.getSession().setAttribute(ControllersConstant.USER_DTO.toString(), userDto);
+                    response.sendRedirect(request.getContextPath() + ControllerUrls.USER_ARTICLES_SERVLET.toString());
+                } else {
+                    request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.UPDATE_ERROR.toString());
+                    getServletConfig()
+                            .getServletContext()
+                            .getRequestDispatcher(ControllerUrls.USER_EDIT_SERVLET.toString())
+                            .forward(request, response);
+                }
             }
-            else{
-                request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.UPDATE_ERROR.toString());
+            else {
+                request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.EDIT_PROFILE_PASSWORD_ERROR.toString());
                 getServletConfig()
                         .getServletContext()
-                        .getRequestDispatcher(ViewUrls.USER_PROFILE_JSP.toString())
+                        .getRequestDispatcher(ControllerUrls.USER_EDIT_SERVLET.toString())
                         .forward(request, response);
             }
         }

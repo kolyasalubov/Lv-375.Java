@@ -10,17 +10,17 @@
 <html>
 <head>
     <style type="text/css">
-        <%@include file="../../../resources/js/css/ArticlePage.css" %>
+        <%@include file="../../../resources/css/ArticlePage.css" %>
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
 </head>
 <body>
-<h1>UserArticles</h1>
-<a href="${pageContext.request.contextPath}/logout" class="butt">logout</a>
-<a href="${pageContext.request.contextPath}/useredit" class="butt">egitprofile</a>
+<div class="one"><h1>Welcome to your profile</h1></div>
+<a href="${pageContext.request.contextPath}/logout" class="logout">Logout</a>
+<a href="${pageContext.request.contextPath}/useredit" class="editprofile">Edit Profile</a>
 <br><br>
-<a href="${pageContext.request.contextPath}/articleadd" class="butt">Create new Article </a>
+<a href="${pageContext.request.contextPath}/articleadd" class="createarticle">Create new Article</a>
 <br><br>
 <select id="idvisibleArticle" onchange="selectVisibleItems('${hostContext}/articlescount?visibleArticle=')">
     <option value="100000"
@@ -49,11 +49,11 @@
 <c:if test="${countArticles ne null && countArticles.size() gt 0}">
     <table border="1">
         <tr>
-            <th>Name_Article</th>
-            <th>Description_Article</th>
-            <th>Url_Article</th>
-            <th>Edit_Article</th>
-            <th>Delete_Article</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Url</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         <c:forEach var="row" items="${countArticles}">
             <tr>
@@ -74,7 +74,11 @@
     <li><a href="${hostContext}/userarticle?pageNumber=2" class="butt">2</a></li>
     <li><a href="${hostContext}/userarticle?pageNumber=3" class="butt">3</a></li>
     <li><a href="${hostContext}/userarticle?pageNumber=4" class="butt">4</a></li>
-    <li><a href="${hostContext}/userarticle?pageNumber=5" class="butt">5</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=6" class="butt">6</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=7" class="butt">7</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=8" class="butt">8</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=9" class="butt">9</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=10" class="butt">10</a></li>
 </ul>
 <script type="text/javascript">
     function checkDeleteItem(url) {

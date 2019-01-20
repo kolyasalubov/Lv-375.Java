@@ -29,12 +29,10 @@ public class UserArticles extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
 
-            String visibleArticle = PageConfiguration.getVisibleArticle(request);
+            String visibleArticle = PageConfiguration.getVisible(request, "visibleArticle");
 
             int pageNumber = PageConfiguration.getPageNumber(request);
 
-            request.setAttribute("pageNumber",
-                    String.valueOf(pageNumber));
             PageInfoDto pageInfoDto = new PageInfoDto(pageNumber, Integer.parseInt(visibleArticle));
             UsersArticleDto usersArticleDto = userArticlesService.getPageUsers(IocContainer.get()
                     .getUserService()

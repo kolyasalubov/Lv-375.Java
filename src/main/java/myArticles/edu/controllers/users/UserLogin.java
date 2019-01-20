@@ -40,14 +40,17 @@ public class UserLogin extends HttpServlet {
             response.addCookie(cookie);
             //response.sendRedirect(request.getContextPath() +
             //ControllerUrls.USER_ITEMS_SERVLET.toString());
-            if(!userDto.isAdmin()) {
+            if(userDto.isAdmin()) {
+                getServletConfig()
+                        .getServletContext()
+                        .getRequestDispatcher(ControllerUrls.ALL_USER_SERVLER.toString())//TODO Change to Main page
+                        .forward(request, response);
+            }
+            else {
                 getServletConfig()
                         .getServletContext()
                         .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())//TODO Change to Main page
                         .forward(request, response);
-            }
-            else {
-
             }
         } else {
             request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.LOGIN_ERROR.toString());

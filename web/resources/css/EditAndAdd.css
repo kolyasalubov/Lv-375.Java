@@ -6,13 +6,13 @@ html, body {
     -webkit-font-smoothing: antialiased;    background: #f0f0f0;
 }
 
-#container {
+#container , #userform, #articleform  {
     position: fixed;
     width: 340px;
-    height: 280px;
+    height: 400px;
     top: 50%;
     left: 50%;
-    margin-top: -140px;
+    margin-top: -200px;
     margin-left: -170px;
     background: #fff;
     border-radius: 3px;
@@ -29,18 +29,8 @@ label {
     padding-top: 10px;
     font-size: 14px;
 }
-p a {
-    font-size: 11px;
-    color: #aaa;
-    float: right;
-    margin-top: -13px;
-    margin-right: 20px;
-    -webkit-transition: all .4s ease;
-    -moz-transition: all .4s ease;
-    transition: all .4s ease;
-}
-p a:hover {
-    color: #555;
+p{
+    text-align: center;
 }
 input {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -86,7 +76,8 @@ input[type=button]{
 }
 .one {
     background: #f0f0f0;
-    padding: 50px 20px;
+    padding: 20px 20px;
+    margin-left: -10px;
     text-align: center;
 }
 .one h1 {
@@ -100,19 +91,4 @@ input[type=button]{
     padding: 11px 60px;
     margin: 0;
     line-height: 1;
-}
-.one h1:before, .one h1:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 30px;
-    height: 100%;
-    border-left: 2px solid;
-    border-right: 2px solid;
-    background: repeating-linear-gradient(180deg, transparent, transparent 2px, #3CA1D9 2px, #3CA1D9 4px);
-}
-.one h1:before {left: 0;}
-.one h1:after {right: 0;}
-@media (max-width: 420px) {
-    .one h1 {font-size: 2em;}
 }

@@ -29,7 +29,7 @@ public class UserCreate extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean isAdmin = request.getParameter("isAdmin") != null;
-        if (request.getParameter(ControllersConstant.PASSWORD.toString()).equals(request.getParameter("repeat"))) {
+        if (Security.checkCorrectData(request)) {
             UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
                     request.getParameter(ControllersConstant.PASSWORD.toString()),
                     request.getParameter(ControllersConstant.EMAIL.toString()),

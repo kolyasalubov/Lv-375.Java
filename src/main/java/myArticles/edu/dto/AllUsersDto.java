@@ -8,12 +8,18 @@ public class AllUsersDto {
 
     public AllUsersDto() {
         this.users = new ArrayList<>();
-        //TODO page size
+
     }
 
     public void addUsers(UserDto userDto){
         users.add(userDto);
     }
 
+    public List <UserDto> getUsers() {
+        return users;
+    }
 
+    public void setUsers(List <UserDto> users) {
+        this.users = users;
+    }
 }

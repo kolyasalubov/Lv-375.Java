@@ -8,8 +8,7 @@ public enum ControllerUrls {
     LOGOUT_SERVLET("/logout"),
 
     //AdminPage
-
-    ADMIN_LOGIN_SERVLET("/adminlogin"),
+    ALL_USER_SERVLER("/alluser"),
 
     //Register, Edit,  Update, Cancel User
 

@@ -10,16 +10,16 @@
 <html>
 <head>
     <style type="text/css">
-        <%@include file="../../../resources/css/Register.css" %>
+        <%@include file="../../../resources/css/EditAndAdd.css" %>
     </style>
-    <title>Title</title>
+    <title>Register</title>
 </head>
 <body>
 <div class="one"><h1>Register</h1></div>
 <div id="container">
     <c:if test="${error ne null}">
         <p>
-            <font color="red" style="text-align: center">${error}</font>
+            <font color="red">${error}</font>
         </p>
     </c:if>
     <form action="${pageContext.request.contextPath}/usercreate" method="post">
