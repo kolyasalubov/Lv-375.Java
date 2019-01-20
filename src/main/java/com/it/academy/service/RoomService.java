@@ -23,15 +23,15 @@ public class RoomService {
 
     private Room dtoToRoom(RoomDto roomDto){
         Room room = new Room();
-        room.setNumber(roomDto.getNumber());
+        room.setNumber(Integer.parseInt(roomDto.getNumber()));
         room.setType(roomDto.getType());
         return room;
     }
 
     private RoomDto roomToDto(Room room){
         RoomDto roomDto = new RoomDto();
-        roomDto.setIdRoom(room.getId());
-        roomDto.setNumber(room.getNumber());
+        roomDto.setIdRoom(String.valueOf(room.getId()));
+        roomDto.setNumber(String.valueOf(room.getNumber()));
         roomDto.setType(room.getType());
         return roomDto;
     }
@@ -74,7 +74,7 @@ public class RoomService {
     }
 
     public RoomDto fillRoomDtoInfo(RoomDto roomDto){
-        Room room = roomDao.getById(roomDto.getIdRoom());
+        Room room = roomDao.getById(Long.parseLong(roomDto.getIdRoom()));
         return roomToDto(room);
     }
 
@@ -82,6 +82,16 @@ public class RoomService {
         boolean result = true;
         try{
             roomDao.deleteByFieldName("number", String.valueOf(roomDto.getNumber()));
+        } catch (Exception e){
+            System.out.println("RuntimeException: " + e.getMessage());
+            result = false;
+        } return result;
+    }
+
+    public boolean isExist(RoomDto roomDto){
+        boolean result = true;
+        try{
+            roomDao.getByFieldName("number", roomDto.getNumber());
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;

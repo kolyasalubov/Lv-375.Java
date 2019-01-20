@@ -60,10 +60,6 @@ public class RegistrationServlet extends HttpServlet {
                     request.getParameter(UserConstants.PHONE.toString()));
 
             if (userService.createUser(userDto)) {
-                if(userService.isFirst()){
-                    userDto.setAdmin(true);
-                    userService.adminToUser(userDto);
-                }
                 // To call doPost from LoginServlet --- to log in the user after registration
                 getServletConfig()
                         .getServletContext()

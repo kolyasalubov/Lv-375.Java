@@ -4,7 +4,7 @@ public enum BookingConstants {
 
     ID("idBooking"),
     ROOM_NUMBER("roomNumber"),
-    STERT_DATE("startDate"),
+    START_DATE("startDate"),
     END_DATE("endDate"),
     PURPOSE("purpose"),
 

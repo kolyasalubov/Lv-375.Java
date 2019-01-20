@@ -55,7 +55,7 @@
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn" onclick="openPage('${pageContext.request.contextPath}/login')">
+            <button type="button" class="cancelbtn" onclick="goBack()">
                 Cancel
             </button>
         </div>

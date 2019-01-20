@@ -2,15 +2,15 @@ package com.it.academy.dto;
 
 public class UserDto {
 
-    private long idUser;
+    private String idUser;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
     private String position;
     private String phone;
-    private boolean isAdmin;
-    private boolean isBlocked;
+    private String isAdmin;
+    private String isBlocked;
 
     public UserDto(){}
 
@@ -23,11 +23,11 @@ public class UserDto {
         this.phone = phone;
     }
 
-    public long getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(long idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 
@@ -79,19 +79,19 @@ public class UserDto {
         this.phone = phone;
     }
 
-    public boolean isAdmin() {
+    public String getIsAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setIsAdmin(String isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public boolean isBlocked() {
+    public String getIsBlocked() {
         return isBlocked;
     }
 
-    public void setBlocked(boolean blocked) {
-        isBlocked = blocked;
+    public void setIsBlocked(String isBlocked) {
+        this.isBlocked = isBlocked;
     }
 }

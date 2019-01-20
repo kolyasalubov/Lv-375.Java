@@ -6,6 +6,7 @@ import com.it.academy.dao.UserDao;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.LoginDto;
 import com.it.academy.dto.UserDto;
+import com.it.academy.entity.Booking;
 import com.it.academy.entity.User;
 
 import java.util.ArrayList;
@@ -31,13 +32,13 @@ public class UserService {
         user.setLastName(userDto.getLastName());
         user.setPosition(userDto.getPosition());
         user.setPhone(userDto.getPhone());
-        user.setAdmin(userDto.isAdmin());
+        user.setAdmin(Boolean.parseBoolean(userDto.getIsAdmin()));
         return user;
     }
 
     private UserDto userToDto(User user){
         UserDto userDto = new UserDto();
-        userDto.setIdUser(user.getId());
+        userDto.setIdUser(String.valueOf(user.getId()));
         userDto.setEmail(user.getEmail());
         userDto.setPassword(user.getPassword());
         userDto.setFirstName(user.getFirstName());
@@ -54,25 +55,30 @@ public class UserService {
         return userDao.isExist(user);
     }
 
-    public boolean isFirst(){
-        boolean isFirst = false;
-        try {
-            userDao.getById(1); // get the first user
-        } catch (RuntimeException e){ // if id=1 is not exist
-            isFirst = true;
-        }
-        return isFirst;
-    }
-
     public boolean createUser(UserDto userDto){
         boolean result = true;
         User user = dtoToUser(userDto);
         try{
             userDao.insert(user);
+            if(wasFirst()){
+                userDto.setIsAdmin("true");
+                adminToUser(userDto);
+            }
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;
         } return result;
+    }
+
+    private boolean wasFirst(){
+        boolean isFirst = false;
+        try {
+            userDao.getById(2); // get the second user
+        } catch (RuntimeException e){ // if id=2 is not exist, so the id=1 was added now
+            isFirst = true;
+        }
+        System.out.println(isFirst);
+        return isFirst;
     }
 
     public boolean updateUser(UserDto userDto){
@@ -118,18 +124,18 @@ public class UserService {
     }
 
     public boolean adminToUser(UserDto userDto){
-        return giveRightsToUser(userDto, "is_admin", userDto.isAdmin());
+        return giveRightsToUser(userDto, "is_admin", userDto.getIsAdmin());
     }
 
     public boolean blockToUser(UserDto userDto){
-        return giveRightsToUser(userDto, "is_blocked", userDto.isBlocked());
+        return giveRightsToUser(userDto, "is_blocked", userDto.getIsBlocked());
     }
 
     //TODO check if works boolean -> String
-    private boolean giveRightsToUser(UserDto userDto, String fieldName, boolean fieldValue){
+    private boolean giveRightsToUser(UserDto userDto, String fieldName, String fieldValue){
         boolean result = true;
         try{
-            userDao.updateFieldByField(fieldName, Boolean.toString(fieldValue),
+            userDao.updateFieldByField(fieldName, fieldValue,
                     "email", userDto.getEmail());
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());

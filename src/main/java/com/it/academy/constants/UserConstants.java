@@ -13,7 +13,8 @@ public enum UserConstants {
     IS_ADMIN("isAdmin"),
     IS_BLOCKED("isBlocked"),
 
-    LOGIN_DTO("loginDto");
+    LOGIN_DTO("loginDto"),
+    USER_DTO("userDto");
 
     private String constant;
 

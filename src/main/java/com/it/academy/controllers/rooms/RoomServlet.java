@@ -2,15 +2,18 @@ package com.it.academy.controllers.rooms;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
 import com.it.academy.constants.RoomConstants;
 import com.it.academy.dto.BookingUserDto;
 import com.it.academy.dto.CollectionDto;
+import com.it.academy.dto.LoginDto;
 import com.it.academy.dto.RoomDto;
 import com.it.academy.service.BookingService;
 import com.it.academy.service.RoomService;
+import com.it.academy.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,11 +31,13 @@ public class RoomServlet extends HttpServlet {
     private static final long serialVersionUID = 5L;
     private BookingService bookingService;
     private RoomService roomService;
+    private UserService userService;
 
     public RoomServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
+        userService = ObjContainer.getInstance().getUserService();
     }
 
     /**
@@ -41,7 +46,7 @@ public class RoomServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (RequestValidator.isValid(request)) {
             RoomDto roomDto = new RoomDto();
-            roomDto.setIdRoom(Long.parseLong(request.getParameter(RoomConstants.ID.toString())));
+            roomDto.setIdRoom(request.getParameter(RoomConstants.ID.toString()));
             roomDto = roomService.fillRoomDtoInfo(roomDto);
 
             CollectionDto<BookingUserDto> bookings = bookingService.getFutureBookingUserCollection(roomDto);

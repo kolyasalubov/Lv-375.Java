@@ -2,30 +2,23 @@ package com.it.academy.dto;
 
 public class RoomDto {
 
-    private long idRoom;
-    private int number;
+    private String idRoom;
+    private String number;
     private String type;
 
-    public RoomDto(){}
-
-    public RoomDto(int number, String type) {
-        this.number = number;
-        this.type = type;
-    }
-
-    public long getIdRoom() {
+    public String getIdRoom() {
         return idRoom;
     }
 
-    public void setIdRoom(long idRoom) {
+    public void setIdRoom(String idRoom) {
         this.idRoom = idRoom;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

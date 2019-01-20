@@ -9,8 +9,13 @@ import com.it.academy.entity.Booking;
 import com.it.academy.entity.Room;
 import com.it.academy.entity.User;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class BookingService {
 
@@ -18,42 +23,54 @@ public class BookingService {
     private UserDao userDao;
     private RoomDao roomDao;
 
-    public BookingService(){
+    public BookingService() {
         bookingDao = ObjContainer.getInstance().getBookingDao();
         userDao = ObjContainer.getInstance().getUserDao();
         roomDao = ObjContainer.getInstance().getRoomDao();
     }
 
-    public BookingService(BookingDao bookingDao, UserDao userDao, RoomDao roomDao){
+    public BookingService(BookingDao bookingDao, UserDao userDao, RoomDao roomDao) {
         this.bookingDao = bookingDao;
         this.userDao = userDao;
         this.roomDao = roomDao;
     }
 
-    private Booking dtoToBooking(BookingDto bookingDto, UserDto userDto){
-        Booking booking = new Booking();
-        booking.setId(bookingDto.getIdBooking());
-        booking.setStartDate(bookingDto.getStartDate());
-        booking.setEndDate(bookingDto.getEndDate());
-        booking.setPurpose(bookingDto.getPurpose());
-
-        List<User> users = userDao.getByFieldName("email", userDto.getEmail());
-        booking.setUserId(users.get(0).getId());
-        return booking;
-    }
-
-    private Booking roomDtoToBooking(BookingRoomDto bookingRoomDto, UserDto userDto){
-        Booking booking = dtoToBooking(bookingRoomDto, userDto);
-        List<Room> rooms = roomDao.getByFieldName("number", String.valueOf(bookingRoomDto.getRoomNumber()));
+    private Booking roomDtoToBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
+        Booking booking = dtoToBooking(bookingRoomDto, loginDto);
+        List<Room> rooms = roomDao.getByFieldName("number", bookingRoomDto.getRoomNumber());
         booking.setRoomId(rooms.get(0).getId());
         return booking;
     }
 
-    private BookingUserDto bookingToBookingUserDto(Booking booking){
-        BookingUserDto dto = new BookingUserDto();
-        dto.setStartDate(booking.getStartDate());
-        dto.setEndDate(booking.getEndDate());
-        dto.setPurpose(booking.getPurpose());
+    private Booking dtoToBooking(BookingDto bookingDto, LoginDto loginDto) {
+        Booking booking = new Booking();
+        if(bookingDto.getIdBooking() != null)
+            booking.setId(Long.parseLong(bookingDto.getIdBooking()));
+
+        booking.setStartDate(parseDate(bookingDto.getStartDate()));
+        booking.setEndDate(parseDate(bookingDto.getEndDate()));
+        booking.setPurpose(bookingDto.getPurpose());
+
+        List<User> users = userDao.getByFieldName("email", loginDto.getEmail());
+        booking.setUserId(users.get(0).getId());
+        return booking;
+    }
+
+    private String parseDate(String date){
+        DateFormat toDate = new SimpleDateFormat ("MMMM dd, yyyy hh:mm", Locale.ENGLISH);
+        DateFormat toMySqlDate = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        String dateToDB = null;
+        try {
+            Date dateMain = toDate.parse(date);
+            dateToDB = toMySqlDate.format(dateMain);
+        } catch (ParseException e) {
+            System.out.println("FALSE DATE!");
+        }
+        return dateToDB;
+    }
+
+    private BookingUserDto bookingToBookingUserDto(Booking booking) {
+        BookingUserDto dto = new BookingUserDto(bookingToBookingDto(booking));
 
         User user = userDao.getById(booking.getUserId());
         dto.setUserFirstName(user.getFirstName());
@@ -62,80 +79,91 @@ public class BookingService {
         return dto;
     }
 
-    private BookingRoomDto bookingToBookingRoomDto(Booking booking){
-        BookingRoomDto dto = new BookingRoomDto();
-        dto.setStartDate(booking.getStartDate());
-        dto.setEndDate(booking.getEndDate());
-        dto.setPurpose(booking.getPurpose());
+    private BookingRoomDto bookingToBookingRoomDto(Booking booking) {
+        BookingRoomDto dto = new BookingRoomDto(bookingToBookingDto(booking));
 
         Room room = roomDao.getById(booking.getRoomId());
-        dto.setRoomNumber(room.getNumber());
+        dto.setRoomNumber(String.valueOf(room.getNumber()));
 
         return dto;
     }
 
+    private BookingDto bookingToBookingDto(Booking booking){
+        BookingDto dto = new BookingDto();
+        dto.setStartDate(booking.getStartDate());
+        dto.setEndDate(booking.getEndDate());
+        dto.setPurpose(booking.getPurpose());
+        dto.setUserEmail(userDao.getById(booking.getUserId()).getEmail());
+        return dto;
+    }
 
-    public boolean createBooking(BookingDto bookingDto, RoomDto roomDto, UserDto userDto){
-        Booking booking = dtoToBooking(bookingDto, userDto);
-        List<Room> rooms = roomDao.getByFieldName("number", String.valueOf(roomDto.getNumber()));
-        booking.setRoomId(rooms.get(0).getId());
+
+//    public boolean createBooking(BookingDto bookingDto, RoomDto roomDto, LoginDto loginDto) {
+//        Booking booking = dtoToBooking(bookingDto, loginDto);
+//        List<Room> rooms = roomDao.getByFieldName("number", String.valueOf(roomDto.getNumber()));
+//        booking.setRoomId(rooms.get(0).getId());
+//        return saveBookingToDB(booking);
+//    }
+
+    public boolean createRoomBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
+        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
         return saveBookingToDB(booking);
     }
 
-    public boolean createRoomBooking(BookingRoomDto bookingRoomDto, UserDto userDto){
-        Booking booking = roomDtoToBooking(bookingRoomDto, userDto);
-        return saveBookingToDB(booking);
+    public boolean isFreeTime(BookingRoomDto bookingRoomDto, LoginDto loginDto){
+        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
+        return !bookingDao.isExist(booking);
     }
 
-    private boolean saveBookingToDB(Booking booking){
+    private boolean saveBookingToDB(Booking booking) {
         boolean result = true;
-        try{
-            if (bookingDao.isExist(booking))
-                throw new RuntimeException();
+        try {
             bookingDao.insert(booking);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;
-        } return result;
+        }
+        return result;
     }
 
-    public boolean updateRoomBooking(BookingRoomDto bookingRoomDto, UserDto userDto){
+    public boolean updateRoomBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
         boolean result = true;
-        Booking booking = roomDtoToBooking(bookingRoomDto, userDto);
+        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
         try {
             if (bookingDao.isExist(booking))
                 throw new RuntimeException();
             bookingDao.updateEntityById(booking);
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;
-        } return result;
+        }
+        return result;
     }
 
-    public CollectionDto<BookingRoomDto> getFutureBookingRoomCollection(LoginDto loginDto){
-        return getBookingRoomCollection(loginDto, "future");
+    public CollectionDto<BookingRoomDto> getFutureBookingRoomCollection(LoginDto loginDto) {
+        return getBookingRoomCollection(loginDto, false);
     }
 
-    public CollectionDto<BookingRoomDto> getPastBookingRoomCollection(LoginDto loginDto){
-        return getBookingRoomCollection(loginDto, "past");
+    public CollectionDto<BookingRoomDto> getPastBookingRoomCollection(LoginDto loginDto) {
+        return getBookingRoomCollection(loginDto, true);
     }
 
-    public CollectionDto<BookingUserDto> getFutureBookingUserCollection(RoomDto roomDto){
-        return getBookingUserCollection(roomDto, "future");
+    public CollectionDto<BookingUserDto> getFutureBookingUserCollection(RoomDto roomDto) {
+        return getBookingUserCollection(roomDto, false);
     }
 
-    public CollectionDto<BookingUserDto> getPastBookingUserCollection(RoomDto roomDto){
-        return getBookingUserCollection(roomDto, "past");
+    public CollectionDto<BookingUserDto> getPastBookingUserCollection(RoomDto roomDto) {
+        return getBookingUserCollection(roomDto, true);
     }
 
-    private CollectionDto<BookingRoomDto> getBookingRoomCollection(LoginDto loginDto, String time){
+    private CollectionDto<BookingRoomDto> getBookingRoomCollection(LoginDto loginDto, boolean isPast) {
         List<BookingRoomDto> dtos = new ArrayList<>();
         CollectionDto<BookingRoomDto> collection = null;
         try {
             List<User> users = userDao.getByFieldName("email", loginDto.getEmail());
             String userId = String.valueOf(users.get(0).getId());
-            List<Booking> bookings = getByTime("user_id", userId, time);
-            for(Booking booking : bookings)
+            List<Booking> bookings = getByTime("user_id", userId, isPast);
+            for (Booking booking : bookings)
                 dtos.add(bookingToBookingRoomDto(booking));
             collection = new CollectionDto<>(dtos);
         } catch (Exception e) {
@@ -144,14 +172,14 @@ public class BookingService {
         return collection;
     }
 
-    private CollectionDto<BookingUserDto> getBookingUserCollection(RoomDto roomDto, String time){
+    private CollectionDto<BookingUserDto> getBookingUserCollection(RoomDto roomDto, boolean isPast) {
         List<BookingUserDto> dtos = new ArrayList<>();
         CollectionDto<BookingUserDto> collection = null;
         try {
             List<Room> rooms = roomDao.getByFieldName("number", String.valueOf(roomDto.getNumber()));
             String roomId = String.valueOf(rooms.get(0).getId());
-            List<Booking> bookings = getByTime("room_id", roomId, time);
-            for(Booking booking : bookings)
+            List<Booking> bookings = getByTime("room_id", roomId, isPast);
+            for (Booking booking : bookings)
                 dtos.add(bookingToBookingUserDto(booking));
             collection = new CollectionDto<>(dtos);
         } catch (Exception e) {
@@ -161,14 +189,9 @@ public class BookingService {
     }
 
 
-    private List<Booking> getByTime(String fieldName, String fieldValue, String time){
-        switch (time) {
-            case "past":
-                return bookingDao.getPastByField(fieldName, fieldValue);
-            case "future":
-                return bookingDao.getFutureByField(fieldName, fieldValue);
-            default:
-                return null;
-        }
+    private List<Booking> getByTime(String fieldName, String fieldValue, boolean isPast) {
+        return isPast ? bookingDao.getPastByField(fieldName, fieldValue)
+                : bookingDao.getFutureByField(fieldName, fieldValue);
+
     }
 }

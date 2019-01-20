@@ -2,20 +2,19 @@ package com.it.academy.dto;
 
 public class BookingRoomDto extends BookingDto {
 
-    private int roomNumber;
+    private String roomNumber;
 
     public BookingRoomDto(){}
 
-    public BookingRoomDto(int roomNumber, String startDate, String endDate, String purpose){
-        super(startDate, endDate, purpose);
-        this.roomNumber = roomNumber;
+    public BookingRoomDto(BookingDto bookingDto){
+        super(bookingDto.getStartDate(), bookingDto.getEndDate(), bookingDto.getPurpose());
     }
 
-    public int getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(int roomNumber) {
+    public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
     }
 }

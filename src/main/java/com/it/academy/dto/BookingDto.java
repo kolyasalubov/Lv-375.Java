@@ -2,9 +2,12 @@ package com.it.academy.dto;
 
 public class BookingDto {
 
-    private long idBooking;
+    private String idBooking;
+    private String userEmail;
     private String startDate;
     private String endDate;
+    private String startTime;
+    private String endTime;
     private String purpose;
 
     public BookingDto(){}
@@ -15,6 +18,14 @@ public class BookingDto {
         this.purpose = purpose;
     }
 
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 
     public String getStartDate() {
         return startDate;
@@ -40,7 +51,27 @@ public class BookingDto {
         this.purpose = purpose;
     }
 
-    public long getIdBooking() {
+    public String getIdBooking() {
         return idBooking;
+    }
+
+    public void setIdBooking(String idBooking) {
+        this.idBooking = idBooking;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 }
