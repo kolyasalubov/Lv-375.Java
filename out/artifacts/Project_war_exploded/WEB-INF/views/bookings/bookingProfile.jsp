@@ -39,7 +39,7 @@
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
                     <input type="number" min="1" placeholder="Input room number"
-                           name="roomNumber" value='${num}' required>
+                           name="roomNumber" value='${roomNumber}' required>
                 </div>
             </div>
 

@@ -43,6 +43,12 @@ public class BookingCreateServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (RequestValidator.isValid(request)) {
+            String number = request.getParameter("room");
+            request.removeAttribute("room");
+            if(number != null){
+                request.setAttribute(BookingConstants.ROOM_NUMBER.toString(), number);
+            }
+
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.BOOKING_PROFILE_JSP.toString())
