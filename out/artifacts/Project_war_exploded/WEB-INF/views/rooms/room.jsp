@@ -18,15 +18,6 @@
 <body>
 ROOM
 
-
-
-<%--<c:url value='${pageContext.request.contextPath}/booking-edit' var="editUrl">--%>
-    <%--<c:param name='id' value='${room.idRoom}'/>--%>
-<%--</c:url>--%>
-<%--<c:url value='${pageContext.request.contextPath}/booking-delete' var="deleteUrl">--%>
-    <%--<c:param name='id' value='${room.idRoom}'/>--%>
-<%--</c:url>--%>
-
 <div class="topTooltip">
     <h5> Room ${roomDto.number} </h5>
     <p> ${roomDto.type} </p>
@@ -38,6 +29,7 @@ ROOM
         Add booking
     </button>
 
+    <%--TODO maybe change id to number--%>
     <c:url value='${pageContext.request.contextPath}/room-archive' var="archiveUrl">
         <c:param name='id' value='${room.idRoom}'/>
     </c:url>
@@ -51,6 +43,8 @@ ROOM
     <div class="bookingist">
         <c:forEach var="booking" items="${bookingList}">
 
+            <%--${booking.toString()}--%>
+
             <div class="booking">
                 <p>
                         ${booking.startDate}
@@ -61,16 +55,26 @@ ROOM
                 <p> ${booking.startTime} - ${booking.endTime} </p>
                 <div class="userInfo">
                     <h5> ${booking.userFirstName} ${booking.userLastName}</h5>
+
                     <p> ${booking.purpose} </p>
                 </div>
 
                 <c:if test="${booking.userEmail eq loginDto.email}">
+
+                    <c:url value='${pageContext.request.contextPath}/booking-edit' var="editUrl">
+                        <c:param name='id' value='${booking.idBooking}'/>
+                    </c:url>
                     <button type="button" class="edit" onclick="openPage('${pageScope.editUrl}')">
                         Edit
                     </button>
+
+                    <c:url value='${pageContext.request.contextPath}/booking-delete' var="deleteUrl">
+                        <c:param name='id' value='${booking.idBooking}'/>
+                    </c:url>
                     <button type="button" class="delete" onclick="openPage('${pageScope.deleteUrl}')">
                         Delete
                     </button>
+
                 </c:if>
             </div>
 

@@ -24,14 +24,14 @@ import java.io.IOException;
  * HomeServlet configures home page
  */
 @WebServlet({"/booking-create"})  //  HOME_SERVLET
-public class CreateBookingServlet extends HttpServlet {
+public class BookingCreateServlet extends HttpServlet {
 
     private static final long serialVersionUID = 10L;
     private BookingService bookingService;
     private RoomService roomService;
     private UserService userService;
 
-    public CreateBookingServlet() {
+    public BookingCreateServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();

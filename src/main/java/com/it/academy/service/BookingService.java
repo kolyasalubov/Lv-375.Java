@@ -12,27 +12,41 @@ import com.it.academy.entity.User;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class BookingService {
 
     private BookingDao bookingDao;
     private UserDao userDao;
     private RoomDao roomDao;
+    private DateParser dateParser;
 
     public BookingService() {
         bookingDao = ObjContainer.getInstance().getBookingDao();
         userDao = ObjContainer.getInstance().getUserDao();
         roomDao = ObjContainer.getInstance().getRoomDao();
+        dateParser = ObjContainer.getInstance().getDateParser();
     }
 
-    public BookingService(BookingDao bookingDao, UserDao userDao, RoomDao roomDao) {
+    public BookingService(BookingDao bookingDao, UserDao userDao, RoomDao roomDao, DateParser dateParser) {
         this.bookingDao = bookingDao;
         this.userDao = userDao;
         this.roomDao = roomDao;
+        this.dateParser = dateParser;
+    }
+
+    private Booking dtoToBooking(BookingDto bookingDto, LoginDto loginDto) {
+        Booking booking = new Booking();
+        if (bookingDto.getIdBooking() != null)
+            booking.setId(Long.parseLong(bookingDto.getIdBooking()));
+
+        booking.setStartDate(dateParser.parseToDb(bookingDto.getStartDate()));
+        booking.setEndDate(dateParser.parseToDb(bookingDto.getEndDate()));
+        booking.setPurpose(bookingDto.getPurpose());
+
+        List<User> users = userDao.getByFieldName("email", loginDto.getEmail());
+        booking.setUserId(users.get(0).getId());
+        return booking;
     }
 
     private Booking roomDtoToBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
@@ -42,31 +56,22 @@ public class BookingService {
         return booking;
     }
 
-    private Booking dtoToBooking(BookingDto bookingDto, LoginDto loginDto) {
-        Booking booking = new Booking();
-        if(bookingDto.getIdBooking() != null)
-            booking.setId(Long.parseLong(bookingDto.getIdBooking()));
 
-        booking.setStartDate(parseDate(bookingDto.getStartDate()));
-        booking.setEndDate(parseDate(bookingDto.getEndDate()));
-        booking.setPurpose(bookingDto.getPurpose());
+    private BookingDto bookingToBookingDto(Booking booking) {
+        BookingDto dto = new BookingDto();
 
-        List<User> users = userDao.getByFieldName("email", loginDto.getEmail());
-        booking.setUserId(users.get(0).getId());
-        return booking;
-    }
+        Map<String, String> startDateTime = dateParser.parseToDisplay(booking.getStartDate());
+        Map<String, String> endDateTime = dateParser.parseToDisplay(booking.getEndDate());
 
-    private String parseDate(String date){
-        DateFormat toDate = new SimpleDateFormat ("MMMM dd, yyyy hh:mm", Locale.ENGLISH);
-        DateFormat toMySqlDate = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-        String dateToDB = null;
-        try {
-            Date dateMain = toDate.parse(date);
-            dateToDB = toMySqlDate.format(dateMain);
-        } catch (ParseException e) {
-            System.out.println("FALSE DATE!");
-        }
-        return dateToDB;
+        dto.setStartDate(startDateTime.get("date"));
+        dto.setStartTime(startDateTime.get("time"));
+        dto.setEndDate(endDateTime.get("date"));
+        dto.setEndTime(endDateTime.get("time"));
+
+        dto.setPurpose(booking.getPurpose());
+        dto.setUserEmail(userDao.getById(booking.getUserId()).getEmail());
+
+        return dto;
     }
 
     private BookingUserDto bookingToBookingUserDto(Booking booking) {
@@ -88,15 +93,6 @@ public class BookingService {
         return dto;
     }
 
-    private BookingDto bookingToBookingDto(Booking booking){
-        BookingDto dto = new BookingDto();
-        dto.setStartDate(booking.getStartDate());
-        dto.setEndDate(booking.getEndDate());
-        dto.setPurpose(booking.getPurpose());
-        dto.setUserEmail(userDao.getById(booking.getUserId()).getEmail());
-        return dto;
-    }
-
 
 //    public boolean createBooking(BookingDto bookingDto, RoomDto roomDto, LoginDto loginDto) {
 //        Booking booking = dtoToBooking(bookingDto, loginDto);
@@ -110,7 +106,7 @@ public class BookingService {
         return saveBookingToDB(booking);
     }
 
-    public boolean isFreeTime(BookingRoomDto bookingRoomDto, LoginDto loginDto){
+    public boolean isFreeTime(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
         Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
         return !bookingDao.isExist(booking);
     }

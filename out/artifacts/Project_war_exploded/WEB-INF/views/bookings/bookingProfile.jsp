@@ -68,7 +68,7 @@
                 <h3>Purpose</h3>
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
-                    <input type="text" placeholder="Input purpose of booking" name="purpose">
+                    <input type="text" placeholder="Input purpose of booking" name="purpose" value="">
                 </div>
             </div>
 

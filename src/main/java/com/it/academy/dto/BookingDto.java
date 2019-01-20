@@ -10,11 +10,17 @@ public class BookingDto {
     private String endTime;
     private String purpose;
 
-    public BookingDto(){}
+    public BookingDto() {
+    }
 
-    public BookingDto(String startDate, String endDate, String purpose) {
+    public BookingDto(String idBooking, String userEmail, String startDate, String endDate, String startTime,
+                      String endTime, String purpose) {
+        this.idBooking = idBooking;
+        this.userEmail = userEmail;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.purpose = purpose;
     }
 
@@ -73,5 +79,18 @@ public class BookingDto {
 
     public void setEndTime(String endTime) {
         this.endTime = endTime;
+    }
+
+    @Override
+    public String toString() {
+        return "BookingDto{" +
+                "idBooking='" + idBooking + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", purpose='" + purpose + '\'' +
+                '}';
     }
 }

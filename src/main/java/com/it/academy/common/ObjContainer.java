@@ -3,9 +3,12 @@ package com.it.academy.common;
 import com.it.academy.dao.BookingDao;
 import com.it.academy.dao.RoomDao;
 import com.it.academy.dao.UserDao;
+import com.it.academy.dto.DateParser;
 import com.it.academy.service.BookingService;
 import com.it.academy.service.RoomService;
 import com.it.academy.service.UserService;
+
+import javax.ejb.Init;
 
 public class ObjContainer {
 
@@ -19,8 +22,11 @@ public class ObjContainer {
     private RoomService roomService;
     private BookingService bookingService;
 
+    private DateParser dateParser;
+
     private ObjContainer(){
         initDaos();
+        dateParser = new DateParser();
         initServices();
     }
 
@@ -33,7 +39,7 @@ public class ObjContainer {
     private void initServices(){
         userService = new UserService(userDao);
         roomService = new RoomService(roomDao);
-        bookingService = new BookingService(bookingDao, userDao, roomDao);
+        bookingService = new BookingService(bookingDao, userDao, roomDao, dateParser);
     }
 
     public static ObjContainer getInstance() {
@@ -94,5 +100,13 @@ public class ObjContainer {
 
     public void setBookingService(BookingService bookingService) {
         this.bookingService = bookingService;
+    }
+
+    public DateParser getDateParser() {
+        return dateParser;
+    }
+
+    public void setDateParser(DateParser dateParser) {
+        this.dateParser = dateParser;
     }
 }

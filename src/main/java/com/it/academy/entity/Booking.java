@@ -40,8 +40,8 @@ public class Booking {
         DELETE_BY_FIELD(QueryNames.DELETE_BY_FIELD, "DELETE FROM bookings WHERE %s = '%s';"),
 
         IS_EXIST(QueryNames.IS_EXIST, "SELECT id FROM bookings " +
-                "WHERE (start_date <= '%s' AND end_date >= '%s') " +  // current start_date
-                "OR (start_date BETWEEN '%s' AND '%s');");    // current start_date AND current end_date
+                "WHERE ((start_date <= '%s' AND end_date >= '%s') " +  // current start_date
+                "OR (start_date BETWEEN '%s' AND '%s')) AND (room_id = '%s');");    // current start_date AND current end_date
 
 
         private QueryNames queryName;

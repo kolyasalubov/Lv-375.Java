@@ -14,15 +14,15 @@ public enum ControllerUrls {
     ROOM_EDIT_SERVLET("/room-edit"),		//TODO
     ROOM_DELETE_SERVLET("/room-delete"),    //TODO
 
-    BOOKING_CREATE_SERVLET("/booking-create"),	//TODO
-    BOOKING_CREATE_FROM_ROOM_SERVLET("/booking-create-room"),	//TODO
+    BOOKING_CREATE_SERVLET("/booking-create"),
+    BOOKING_CREATE_FROM_ROOM_SERVLET("/booking-create-room"),	//TODO  ???
     BOOKING_EDIT_SERVLET("/booking-edit"),		//TODO
     BOOKING_DELETE_SERVLET("/booking-delete"),  //TODO
 
     ITEM_COUNT_SERVLET("/itemcount"), // ??? pagination ???
     HOME_SERVLET("/home"),
 
-    ROOM_SERVLET("/room"), //TODO
+    ROOM_SERVLET("/room"),
     ROOM_ARCHIVE_SERVLET("/room-archive"),  //TODO
 
     BOOKINGS_SERVLET("/bookings"),  //TODO

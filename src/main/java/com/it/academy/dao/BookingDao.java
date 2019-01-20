@@ -56,6 +56,7 @@ public class BookingDao extends ADaoExist<Booking> {
             list.add(booking.getStartDate());
         }
         list.add(booking.getEndDate());
+        list.add(booking.getRoomId());
         return list;
     }
 

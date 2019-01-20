@@ -7,15 +7,9 @@ public class BookingUserDto extends BookingDto {
 
     public BookingUserDto(){}
 
-    public BookingUserDto(String userFirstName, String userLastName, String startDate, String endDate, String purpose){
-        super(startDate, endDate, purpose);
-        this.userFirstName = userFirstName;
-        this.userFirstName = userFirstName;
-        this.userLastName = userLastName;
-    }
-
     public BookingUserDto(BookingDto bookingDto){
-        super(bookingDto.getStartDate(), bookingDto.getEndDate(), bookingDto.getPurpose());
+        super(bookingDto.getIdBooking(), bookingDto.getUserEmail(), bookingDto.getStartDate(), bookingDto.getEndDate(),
+                bookingDto.getStartTime(), bookingDto.getEndTime(), bookingDto.getPurpose());
     }
 
     public String getUserFirstName() {

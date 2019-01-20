@@ -7,7 +7,8 @@ public class BookingRoomDto extends BookingDto {
     public BookingRoomDto(){}
 
     public BookingRoomDto(BookingDto bookingDto){
-        super(bookingDto.getStartDate(), bookingDto.getEndDate(), bookingDto.getPurpose());
+        super(bookingDto.getIdBooking(), bookingDto.getUserEmail(), bookingDto.getStartDate(), bookingDto.getEndDate(),
+                bookingDto.getStartTime(), bookingDto.getEndTime(), bookingDto.getPurpose());
     }
 
     public String getRoomNumber() {
