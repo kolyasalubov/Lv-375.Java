@@ -2,9 +2,12 @@ package myArticles.edu.controllers.common;
 
 import myArticles.edu.Services.UserArticlesService;
 import myArticles.edu.container.IocContainer;
+import myArticles.edu.controllers.ControllerUrls;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
+import myArticles.edu.dto.ArticleDto;
 import myArticles.edu.dto.LoginDto;
+import myArticles.edu.dto.PageInfoDto;
 import myArticles.edu.dto.UsersArticleDto;
 
 import javax.servlet.ServletException;
@@ -24,46 +27,28 @@ public class UserArticles extends HttpServlet {
         userArticlesService = IocContainer.get().getUserArticlesService();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(!Security.isActiveSession(request, response)){
-            System.out.println("0");
-            Security.endSession(response);
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
-                    .forward(request, response);
-        }
-        else{
-            UsersArticleDto usersArticleDto = userArticlesService.getUsersArticlesDto(IocContainer.get()
-                    .getUserService()
-                    .getUserDto(((LoginDto)(request.getSession(false).getAttribute("loginDto")))));
-            request.setAttribute("usersArticleDto", usersArticleDto);
-            request.setAttribute("countArticles", usersArticleDto.getArticles().size());
-            Cookie visibleArticleCookie = null;
-            for (Cookie currentCookie : request.getCookies()) {
-                if (currentCookie.getName().equals("visible_article")) {
-                    visibleArticleCookie = currentCookie;
-                    break;
-                }
-            }
-            System.out.println("1");
-            String visibleArticle = "100000";
-            if (visibleArticleCookie != null) {
-                visibleArticle = visibleArticleCookie.getValue();
-            }
-            request.setAttribute("visibleArticle", visibleArticle);
-            int pageNumber = 5;
-            if (request.getParameter("pageNumber") != null) {
-                pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-            }
-            System.out.println("2");
+            String visibleArticle;
+            visibleArticle = PageConfiguration.getVisibleArticle(request);
+            int pageNumber = PageConfiguration.getPageNumber(request);
             request.setAttribute("pageNumber",
                     String.valueOf(pageNumber));
+            System.out.println(pageNumber);
+            System.out.println(visibleArticle);
+            PageInfoDto pageInfoDto = new PageInfoDto(pageNumber, Integer.parseInt(visibleArticle));
+            UsersArticleDto usersArticleDto = userArticlesService.getPageUsers(IocContainer.get()
+                    .getUserService()
+                    .getUserDto(((LoginDto)(request.getSession(false).getAttribute("loginDto")))), pageInfoDto);
+            for(ArticleDto articleDto : usersArticleDto.getArticles()){
+                System.out.println(articleDto.getName());
+            }
+            request.setAttribute("usersArticleDto", usersArticleDto);
+            request.setAttribute("countArticles", usersArticleDto.getArticles().size());
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.USER_ARTICLES_JSP.toString())
                     .forward(request, response);
         }
-    }
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        doPost(request, response);

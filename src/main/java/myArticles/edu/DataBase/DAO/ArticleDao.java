@@ -2,6 +2,7 @@ package myArticles.edu.DataBase.DAO;
 
 
 import myArticles.edu.entity.Article;
+import myArticles.edu.entity.SqlQueries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,7 @@ public final class ArticleDao extends ADaoCRUD <Article> {
     public Article getArticleEntityByUsername(String articlename) {
         return getByField(ARTICLE_NAME, articlename).get(0);
     }
+
 
 
 }

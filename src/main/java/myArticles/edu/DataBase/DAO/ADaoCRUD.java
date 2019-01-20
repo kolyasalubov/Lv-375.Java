@@ -103,4 +103,5 @@ abstract class ADaoCRUD<TEntity extends IEntity> extends ADaoRead<TEntity> imple
         String query = sqlQueries.get(SqlQueries.CREATE_ARTICLES_TABLE).toString();
         return executeQuery(query, SqlQueries.CREATE_ARTICLES_TABLE);
     }
+
 }

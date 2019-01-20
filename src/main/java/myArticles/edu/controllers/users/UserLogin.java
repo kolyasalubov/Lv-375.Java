@@ -8,6 +8,7 @@ import myArticles.edu.controllers.ControllerUrls;
 import myArticles.edu.controllers.ControllersConstant;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.LoginDto;
+import myArticles.edu.dto.UserDto;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -29,6 +30,7 @@ public class UserLogin extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         LoginDto loginDto = new LoginDto(request.getParameter(ControllersConstant.USERNAME.toString()), request.getParameter(ControllersConstant.PASSWORD.toString()));
+        UserDto userDto = userService.getUserDto(loginDto);
         if (userService.checkValidLogin(loginDto)) {
             HttpSession session = request.getSession(true);
             session.setAttribute(ControllersConstant.LOGIN_DTO.toString(), loginDto);
@@ -38,11 +40,15 @@ public class UserLogin extends HttpServlet {
             response.addCookie(cookie);
             //response.sendRedirect(request.getContextPath() +
             //ControllerUrls.USER_ITEMS_SERVLET.toString());
-            System.out.println("TUTUTU");
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())//TODO Change to Main page
-                    .forward(request, response);
+            if(!userDto.isAdmin()) {
+                getServletConfig()
+                        .getServletContext()
+                        .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())//TODO Change to Main page
+                        .forward(request, response);
+            }
+            else {
+
+            }
         } else {
             request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.LOGIN_ERROR.toString());
             getServletConfig()
@@ -57,6 +63,7 @@ public class UserLogin extends HttpServlet {
             dataBaseConnectionService.createDataTable();
             isFirstStart = false;
         }
+        System.out.println("NUSYA BAKA");
         getServletConfig()
                 .getServletContext()
                 .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

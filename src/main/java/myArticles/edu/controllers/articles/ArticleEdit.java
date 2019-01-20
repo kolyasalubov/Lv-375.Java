@@ -6,6 +6,7 @@ import myArticles.edu.container.IocContainer;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.ArticleDto;
+import myArticles.edu.dto.LoginDto;
 import myArticles.edu.dto.UserDto;
 
 import javax.servlet.ServletException;
@@ -19,23 +20,20 @@ import java.io.IOException;
 public class ArticleEdit extends HttpServlet {
     private static final long serialVersionUID = 7L;
     private ArticleService articleService;
-    private UserService userService;
 
-    ArticleEdit(){
+
+    public ArticleEdit(){
         articleService = IocContainer.get().getArticleService();
-        userService = IocContainer.get().getUserService();
 
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
-            UserDto userDto = (UserDto)request.getSession().getAttribute("userDto");
-            Long userId = userService.getIdUserByLogin(userDto);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(Security.isActiveSession(request, response)) {
+            System.out.println(request.getQueryString()+"555");
             ArticleDto articleDto = new ArticleDto(
-                    request.getParameter("Name"),
-                    request.getParameter("Description"),
-                    request.getParameter("Url"),
-                    userId);
-
+                    request.getQueryString().substring(5),
+                    "","",0L
+                    );
+            articleDto = articleService.getFullInfo(articleDto);
             request.getSession().setAttribute("articleDto",  articleDto);
             getServletConfig()
                     .getServletContext()
@@ -43,11 +41,15 @@ public class ArticleEdit extends HttpServlet {
                     .forward(request, response);
         }
         else{
-
+            Security.endSession(response);
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
+                    .forward(request, response);
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
     }
 }

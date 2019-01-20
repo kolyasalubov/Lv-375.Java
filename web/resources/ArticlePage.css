@@ -1,0 +1,15 @@
+.pagination {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 40px;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .5);
+}
+li {
+    display: inline-block;
+    list-style: none;
+}

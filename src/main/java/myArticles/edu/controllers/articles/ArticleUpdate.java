@@ -3,6 +3,7 @@ package myArticles.edu.controllers.articles;
 import myArticles.edu.Services.ArticleService;
 import myArticles.edu.Services.UserService;
 import myArticles.edu.container.IocContainer;
+import myArticles.edu.controllers.ControllerUrls;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.ArticleDto;
@@ -22,34 +23,32 @@ public class ArticleUpdate extends HttpServlet {
     private UserService userService;
 
 
-    ArticleUpdate(){
+     public ArticleUpdate(){
         articleService = IocContainer.get().getArticleService();
         userService = IocContainer.get().getUserService();
 
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
-            UserDto userDto = (UserDto)request.getSession().getAttribute("userDto");
-            Long userId = userService.getIdUserByLogin(userDto);
+        if(Security.isActiveSession(request, response)) {
             ArticleDto articleDto = new ArticleDto(
-                    request.getParameter("Name"),
-                    request.getParameter("Description"),
-                    request.getParameter("Url"),
-                    userId);
-
+                    request.getParameter("name"),
+                    request.getParameter("description"),
+                    request.getParameter("url"),
+                    Long.parseLong(request.getParameter("userId")));
+            System.out.println(articleDto.getName()+" " + articleDto.getUserId());
             if(articleService.updateArticles(articleDto)){
                 getServletConfig()
                         .getServletContext()
-                        .getRequestDispatcher(ViewUrls.USER_ARTICLES_JSP.toString())
+                        .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
                         .forward(request, response);
             }
-            else{
-                //TODO error
-            }
-
         }
         else{
-
+            Security.endSession(response);
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
+                    .forward(request, response);
         }
     }
 

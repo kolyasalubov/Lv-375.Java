@@ -3,6 +3,7 @@ package myArticles.edu.controllers.articles;
 import myArticles.edu.Services.ArticleService;
 import myArticles.edu.Services.UserService;
 import myArticles.edu.container.IocContainer;
+import myArticles.edu.controllers.ControllerUrls;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.ArticleDto;
@@ -19,34 +20,34 @@ import java.io.IOException;
 public class ArticleDelete extends HttpServlet {
     private static final long serialVersionUID = 9L;
     private ArticleService articleService;
-    private UserService userService;
 
-    ArticleDelete(){
+
+    public ArticleDelete(){
         articleService = IocContainer.get().getArticleService();
-        userService = IocContainer.get().getUserService();
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
-            UserDto userDto = (UserDto)request.getSession().getAttribute("userDto");
-            Long userId = userService.getIdUserByLogin(userDto);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if(Security.isActiveSession(request, response)) {
             ArticleDto articleDto = new ArticleDto(
-                    request.getParameter("Name"),
-                    request.getParameter("Description"),
-                    request.getParameter("Url"),
-                    userId);
-
+                    request.getQueryString().substring(5),
+                    "",
+                    "",
+                    0L);
             articleService.deleteArticles(articleDto);
             getServletConfig()
                     .getServletContext()
-                    .getRequestDispatcher(ViewUrls.ARTICLES_PROFILE_JSP.toString())
+                    .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
                     .forward(request, response);
         }
         else{
-
+            Security.endSession(response);
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
+                    .forward(request, response);
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //TODO CREATE LOGOUT
     }
 }

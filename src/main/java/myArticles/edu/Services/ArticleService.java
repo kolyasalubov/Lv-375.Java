@@ -46,6 +46,12 @@ public class ArticleService {
         return checkValid(articleDto) && articleDao.insert(article);
     }
 
+    public ArticleDto getFullInfo(ArticleDto articleDto){
+        Article article = articleDao.getByField(ARTICLENAME, articleDto.getName()).get(0);
+        ArticleDto newarticleDto = new ArticleDto(article.getName(), article.getDescription(), article.getUrl(), article.getUserId());
+        return newarticleDto;
+    }
+
     /**
      * Update info about Article in database
      * @param articleDto - new info about Article
@@ -59,13 +65,13 @@ public class ArticleService {
                 articleDto.getUrl(),
                 articleDto.getUserId());
 
-        return checkValid(articleDto) && articleDao.updateAllByEntity(article);
+        return articleDao.updateAllByEntity(article);
     }
 
     private boolean checkValid(ArticleDto articleDto){
         boolean result = true;
         try {
-            articleDao.getByField(ARTICLENAME, articleDto.getName());
+            if(articleDao.getByField(ARTICLENAME, articleDto.getName()).size() > 1);
             result = false;
         } catch (Exception e){
             //can update user

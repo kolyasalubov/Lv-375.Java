@@ -1,5 +1,8 @@
 package myArticles.edu.controllers.users;
 
+import myArticles.edu.controllers.Security;
+import myArticles.edu.controllers.ViewUrls;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +17,10 @@ public class UserLogout extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO CREATE LOGOUT
+        Security.endSession(response);
+        getServletConfig()
+                .getServletContext()
+                .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
+                .forward(request, response);
     }
 }

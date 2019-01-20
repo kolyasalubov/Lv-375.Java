@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%> --%>
@@ -9,47 +9,43 @@
 <c:set var="hostContext" value="${fn:substring(hostUrl, 0, fn:length(hostUrl) - fn:length(hostUri))}${pageContext.request.contextPath}" />
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <style type="text/css">
+        <%@include file="../../../resources/ArticlePage.css" %>
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
 </head>
 <body>
 <h1>UserArticles</h1>
-<br><br>
-contextPath = ${pageContext.request.contextPath}
-<br><br>
-requestURL = ${pageContext.request.requestURL}
-<br><br>
-requestURI = ${pageContext.request.requestURI}
-<br><br>
-hostContext = ${hostContext}
 
 <br><br>
 <a href="${pageContext.request.contextPath}/logout">logout</a>
+<a href="${pageContext.request.contextPath}/useredit">logout</a>
 <br><br>
 User Login from session: ${loginDto.getUserName()}
 <br><br>
 User Login from userItemsDto: ${usersArticleDto.getUserName()}
 <br><br>
-<a href="${pageContext.request.contextPath}/articleadd">Create new Item</a>
+<a href="${pageContext.request.contextPath}/articleadd">Create new Article </a>
 <br><br>
-<select id="idVisibleItems" onchange="selectVisibleItems('${hostContext}/articlescount?visibleItems=')">
+<select id="idvisibleArticle" onchange="selectVisibleItems('${hostContext}/articlescount?visibleArticle=')">
     <option value="100000"
-            <c:if test="${visibleItems eq '100000'}">
+            <c:if test="${visibleArticle eq '100000'}">
                 selected="selected"
             </c:if>
     >all items</option>
     <option value="5"
-            <c:if test="${visibleItems eq '5'}">
+            <c:if test="${visibleArticle eq '5'}">
                 selected="selected"
             </c:if>
     >5 items</option>
     <option value="10"
-            <c:if test="${visibleItems eq '10'}">
+            <c:if test="${visibleArticle eq '10'}">
                 selected="selected"
             </c:if>
     >10 items</option>
     <option value="25"
-            <c:if test="${visibleItems eq '25'}">
+            <c:if test="${visibleArticle eq '25'}">
                 selected="selected"
             </c:if>
     >25 items</option>
@@ -75,17 +71,17 @@ User Login from userItemsDto: ${usersArticleDto.getUserName()}
             </tr>
         </c:forEach>
     </table>
-    <c:if test="${countItems/visibleItems gt 1}">
+
         <br><br>
-        <a href="${hostContext}/userarticles?pageNumber=1">1</a>
-        &nbsp;...
-        &nbsp;<a href="${hostContext}/userarticles?pageNumber=1">4</a>
-        &nbsp;5
-        &nbsp;<a href="${hostContext}/userarticles?pageNumber=1">6</a>
-        &nbsp;...
-        &nbsp;<a href="${hostContext}/userarticles?pageNumber=1">100</a>
-    </c:if>
+
 </c:if>
+<ul class="pagination">
+    <li><a href="${hostContext}/userarticle?pageNumber=1">1</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=2">2</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=3">3</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=4">4</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=5">5</a></li>
+</ul>
 <script type="text/javascript">
     function checkDeleteItem(url) {
         if (confirm("Are you sure?")) {
@@ -93,7 +89,7 @@ User Login from userItemsDto: ${usersArticleDto.getUserName()}
         }
     }
     function selectVisibleItems(url) {
-        var visibleArticle = document.getElementById("idVisibleArticle");
+        var visibleArticle = document.getElementById("idvisibleArticle");
         window.location.href = url
             + visibleArticle.options[visibleArticle.selectedIndex].value;
     }
