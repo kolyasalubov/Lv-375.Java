@@ -27,20 +27,18 @@ public class UserArticles extends HttpServlet {
         userArticlesService = IocContainer.get().getUserArticlesService();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String visibleArticle;
-            visibleArticle = PageConfiguration.getVisibleArticle(request);
+        if (request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
+
+            String visibleArticle = PageConfiguration.getVisibleArticle(request);
+
             int pageNumber = PageConfiguration.getPageNumber(request);
+
             request.setAttribute("pageNumber",
                     String.valueOf(pageNumber));
-            System.out.println(pageNumber);
-            System.out.println(visibleArticle);
             PageInfoDto pageInfoDto = new PageInfoDto(pageNumber, Integer.parseInt(visibleArticle));
             UsersArticleDto usersArticleDto = userArticlesService.getPageUsers(IocContainer.get()
                     .getUserService()
-                    .getUserDto(((LoginDto)(request.getSession(false).getAttribute("loginDto")))), pageInfoDto);
-            for(ArticleDto articleDto : usersArticleDto.getArticles()){
-                System.out.println(articleDto.getName());
-            }
+                    .getUserDto(((LoginDto) (request.getSession(false).getAttribute("loginDto")))), pageInfoDto);
             request.setAttribute("usersArticleDto", usersArticleDto);
             request.setAttribute("countArticles", usersArticleDto.getArticles().size());
             getServletConfig()
@@ -48,6 +46,14 @@ public class UserArticles extends HttpServlet {
                     .getRequestDispatcher(ViewUrls.USER_ARTICLES_JSP.toString())
                     .forward(request, response);
         }
+        else {
+            Security.endSession(response);
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
+                    .forward(request, response);
+        }
+    }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

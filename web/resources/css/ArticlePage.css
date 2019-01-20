@@ -1,0 +1,53 @@
+.pagination {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 40px;
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, .5);
+}
+li {
+    display: inline-block;
+    list-style: none;
+}
+table {
+    margin: auto;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+}
+th, td:first-child {
+    background: #AFCDE7;
+    color: white;
+    padding: 10px 20px;
+}
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+td {
+    background: #D8E6F3;
+}
+th:first-child, td:first-child {
+    text-align: left;
+}
+.butt {
+    width: auto;
+    padding: 10px;
+    border-radius: 15px;
+    color:  #36454A;
+    background: -webkit-linear-gradient(top, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: -o-linear-gradient(top, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: linear-gradient(to top, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    box-shadow: 2px 2px 3px black;
+}
+.butt :hover {
+    background: -webkit-linear-gradient(bottom, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: -o-linear-gradient(bottom, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+    background: linear-gradient(to bottom, #A4D3E0 , #A4D3E0 50%, #CBE3EB 50%);
+}

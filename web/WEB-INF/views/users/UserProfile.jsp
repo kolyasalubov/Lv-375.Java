@@ -17,13 +17,13 @@
 <div id="userform">
     <form action="${pageContext.request.contextPath}/userupdate" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" value="${pageContext.request.getAttribute("username")}" readonly>
+        <input type="text" id="username" name="username" value="${userDto.getUserName()}" readonly>
         <label for="password">Password:</label>
-        <input type="text" id="password" name="password" value="${pageContext.request.getAttribute("password")}">
+        <input type="text" id="password" name="password" value="${userDto.getPassword()}">
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" value="${pageContext.request.getAttribute("email")}">
-        <input type="hidden" id="isAdmin" name="isAdmin" value="${pageContext.request.getAttribute("isAdmin")}">
-        <input type="hidden" id="isBlock" name="isBlock" value="${pageContext.request.getAttribute("isBlock")}">
+        <input type="text" id="email" name="email" value="${userDto.getEmail()}" required>
+        <input type="hidden" id="isAdmin" name="isAdmin" value="${userDto.isAdmin()}">
+        <input type="hidden" id="isBlock" name="isBlock" value="${userDto.isBlock()}">
 
 
         <div id="lower">

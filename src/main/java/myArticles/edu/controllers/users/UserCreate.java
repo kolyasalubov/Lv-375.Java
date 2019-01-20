@@ -28,7 +28,8 @@ public class UserCreate extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            boolean isAdmin = request.getParameter("isAdmin") != null;
+        boolean isAdmin = request.getParameter("isAdmin") != null;
+        if (request.getParameter(ControllersConstant.PASSWORD.toString()).equals(request.getParameter("repeat"))) {
             UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
                     request.getParameter(ControllersConstant.PASSWORD.toString()),
                     request.getParameter(ControllersConstant.EMAIL.toString()),
@@ -45,6 +46,14 @@ public class UserCreate extends HttpServlet {
                         .forward(request, response);
             }
         }
+        else {
+            request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.PASSWORD_ERROR.toString());
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.USER_REGISTER_JSP.toString())
+                    .forward(request, response);
+        }
+    }
 
 
 

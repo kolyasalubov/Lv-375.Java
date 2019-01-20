@@ -10,23 +10,17 @@
 <html>
 <head>
     <style type="text/css">
-        <%@include file="../../../resources/ArticlePage.css" %>
+        <%@include file="../../../resources/js/css/ArticlePage.css" %>
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
 </head>
 <body>
 <h1>UserArticles</h1>
-
+<a href="${pageContext.request.contextPath}/logout" class="butt">logout</a>
+<a href="${pageContext.request.contextPath}/useredit" class="butt">egitprofile</a>
 <br><br>
-<a href="${pageContext.request.contextPath}/logout">logout</a>
-<a href="${pageContext.request.contextPath}/useredit">logout</a>
-<br><br>
-User Login from session: ${loginDto.getUserName()}
-<br><br>
-User Login from userItemsDto: ${usersArticleDto.getUserName()}
-<br><br>
-<a href="${pageContext.request.contextPath}/articleadd">Create new Article </a>
+<a href="${pageContext.request.contextPath}/articleadd" class="butt">Create new Article </a>
 <br><br>
 <select id="idvisibleArticle" onchange="selectVisibleItems('${hostContext}/articlescount?visibleArticle=')">
     <option value="100000"
@@ -66,8 +60,8 @@ User Login from userItemsDto: ${usersArticleDto.getUserName()}
                 <td>${row.getName()}</td>
                 <td>${row.getDescription()}</td>
                 <td>${row.getUrl()}</td>
-                <td><a href="${pageContext.request.contextPath}/articleedit?Name=${row.getName()}">edit</a></td>
-                <td><a href="#" onclick="checkDeleteItem('${hostContext}/articledelete?Name=${row.getName()}')">delete</a></td>
+                <td><a href="${pageContext.request.contextPath}/articleedit?Name=${row.getName()}" class="butt">edit</a></td>
+                <td><a href="#" onclick="checkDeleteItem('${hostContext}/articledelete?Name=${row.getName()}')" class="butt">delete</a></td>
             </tr>
         </c:forEach>
     </table>
@@ -76,11 +70,11 @@ User Login from userItemsDto: ${usersArticleDto.getUserName()}
 
 </c:if>
 <ul class="pagination">
-    <li><a href="${hostContext}/userarticle?pageNumber=1">1</a></li>
-    <li><a href="${hostContext}/userarticle?pageNumber=2">2</a></li>
-    <li><a href="${hostContext}/userarticle?pageNumber=3">3</a></li>
-    <li><a href="${hostContext}/userarticle?pageNumber=4">4</a></li>
-    <li><a href="${hostContext}/userarticle?pageNumber=5">5</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=1" class="butt">1</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=2" class="butt">2</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=3" class="butt">3</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=4" class="butt">4</a></li>
+    <li><a href="${hostContext}/userarticle?pageNumber=5" class="butt">5</a></li>
 </ul>
 <script type="text/javascript">
     function checkDeleteItem(url) {

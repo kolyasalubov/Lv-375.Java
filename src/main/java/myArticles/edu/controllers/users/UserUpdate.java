@@ -3,6 +3,7 @@ package myArticles.edu.controllers.users;
 
 import myArticles.edu.Services.UserService;
 import myArticles.edu.container.IocContainer;
+import myArticles.edu.controllers.ControllerUrls;
 import myArticles.edu.controllers.ControllersConstant;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
@@ -36,18 +37,23 @@ public class UserUpdate extends HttpServlet {
                 request.getSession().setAttribute(ControllersConstant.USER_DTO.toString(), userDto);
                 getServletConfig()
                         .getServletContext()
-                        .getRequestDispatcher(ViewUrls.USER_ARTICLES_JSP.toString())
+                        .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
                         .forward(request, response);
             }
             else{
-                //TODO error to update
+                request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.UPDATE_ERROR.toString());
+                getServletConfig()
+                        .getServletContext()
+                        .getRequestDispatcher(ViewUrls.USER_PROFILE_JSP.toString())
+                        .forward(request, response);
             }
         }
         else{
-            Cookie cookie = new Cookie("name", "");
-            cookie.setMaxAge(0);
-            response.addCookie(cookie);
-            response.sendRedirect(request.getContextPath()+ ViewUrls.LOGIN_JSP.toString());
+            Security.endSession(response);
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
+                    .forward(request, response);
         }
     }
 

@@ -33,11 +33,7 @@ public class UserEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             if(Security.isActiveSession(request, response)){
                 UserDto userDto = userService.getUserDto((LoginDto)request.getSession().getAttribute(ControllersConstant.LOGIN_DTO.toString()));
-                request.setAttribute(ControllersConstant.USERNAME.toString(), userDto.getUserName());
-                request.setAttribute(ControllersConstant.PASSWORD.toString(), userDto.getPassword());
-                request.setAttribute(ControllersConstant.EMAIL.toString(), userDto.getEmail());
-                request.setAttribute(ControllersConstant.IS_ADMIN.toString(), Boolean.toString(userDto.isAdmin()));
-                request.setAttribute(ControllersConstant.IS_BLOCK.toString(), Boolean.toString(userDto.isBlock()));
+                request.setAttribute(ControllersConstant.USER_DTO.toString(), userDto);
                 getServletConfig()
                         .getServletContext()
                         .getRequestDispatcher(ViewUrls.USER_PROFILE_JSP.toString())

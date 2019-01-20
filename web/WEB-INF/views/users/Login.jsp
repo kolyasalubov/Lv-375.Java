@@ -13,7 +13,7 @@
 <div id="container">
         <c:if test="${error ne null}">
             <p>
-                <font color="red">${error}</font>
+                <font color="red" style="text-align: center">${error}</font>
             </p>
         </c:if>
     <form action="${pageContext.request.contextPath}/login" method="post">
