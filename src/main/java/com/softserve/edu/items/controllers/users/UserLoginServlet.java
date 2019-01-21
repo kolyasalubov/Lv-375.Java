@@ -19,7 +19,8 @@ import com.softserve.edu.items.services.UserService;
 /**
  * Servlet implementation class UserLoginServlet
  */
-@WebServlet({ "/", "/login" })
+//@WebServlet({ "/", "/login" })
+@WebServlet({ "/login" })
 public class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService;

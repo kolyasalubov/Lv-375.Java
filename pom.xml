@@ -157,7 +157,7 @@
 					<!-- WEB-INF/lib/velocity-dep-1.4.jar -->
 					<!-- </packagingExcludes> -->
 					<!-- <warSourceDirectory>WebContent</warSourceDirectory> -->
-					<failOnMissingWebXml>false</failOnMissingWebXml>
+<!-- 					<failOnMissingWebXml>false</failOnMissingWebXml> -->
 					<warName>${project.artifactId}</warName>
 				</configuration>
 			</plugin>
