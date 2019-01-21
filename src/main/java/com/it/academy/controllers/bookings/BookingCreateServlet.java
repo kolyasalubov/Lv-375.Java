@@ -41,8 +41,7 @@ public class BookingCreateServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (RequestValidator.isValid(request)) {
-            String number = request.getParameter("room");
-            request.removeAttribute("room");
+            String number = request.getParameter(RoomConstants.NUMBER.toString());
             if(number != null){
                 request.setAttribute(BookingConstants.ROOM_NUMBER.toString(), number);
             }

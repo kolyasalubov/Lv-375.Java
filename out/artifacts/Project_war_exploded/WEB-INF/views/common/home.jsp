@@ -30,7 +30,7 @@ HOME
         <c:forEach var="room" items="${roomList}">
 
             <c:url value='${pageContext.request.contextPath}/room' var="url" >
-                <c:param name='id' value='${room.idRoom}'/>
+                <c:param name='number' value='${room.number}'/>
             </c:url>
 
             <div class="room" onclick="openPage('${pageScope.url}')">

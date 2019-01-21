@@ -23,15 +23,14 @@ ROOM
     <p> ${roomDto.type} </p>
 
     <c:url value='${pageContext.request.contextPath}/booking-create' var="createUrl">
-        <c:param name='room' value='${roomDto.number}'/>
+        <c:param name='number' value='${roomDto.number}'/>
     </c:url>
     <button type="button" class="addBtn" onclick="openPage('${pageScope.createUrl}')">
         Add booking
     </button>
 
-    <%--TODO maybe change id to number--%>
     <c:url value='${pageContext.request.contextPath}/room-archive' var="archiveUrl">
-        <c:param name='id' value='${room.idRoom}'/>
+        <c:param name='number' value='${roomDto.number}'/>
     </c:url>
     <button type="button" class="archive" onclick="openPage('${pageScope.archiveUrl}')">
         Archive
@@ -42,8 +41,6 @@ ROOM
 <c:if test="${bookingList ne null && bookingList.size() gt 0}">
     <div class="bookingist">
         <c:forEach var="booking" items="${bookingList}">
-
-            <%--${booking.toString()}--%>
 
             <div class="booking">
                 <p>
@@ -62,16 +59,17 @@ ROOM
                 <c:if test="${booking.userEmail eq loginDto.email}">
 
                     <c:url value='${pageContext.request.contextPath}/booking-edit' var="editUrl">
-                        <c:param name='id' value='${booking.idBooking}'/>
+                        <c:param name='idBooking' value='${booking.idBooking}'/>
                     </c:url>
                     <button type="button" class="edit" onclick="openPage('${pageScope.editUrl}')">
                         Edit
                     </button>
 
                     <c:url value='${pageContext.request.contextPath}/booking-delete' var="deleteUrl">
-                        <c:param name='id' value='${booking.idBooking}'/>
+                        <c:param name='idBooking' value='${booking.idBooking}'/>
+                        <c:param name='urlToPost' value='${pageContext.request.contextPath}/room'/>
                     </c:url>
-                    <button type="button" class="delete" onclick="openPage('${pageScope.deleteUrl}')">
+                    <button type="button" class="delete" onclick="openWithConfirm('${pageScope.deleteUrl}')">
                         Delete
                     </button>
 

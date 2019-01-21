@@ -6,3 +6,9 @@ function goBack() {
     window.history.go(-1);
     return false;
 }
+
+function openWithConfirm(pageURL) {
+    if (confirm("Are you sure?")) {
+        openPage(pageURL);
+    }
+}

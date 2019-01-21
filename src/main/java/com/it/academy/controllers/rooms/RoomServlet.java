@@ -17,6 +17,7 @@ import com.it.academy.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +47,11 @@ public class RoomServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (RequestValidator.isValid(request)) {
             RoomDto roomDto = new RoomDto();
-            roomDto.setIdRoom(request.getParameter(RoomConstants.ID.toString()));
+            String number = request.getParameter(RoomConstants.NUMBER.toString());
+            if (number == null){
+                number = (String) request.getSession().getAttribute(RoomConstants.NUMBER.toString());
+            }
+            roomDto.setNumber(number);
             roomDto = roomService.fillRoomDtoInfo(roomDto);
 
             CollectionDto<BookingUserDto> bookings = bookingService.getFutureBookingUserCollection(roomDto);

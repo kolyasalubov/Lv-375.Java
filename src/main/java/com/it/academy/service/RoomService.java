@@ -74,7 +74,7 @@ public class RoomService {
     }
 
     public RoomDto fillRoomDtoInfo(RoomDto roomDto){
-        Room room = roomDao.getById(Long.parseLong(roomDto.getIdRoom()));
+        Room room = roomDao.getByFieldName("number", roomDto.getNumber()).get(0);
         return roomToDto(room);
     }
 

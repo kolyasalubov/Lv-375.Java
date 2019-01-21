@@ -140,6 +140,17 @@ public class BookingService {
         return result;
     }
 
+    public boolean deleteRoomBooking(BookingRoomDto bookingRoomDto) {
+        boolean result = true;
+        try {
+            bookingDao.deleteById(Long.parseLong(bookingRoomDto.getIdBooking()));
+        } catch (Exception e) {
+            System.out.println("RuntimeException: " + e.getMessage());
+            result = false;
+        }
+        return result;
+    }
+
     public BookingRoomDto getBookingRoomDto(BookingRoomDto bookingRoomDto){
         BookingRoomDto result = null;
         try {

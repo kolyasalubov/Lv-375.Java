@@ -44,7 +44,7 @@ public class BookingEditServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (RequestValidator.isValid(request)) {
-            String id = request.getParameter("id");
+            String id = request.getParameter(BookingConstants.ID.toString());
             BookingRoomDto bookingRoomDto = new BookingRoomDto();
             bookingRoomDto.setIdBooking(id);
             bookingRoomDto = bookingService.getBookingRoomDto(bookingRoomDto);
