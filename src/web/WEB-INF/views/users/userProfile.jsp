@@ -25,7 +25,7 @@
 </jsp:include>
 
 <c:if test="${userDto.isAdmin eq true}">
-    <button type="button" class="archive" onclick="openPage('${pageContext.request.contextPath}/admin-rooms')">
+    <button type="button" class="archive" onclick="openPage('${pageContext.request.contextPath}/admin-users')">
             Admin page
     </button>
 </c:if>

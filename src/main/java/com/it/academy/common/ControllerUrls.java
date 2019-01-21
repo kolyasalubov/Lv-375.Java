@@ -7,8 +7,8 @@ public enum ControllerUrls {
     LOGOUT_SERVLET("/logout"),
     REGISTRATION_SERVLET("/registration"),
 
-    USER_SERVLET("/profile"),        //TODO
-    USER_EDIT_SERVLET("/user-edit"),        //TODO
+    USER_SERVLET("/profile"),
+    USER_EDIT_SERVLET("/user-edit"),
 
     ROOM_CREATE_SERVLET("/room-create"),	//TODO
     ROOM_EDIT_SERVLET("/room-edit"),		//TODO

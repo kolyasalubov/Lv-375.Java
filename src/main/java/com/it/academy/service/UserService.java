@@ -102,6 +102,11 @@ public class UserService {
         return userToDto(getUserByLoginDto(loginDto));
     }
 
+    public UserDto getById(UserDto userDto){
+        User user = userDao.getById(Long.parseLong(userDto.getIdUser()));
+        return userToDto(user);
+    }
+
     public boolean isBlocked(LoginDto loginDto){
         return getUserByLoginDto(loginDto).isBlocked();
     }
@@ -141,8 +146,8 @@ public class UserService {
     private boolean giveRightsToUser(UserDto userDto, String fieldName, String fieldValue){
         boolean result = true;
         try{
-            userDao.updateFieldByField(fieldName, fieldValue,
-                    "email", userDto.getEmail());
+            userDao.updateFieldById(fieldName, String.valueOf(Boolean.parseBoolean(fieldValue)),
+                    Long.parseLong(userDto.getIdUser()));
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;

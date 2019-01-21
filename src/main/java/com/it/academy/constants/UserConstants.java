@@ -13,8 +13,11 @@ public enum UserConstants {
     IS_ADMIN("isAdmin"),
     IS_BLOCKED("isBlocked"),
 
+    CHANGED("changed"),
+
     LOGIN_DTO("loginDto"),
     USER_DTO("userDto"),
+    USERS("users"),
 
     URL_TO_POST("urlToPost"),
     ON_SUBMIT("onSubmit");
