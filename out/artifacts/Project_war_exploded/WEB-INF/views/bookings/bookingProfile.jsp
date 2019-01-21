@@ -41,11 +41,11 @@
                     <c:choose>
                         <c:when test="${urlToPost eq '/booking-create'}">
                             <input type="number" min="1" placeholder="Input room number"
-                                   name="roomNumber" value='${roomNumber}' required>
+                                   name="roomNumber" value='${roomNumber}' maxlength="10" required>
                         </c:when>
                         <c:otherwise>
                             <input type="number" min="1" placeholder="Input room number"
-                                   name="roomNumber" value='${bookingDto.roomNumber}' required>
+                                   name="roomNumber" value='${bookingDto.roomNumber}' maxlength="10" required>
                             <input type="hidden" name="idBooking" value='${bookingDto.idBooking}' >
                         </c:otherwise>
                     </c:choose>
@@ -60,7 +60,7 @@
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
                             <input type="text" placeholder="Click to select the start date" name="startDate"
-                                   value='${bookingDto.startDate} ${bookingDto.startTime}' required>
+                                   value='${bookingDto.startDate} ${bookingDto.startTime}' autocomplete="off" required>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         <div class="ui input left icon">
                             <i class="calendar icon"></i>
                             <input type="text" placeholder="Click to select the end date" name="endDate"
-                                   value='${bookingDto.endDate} ${bookingDto.endTime}' required>
+                                   value='${bookingDto.endDate} ${bookingDto.endTime}' autocomplete="off" required>
                         </div>
                     </div>
                 </div>
@@ -78,10 +78,11 @@
 
             <div class="field">
                 <h3>Purpose</h3>
+                <p> Maximum 100 characters</p>
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
                     <input type="text" placeholder="Input purpose of booking" name="purpose"
-                           value='${bookingDto.purpose}'>
+                           value='${bookingDto.purpose}' maxlength="100" >
                 </div>
             </div>
 

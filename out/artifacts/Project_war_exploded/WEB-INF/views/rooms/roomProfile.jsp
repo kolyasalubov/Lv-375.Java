@@ -38,7 +38,7 @@
                     <i class="calendar icon"></i>
 
                     <input type="number" min="1" placeholder="Input room number"
-                           name="number" value='${roomDto.number}' required>
+                           name="number" value='${roomDto.number}' maxlength="10" required>
                     <input type="hidden" name="idRoom" value='${roomDto.idRoom}'>
 
                 </div>
@@ -49,7 +49,7 @@
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
                     <input type="text" placeholder="Input room type"
-                           name="type" value='${roomDto.type}'>
+                           name="type" value='${roomDto.type}' maxlength="40">
                 </div>
             </div>
 

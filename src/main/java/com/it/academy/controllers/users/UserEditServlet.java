@@ -42,6 +42,7 @@ public class UserEditServlet extends HttpServlet{
         if(requestValidator.isValid(request)) {
             LoginDto loginDto = (LoginDto) request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString());
             UserDto userDto = userService.getUserDto(loginDto);
+            System.out.println(userDto.toString());
 
             request.setAttribute(UserConstants.USER_DTO.toString(), userDto);
             request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Save");

@@ -31,25 +31,32 @@
 
         <div class="container">
             <label ><b>Email</b></label>
-            <input type="text" placeholder="Enter email" name="email" value="${userDto.email}" required>
+            <input type="text" placeholder="Enter email" name="email"
+                   value="${userDto.email}" maxlength="30" required>
 
             <label ><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" value="${userDto.password}"required>
+            <input type="password" placeholder="Enter Password" name="password"
+                   value="${userDto.password}" maxlength="20" required>
 
             <label ><b>Password again</b></label>
-            <input type="password" placeholder="Enter Password again" name="passwordRepeat" value="${userDto.password}" required>
+            <input type="password" placeholder="Enter Password again" name="passwordRepeat"
+                   value="${userDto.password}" maxlength="20" required>
 
             <label ><b>First Name</b></label>
-            <input type="text" placeholder="Enter First Name" name="firstName" value="${userDto.firstName}" required>
+            <input type="text" placeholder="Enter First Name" name="firstName"
+                   value="${userDto.firstName}" maxlength="20" required>
 
             <label ><b>Last Name</b></label>
-            <input type="text" placeholder="Enter Last Name" name="lastName"  value="${userDto.lastName}">
+            <input type="text" placeholder="Enter Last Name" name="lastName"
+                   value="${userDto.lastName}" maxlength="40" >
 
             <label ><b>Phone</b></label>
-            <input type="text" placeholder="Enter Phone" name="phone" value="${userDto.phone}">
+            <input type="number" placeholder="Enter Phone" name="phone"
+                   value="${userDto.phone}" maxlength="20" >
 
             <label ><b>Position</b></label>
-            <input type="text" placeholder="Enter Position" name="position" value="${userDto.position}" >
+            <input type="text" placeholder="Enter Position" name="position"
+                   value="${userDto.position}" maxlength="12" >
 
             <input type="hidden" name="idUser" value="${userDto.idUser}">
             <button type="submit"> ${onSubmit} </button>
