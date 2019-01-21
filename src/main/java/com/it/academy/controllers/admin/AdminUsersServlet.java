@@ -47,7 +47,12 @@ public class AdminUsersServlet extends HttpServlet {
                         .getRequestDispatcher(ViewUrls.ADMIN_USERS_JSP.toString())
                         .forward(request, response);
             } else {
-
+                request.setAttribute("error", "You are not the admin!");
+                getServletConfig()
+                        .getServletContext()
+                        .getRequestDispatcher(request.getContextPath()
+                                + ControllerUrls.HOME_SERVLET)
+                        .forward(request, response);
             }
         } else {
             response.sendRedirect(request.getContextPath()

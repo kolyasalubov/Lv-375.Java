@@ -81,12 +81,7 @@ public class RegistrationServlet extends HttpServlet {
 
         // Show Error Validator
         if(request.getAttribute("error") != null){
-            request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Sign up");
-            request.setAttribute(UserConstants.URL_TO_POST.toString(), "registration");
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
-                    .forward(request, response);
+            doGet(request, response);
         }
     }
 }

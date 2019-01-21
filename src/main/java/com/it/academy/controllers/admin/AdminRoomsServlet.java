@@ -55,7 +55,8 @@ public class AdminRoomsServlet extends HttpServlet{
                 request.setAttribute("error", "You are not the admin!");
                 getServletConfig()
                         .getServletContext()
-                        .getRequestDispatcher(ViewUrls.HOME_JSP.toString())
+                        .getRequestDispatcher(request.getContextPath()
+                                + ControllerUrls.HOME_SERVLET)
                         .forward(request, response);
             }
         } else {

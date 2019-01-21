@@ -86,13 +86,7 @@ public class UserEditServlet extends HttpServlet{
 
         // Show Error Validator
         if(request.getAttribute("error") != null){
-            request.setAttribute(UserConstants.USER_DTO.toString(), userDto);
-            request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Save");
-            request.setAttribute(UserConstants.URL_TO_POST.toString(), "user-edit");
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
-                    .forward(request, response);
+            doGet(request, response);
         }
     }
 }

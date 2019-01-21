@@ -28,6 +28,12 @@ HOME
 <%-- TODO --- wrap constants in classes to use Beans --%>
 <%--<jsp:useBean id="RoomConstants" class="com.it.academy.constants.RoomConstants"/>--%>
 
+<c:if test="${error ne null}">
+    <p>
+        <font color="red">${error}</font>
+    </p>
+</c:if>
+
 <c:set var="roomList" value="${rooms.collection}"/>
 <c:if test="${roomList ne null && roomList.size() gt 0}">
     <div class="roomList">
@@ -48,12 +54,6 @@ HOME
 
         </c:forEach>
     </div>
-</c:if>
-
-<c:if test="${error ne null}">
-    <p>
-        <font color="red">${error}</font>
-    </p>
 </c:if>
 
 <div>

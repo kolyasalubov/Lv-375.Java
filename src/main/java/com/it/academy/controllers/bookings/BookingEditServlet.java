@@ -105,12 +105,7 @@ public class BookingEditServlet extends HttpServlet{
 
         // Show Error Validator
         if (request.getAttribute("error") != null) {
-            request.setAttribute(BookingConstants.BOOKING_DTO.toString(), bookingRoomDto);      // save data in fields
-            request.setAttribute(BookingConstants.URL_TO_POST.toString(), ControllerUrls.BOOKING_EDIT_SERVLET.toString());
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.BOOKING_PROFILE_JSP.toString())
-                    .forward(request, response);
+            doGet(request, response);
         }
     }
 }

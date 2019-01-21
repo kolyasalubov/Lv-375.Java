@@ -45,11 +45,11 @@
             <label ><b>Last Name</b></label>
             <input type="text" placeholder="Enter Last Name" name="lastName"  value="${userDto.lastName}">
 
-            <label ><b>Position</b></label>
-            <input type="text" placeholder="Enter Position" name="position" value="${userDto.position}" >
-
             <label ><b>Phone</b></label>
             <input type="text" placeholder="Enter Phone" name="phone" value="${userDto.phone}">
+
+            <label ><b>Position</b></label>
+            <input type="text" placeholder="Enter Position" name="position" value="${userDto.position}" >
 
             <input type="hidden" name="idUser" value="${userDto.idUser}">
             <button type="submit"> ${onSubmit} </button>

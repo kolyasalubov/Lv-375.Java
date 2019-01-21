@@ -98,11 +98,7 @@ public class BookingCreateServlet extends HttpServlet {
 
         // Show Error Validator
         if (request.getAttribute("error") != null) {
-            request.setAttribute(BookingConstants.URL_TO_POST.toString(), ControllerUrls.BOOKING_CREATE_SERVLET);
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.BOOKING_PROFILE_JSP.toString())
-                    .forward(request, response);
+            doGet(request, response);
         }
     }
 }
