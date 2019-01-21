@@ -9,8 +9,12 @@
     <%--<%@include file="../../../resources/css/login.css" %>--%>
     <%--</style>--%>
 </head>
-<body>
+<body style="margin-top: 60px">
 HOME
+
+<jsp:include page="/WEB-INF/views/common/navBar.jsp">
+    <jsp:param name="active" value="H" />
+</jsp:include>
 
 <div class="topTooltip">
     <h1>

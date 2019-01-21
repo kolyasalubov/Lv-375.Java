@@ -10,7 +10,11 @@
 <head>
     <title>bookings</title>
 </head>
-<body>
+<body style="margin-top: 60px">
+
+<jsp:include page="/WEB-INF/views/common/navBar.jsp">
+    <jsp:param name="active" value="B" />
+</jsp:include>
 
 </body>
 </html>

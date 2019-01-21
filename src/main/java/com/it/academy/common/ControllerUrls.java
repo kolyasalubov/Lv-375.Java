@@ -7,6 +7,7 @@ public enum ControllerUrls {
     LOGOUT_SERVLET("/logout"),
     REGISTRATION_SERVLET("/registration"),
 
+    USER_SERVLET("/profile"),        //TODO
     USER_EDIT_SERVLET("/user-edit"),        //TODO
     ADMIN_EDIT_SERVLET("/admin-edit"),	    //TODO
     USER_UPDATE_SERVLET("/user-update"),    //TODO
@@ -22,7 +23,7 @@ public enum ControllerUrls {
     HOME_SERVLET("/home"),
 
     ROOM_SERVLET("/room"),
-    ROOM_ARCHIVE_SERVLET("/room-archive"),  //TODO
+    ROOM_ARCHIVE_SERVLET("/room-archive"),
 
     BOOKINGS_SERVLET("/bookings"),  //TODO
     BOOKINGS_ARCHIVE_SERVLET("/bookings-archive"), //TODO
