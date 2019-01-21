@@ -14,6 +14,7 @@ public enum BookingConstants {
 
     BOOKING_DTO("bookingDto"),
     URL_TO_POST("urlToPost"),
+    URL_TO_GO_BACK("urlToGoBack"),
 
     ARCHIVE("archive");
 

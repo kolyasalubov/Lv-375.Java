@@ -48,14 +48,14 @@ public class BookingDeleteServlet extends HttpServlet{
             bookingRoomDto = bookingService.getBookingRoomDto(bookingRoomDto);
             bookingService.deleteRoomBooking(bookingRoomDto);
 
-            String urlToPost = request.getParameter(BookingConstants.URL_TO_POST.toString());
-            if(urlToPost.contains("room")) {
+            String urlToGoBack = request.getParameter(BookingConstants.URL_TO_GO_BACK.toString());
+            if(urlToGoBack.contains("room")) {
                 request.getSession().setAttribute(RoomConstants.NUMBER.toString(), bookingRoomDto.getRoomNumber());
             }
 
             getServletConfig()
                     .getServletContext()
-                    .getRequestDispatcher(urlToPost)
+                    .getRequestDispatcher(urlToGoBack)
                     .forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath()

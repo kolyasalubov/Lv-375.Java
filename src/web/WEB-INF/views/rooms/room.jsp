@@ -74,8 +74,11 @@ ROOM
 
                 <c:if test="${(booking.userEmail eq loginDto.email) and (archive eq null)}">
 
+                    <%--TODO urlToGoBack--%>
+
                     <c:url value='${pageContext.request.contextPath}/booking-edit' var="editUrl">
                         <c:param name='idBooking' value='${booking.idBooking}'/>
+                        <c:param name='urlToGoBack' value='${pageContext.request.contextPath}/room'/>
                     </c:url>
                     <button type="button" class="edit" onclick="openPage('${pageScope.editUrl}')">
                         Edit
@@ -83,7 +86,7 @@ ROOM
 
                     <c:url value='${pageContext.request.contextPath}/booking-delete' var="deleteUrl">
                         <c:param name='idBooking' value='${booking.idBooking}'/>
-                        <c:param name='urlToPost' value='${pageContext.request.contextPath}/room'/>
+                        <c:param name='urlToGoBack' value='${pageContext.request.contextPath}/room'/>
                     </c:url>
                     <button type="button" class="delete" onclick="openWithConfirm('${pageScope.deleteUrl}')">
                         Delete

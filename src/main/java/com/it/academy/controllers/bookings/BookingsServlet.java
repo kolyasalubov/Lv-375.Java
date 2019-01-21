@@ -1,9 +1,11 @@
 package com.it.academy.controllers.bookings;
 
+import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
 import com.it.academy.constants.UserConstants;
+import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.BookingRoomDto;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.LoginDto;
@@ -35,9 +37,7 @@ public class BookingsServlet extends HttpServlet {
      * Shows the bookings of current user
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.isRequestedSessionIdFromCookie()
-                && request.isRequestedSessionIdValid()
-                && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {
+        if (RequestValidator.isValid(request)) {
 
             HttpSession session = request.getSession();
             LoginDto loginDto = (LoginDto) session.getAttribute(UserConstants.LOGIN_DTO.toString());
@@ -45,15 +45,16 @@ public class BookingsServlet extends HttpServlet {
             CollectionDto<BookingRoomDto> bookings = bookingService.getFutureBookingRoomCollection(loginDto);
             request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
 
+            if(bookings == null)
+                request.setAttribute("error", "There are no bookings!");
+
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.BOOKINGS_JSP.toString())
                     .forward(request, response);
         } else {
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
-                    .forward(request, response);
+            response.sendRedirect(request.getContextPath()
+                    + ControllerUrls.LOGIN_SERVLET);
         }
 
     }
