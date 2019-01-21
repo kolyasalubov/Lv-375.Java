@@ -45,7 +45,7 @@ public class BookingCreateServlet extends HttpServlet {
             if(number != null){
                 request.setAttribute(BookingConstants.ROOM_NUMBER.toString(), number);
             }
-            request.setAttribute(BookingConstants.URL_TO_POST.toString(), BookingConstants.BOOKING_CREATE.toString());
+            request.setAttribute(BookingConstants.URL_TO_POST.toString(), ControllerUrls.BOOKING_CREATE_SERVLET.toString());
 
             getServletConfig()
                     .getServletContext()
@@ -96,7 +96,7 @@ public class BookingCreateServlet extends HttpServlet {
 
         // Show Error Validator
         if (request.getAttribute("error") != null) {
-            request.setAttribute(BookingConstants.URL_TO_POST.toString(), BookingConstants.BOOKING_CREATE.toString());
+            request.setAttribute(BookingConstants.URL_TO_POST.toString(), ControllerUrls.BOOKING_CREATE_SERVLET);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.BOOKING_PROFILE_JSP.toString())

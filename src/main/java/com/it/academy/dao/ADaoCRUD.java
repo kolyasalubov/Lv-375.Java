@@ -56,7 +56,6 @@ abstract public class ADaoCRUD<TEntity> extends ADaoRead<TEntity> implements IDa
     public boolean updateEntityById(TEntity entity) {
         String sql = String.format(sqlQueries.get(QueryNames.UPDATE_ROW_BY_ID),
                 getUpdateFields(entity).toArray());
-        System.out.println(sql);
         return executeQuery(sql, QueryNames.UPDATE_ROW_BY_ID);
     }
 

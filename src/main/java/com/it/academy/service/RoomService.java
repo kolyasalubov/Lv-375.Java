@@ -4,6 +4,7 @@ import com.it.academy.common.ObjContainer;
 import com.it.academy.dao.RoomDao;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.RoomDto;
+import com.it.academy.entity.QueryNames;
 import com.it.academy.entity.Room;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class RoomService {
 
     private Room dtoToRoom(RoomDto roomDto){
         Room room = new Room();
+        if(roomDto.getIdRoom() != null)
+            room.setId(Long.parseLong(roomDto.getIdRoom()));
         room.setNumber(Integer.parseInt(roomDto.getNumber()));
         room.setType(roomDto.getType());
         return room;
@@ -51,6 +54,7 @@ public class RoomService {
         boolean result = true;
         Room room = dtoToRoom(roomDto);
         try{
+            System.out.println("Room: " + room);
             roomDao.updateEntityById(room);
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());
@@ -73,6 +77,10 @@ public class RoomService {
         return rooms;
     }
 
+    public RoomDto getById(RoomDto roomDto){
+        return roomToDto(roomDao.getById(Long.parseLong(roomDto.getIdRoom())));
+    }
+
     public RoomDto fillRoomDtoInfo(RoomDto roomDto){
         Room room = roomDao.getByFieldName("number", roomDto.getNumber()).get(0);
         return roomToDto(room);
@@ -81,7 +89,7 @@ public class RoomService {
     public boolean deleteRoom(RoomDto roomDto){
         boolean result = true;
         try{
-            roomDao.deleteByFieldName("number", String.valueOf(roomDto.getNumber()));
+            roomDao.deleteById(Long.parseLong(roomDto.getIdRoom()));
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());
             result = false;
@@ -97,4 +105,17 @@ public class RoomService {
             result = false;
         } return result;
     }
+
+    public boolean isExistExceptFromCurrent(RoomDto roomDto){
+        try{
+            List<Room> list = roomDao.getByFieldName("number", roomDto.getNumber());
+            for (Room r: list)
+                System.out.println(r.toString());
+            return !((list.size() == 1) && (list.get(0).getId() == Long.parseLong(roomDto.getIdRoom())));
+        } catch (Exception e){
+            System.out.println("RuntimeException: " + e.getMessage());
+            return false;
+        }
+    }
+
 }

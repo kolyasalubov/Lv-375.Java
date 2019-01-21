@@ -9,8 +9,6 @@ public enum BookingConstants {
     PURPOSE("purpose"),
 
     BOOKINGS("bookings"),
-    BOOKING_CREATE("booking-create"),
-    BOOKING_EDIT("booking-edit"),
 
     BOOKING_DTO("bookingDto"),
     URL_TO_POST("urlToPost"),

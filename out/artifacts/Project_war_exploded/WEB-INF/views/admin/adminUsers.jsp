@@ -59,49 +59,48 @@
                 <td> ${user.position} </td>
                 <td> ${user.phone} </td>
                 <td> ${user.email} </td>
-                <c:choose>
-                    <c:when test="${user.isAdmin eq true}">
-                        <td class="positive">
-                            <div class="ui toggle checkbox">
-                                <input type="checkbox" name="isAdmin" onclick="submitForm(${user.idUser})" value="true" checked>
-                                <input type="hidden" name="isAdmin" value="false">
-                                <label></label>
-                            </div>
-                        </td>
-                    </c:when>
-                    <c:otherwise>
-                        <td>
-                            <div class="ui toggle checkbox">
-                                <input type="checkbox" name="isAdmin" onclick="submitForm(${user.idUser})" value="true" >
-                                <input type="hidden" name="isAdmin" value="false">
-                                <label></label>
-                            </div>
-                        </td>
-                    </c:otherwise>
-                </c:choose>
 
-                <c:choose>
-                    <c:when test="${user.isBlocked eq true}">
-                        <td class="negative">
-                            <div class="ui toggle checkbox">
-                                <input type="checkbox" name="isBlocked" onclick="submitForm(${user.idUser})" value="true" checked>
-                                <input type="hidden" name="isBlocked" value="false">
-                                <label></label>
-                            </div>
-                        </td>
-                    </c:when>
-                    <c:otherwise>
-                        <td>
-                            <div class="ui fitted toggle checkbox">
-                                <input type="checkbox" name="isBlocked" onclick="submitForm(${user.idUser})" value="true">
-                                <input type="hidden" name="isBlocked" value="false">
-                                <label></label>
-                            </div>
-                        </td>
-                    </c:otherwise>
-                </c:choose>
+                <td id="tdAdmin${user.idUser}">
+                    <div class="ui toggle checkbox">
+                        <input id="inAdmin${user.idUser}" type="checkbox" name="isAdmin"
+                               onclick="submitForm(${user.idUser})" value="true">
+                        <input type="hidden" name="isAdmin" value="false">
+                        <label></label>
+                    </div>
+                </td>
+
+                <td id="tdBlocked${user.idUser}">
+                    <div class="ui toggle checkbox">
+                        <input id="inBlocked${user.idUser}" type="checkbox" name="isBlocked"
+                               onclick="submitForm(${user.idUser})" value="true">
+                        <input type="hidden" name="isBlocked" value="false">
+                        <label></label>
+                    </div>
+                </td>
 
                 <input type="hidden" name="idUser" value="${user.idUser}">
+
+                <c:if test="${user.isAdmin eq true}">
+                    <script>
+                        function init() {
+                            let td = document.getElementById("tdAdmin${user.idUser}");
+                            td.classList.add("positive");
+                            let inp = document.getElementById("inAdmin${user.idUser}");
+                            inp.checked = true;
+                        } init();
+                    </script>
+                </c:if>
+
+                <c:if test="${user.isBlocked eq true}">
+                    <script>
+                        function init() {
+                            let td = document.getElementById("tdBlocked${user.idUser}");
+                            td.classList.add("negative");
+                            let inp = document.getElementById("inBlocked${user.idUser}");
+                            inp.checked = true;
+                        } init();
+                    </script>
+                </c:if>
 
             </tr>
         </form>

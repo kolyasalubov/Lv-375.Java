@@ -28,7 +28,7 @@ public enum ControllerUrls {
     BOOKINGS_ARCHIVE_SERVLET("/bookings-archive"),
 
     ADMIN_ROOMS_SERVLET("/admin-rooms"), //TODO
-    ADMIN_USERS_SERVLET("/admin-users"); //TODO
+    ADMIN_USERS_SERVLET("/admin-users");
 
     private String url;
 

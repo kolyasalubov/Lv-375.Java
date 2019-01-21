@@ -27,7 +27,7 @@
     </p>
 </c:if>
 
-<form action="${pageContext.request.contextPath}/${urlToPost}" method="POST">
+<form action="${pageContext.request.contextPath}${urlToPost}" method="POST">
 
     <div class="ui container">
         <h1>New Booking</h1>
@@ -39,7 +39,7 @@
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
                     <c:choose>
-                        <c:when test="${urlToPost eq 'booking-create'}">
+                        <c:when test="${urlToPost eq '/booking-create'}">
                             <input type="number" min="1" placeholder="Input room number"
                                    name="roomNumber" value='${roomNumber}' required>
                         </c:when>

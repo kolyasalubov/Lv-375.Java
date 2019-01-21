@@ -43,7 +43,7 @@ public class BookingDeleteServlet extends HttpServlet{
             BookingRoomDto bookingRoomDto = new BookingRoomDto();
             bookingRoomDto.setIdBooking(id);
 
-            bookingRoomDto = bookingService.getBookingRoomDto(bookingRoomDto);
+            bookingRoomDto = bookingService.getBookingRoomDto(bookingRoomDto); // to set RoomNumber
             bookingService.deleteRoomBooking(bookingRoomDto);
 
             String urlToGoBack = request.getParameter(BookingConstants.URL_TO_GO_BACK.toString());

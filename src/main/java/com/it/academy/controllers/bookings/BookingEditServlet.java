@@ -50,7 +50,7 @@ public class BookingEditServlet extends HttpServlet{
             bookingRoomDto = bookingService.getBookingRoomDto(bookingRoomDto);
 
             request.setAttribute(BookingConstants.BOOKING_DTO.toString(), bookingRoomDto);
-            request.setAttribute(BookingConstants.URL_TO_POST.toString(), BookingConstants.BOOKING_EDIT.toString());
+            request.setAttribute(BookingConstants.URL_TO_POST.toString(), ControllerUrls.BOOKING_EDIT_SERVLET.toString());
 
             getServletConfig()
                     .getServletContext()
@@ -104,7 +104,7 @@ public class BookingEditServlet extends HttpServlet{
         // Show Error Validator
         if (request.getAttribute("error") != null) {
             request.setAttribute(BookingConstants.BOOKING_DTO.toString(), bookingRoomDto);      // save data in fields
-            request.setAttribute(BookingConstants.URL_TO_POST.toString(), BookingConstants.BOOKING_EDIT.toString());
+            request.setAttribute(BookingConstants.URL_TO_POST.toString(), ControllerUrls.BOOKING_EDIT_SERVLET.toString());
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.BOOKING_PROFILE_JSP.toString())

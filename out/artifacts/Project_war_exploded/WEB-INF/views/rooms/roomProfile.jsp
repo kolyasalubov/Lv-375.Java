@@ -6,11 +6,67 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>roomProfile</title>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
+          type="text/css"/>
 </head>
 <body>
+
+<c:if test="${error ne null}">
+    <p>
+        <font color="red">${error}</font>
+    </p>
+</c:if>
+
+<form action="${pageContext.request.contextPath}${urlToPost}" method="POST">
+
+    <div class="ui container">
+        <h1>New Room</h1>
+
+        <div class="ui form">
+
+            <div class="field">
+                <h3>Room Number</h3>
+                <div class="ui input left icon">
+                    <i class="calendar icon"></i>
+
+                    <input type="number" min="1" placeholder="Input room number"
+                           name="number" value='${roomDto.number}' required>
+                    <input type="hidden" name="idRoom" value='${roomDto.idRoom}'>
+
+                </div>
+            </div>
+
+            <div class="field">
+                <h3>Type</h3>
+                <div class="ui input left icon">
+                    <i class="calendar icon"></i>
+                    <input type="text" placeholder="Input room type"
+                           name="type" value='${roomDto.type}'>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="negative ui button left floated" type="button" onclick="goBack()">
+            Cancel
+        </button>
+        <button class="positive ui button right floated" type="submit"> Save</button>
+
+    </div>
+</form>
+
+
+<script type="text/javascript" charset="UTF-8">
+    <%@include file="../../../resources/js/openPage.js" %>
+</script>
 
 </body>
 </html>
