@@ -71,11 +71,4 @@ public class RoomServlet extends HttpServlet {
         }
     }
 
-
-    /**
-     * Shows the bookings in particular room
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    }
-
 }

@@ -120,7 +120,6 @@
         startCalendar: $('#startDate'),
         ampm: false,
     });
-    $('#endDate').startDate($('#startDate').startDate + 1);
 
 </script>
 

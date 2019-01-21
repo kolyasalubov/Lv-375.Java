@@ -15,9 +15,8 @@ public enum ControllerUrls {
     ROOM_DELETE_SERVLET("/room-delete"),    //TODO
 
     BOOKING_CREATE_SERVLET("/booking-create"),
-    BOOKING_CREATE_FROM_ROOM_SERVLET("/booking-create-room"),	//TODO  ???
-    BOOKING_EDIT_SERVLET("/booking-edit"),		//TODO
-    BOOKING_DELETE_SERVLET("/booking-delete"),  //TODO
+    BOOKING_EDIT_SERVLET("/booking-edit"),
+    BOOKING_DELETE_SERVLET("/booking-delete"),
 
     ITEM_COUNT_SERVLET("/itemcount"), // ??? pagination ???
     HOME_SERVLET("/home"),

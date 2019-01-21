@@ -29,11 +29,23 @@ ROOM
         Add booking
     </button>
 
-    <c:url value='${pageContext.request.contextPath}/room-archive' var="archiveUrl">
-        <c:param name='number' value='${roomDto.number}'/>
-    </c:url>
-    <button type="button" class="archive" onclick="openPage('${pageScope.archiveUrl}')">
-        Archive
+    <c:choose>
+        <c:when test="${archive eq null}">
+            <c:set var="title" value="Archive"/>
+            <c:url value='${pageContext.request.contextPath}/room-archive' var="url">
+                <c:param name='number' value='${roomDto.number}'/>
+            </c:url>
+        </c:when>
+        <c:otherwise>
+            <c:set var="title" value="Current bookings"/>
+            <c:url value='${pageContext.request.contextPath}/room' var="url">
+                <c:param name='number' value='${roomDto.number}'/>
+            </c:url>
+        </c:otherwise>
+    </c:choose>
+
+    <button type="button" class="archive" onclick="openPage('${pageScope.url}')">
+        ${pageScope.title}
     </button>
 </div>
 
@@ -56,7 +68,7 @@ ROOM
                     <p> ${booking.purpose} </p>
                 </div>
 
-                <c:if test="${booking.userEmail eq loginDto.email}">
+                <c:if test="${(booking.userEmail eq loginDto.email) and (archive eq null)}">
 
                     <c:url value='${pageContext.request.contextPath}/booking-edit' var="editUrl">
                         <c:param name='idBooking' value='${booking.idBooking}'/>

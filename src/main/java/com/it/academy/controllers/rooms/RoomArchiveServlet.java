@@ -1,10 +1,12 @@
 package com.it.academy.controllers.rooms;
 
+import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
 import com.it.academy.constants.RoomConstants;
 import com.it.academy.constants.UserConstants;
+import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.BookingUserDto;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.RoomDto;
@@ -35,24 +37,24 @@ public class RoomArchiveServlet extends HttpServlet {
      * Shows archive of the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.isRequestedSessionIdFromCookie()
-                && request.isRequestedSessionIdValid()
-                && request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString()) != null) {
+        if (RequestValidator.isValid(request)) {
 
             RoomDto roomDto = (RoomDto) request.getAttribute(RoomConstants.ROOM_DTO.toString());
-
             CollectionDto<BookingUserDto> bookings = bookingService.getPastBookingUserCollection(roomDto);
-            request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
 
+            request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
+            request.setAttribute(RoomConstants.ROOM_DTO.toString(), roomDto);
+            request.setAttribute(BookingConstants.ARCHIVE.toString(), true);
+
+            if(bookings == null)
+                request.setAttribute("error", "There are no bookings!");
             getServletConfig()
                     .getServletContext()
-                    .getRequestDispatcher(ViewUrls.ROOM_ARCHIVE_JSP.toString())
+                    .getRequestDispatcher(ViewUrls.ROOM_JSP.toString())
                     .forward(request, response);
         } else {
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
-                    .forward(request, response);
+            response.sendRedirect(request.getContextPath()
+                    + ControllerUrls.LOGIN_SERVLET);
         }
 
     }

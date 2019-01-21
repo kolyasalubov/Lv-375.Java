@@ -13,7 +13,9 @@ public enum BookingConstants {
     BOOKING_EDIT("booking-edit"),
 
     BOOKING_DTO("bookingDto"),
-    URL_TO_POST("urlToPost");
+    URL_TO_POST("urlToPost"),
+
+    ARCHIVE("archive");
 
     private String constant;
 
