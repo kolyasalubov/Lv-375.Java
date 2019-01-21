@@ -27,17 +27,19 @@ public class BookingsServlet extends HttpServlet {
 
     private static final long serialVersionUID = 7L;
     private BookingService bookingService;
+    private RequestValidator requestValidator;
 
     public BookingsServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings of current user
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
 
             HttpSession session = request.getSession();
             LoginDto loginDto = (LoginDto) session.getAttribute(UserConstants.LOGIN_DTO.toString());

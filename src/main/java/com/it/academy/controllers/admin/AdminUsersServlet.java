@@ -24,25 +24,31 @@ import java.io.IOException;
 public class AdminUsersServlet extends HttpServlet {
     private static final long serialVersionUID = 15L;
     private UserService userService;
+    private RequestValidator requestValidator;
 
     public AdminUsersServlet() {
         super();
         userService = ObjContainer.getInstance().getUserService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
+            if(requestValidator.isAdmin(request)) {
 
-            CollectionDto<UserDto> users = userService.getUserCollectionDto();
-            request.setAttribute(UserConstants.USERS.toString(), users);
+                CollectionDto<UserDto> users = userService.getUserCollectionDto();
+                request.setAttribute(UserConstants.USERS.toString(), users);
 
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.ADMIN_USERS_JSP.toString())
-                    .forward(request, response);
+                getServletConfig()
+                        .getServletContext()
+                        .getRequestDispatcher(ViewUrls.ADMIN_USERS_JSP.toString())
+                        .forward(request, response);
+            } else {
+
+            }
         } else {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.LOGIN_SERVLET);

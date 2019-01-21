@@ -28,17 +28,19 @@ public class RoomCreateServlet extends HttpServlet {
 
     private static final long serialVersionUID = 16L;
     private RoomService roomService;
+    private RequestValidator requestValidator;
 
     public RoomCreateServlet() {
         super();
         roomService = ObjContainer.getInstance().getRoomService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             request.setAttribute(BookingConstants.URL_TO_POST.toString(), ControllerUrls.ROOM_CREATE_SERVLET.toString());
 
             getServletConfig()

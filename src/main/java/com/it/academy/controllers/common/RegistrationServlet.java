@@ -23,10 +23,12 @@ public class RegistrationServlet extends HttpServlet {
 
     private static final long serialVersionUID = 2L;
     private UserService userService;
+    private RequestValidator requestValidator;
 
     public RegistrationServlet() {
         super();
         userService = ObjContainer.getInstance().getUserService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
@@ -34,7 +36,7 @@ public class RegistrationServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.HOME_SERVLET.toString());
         } else {

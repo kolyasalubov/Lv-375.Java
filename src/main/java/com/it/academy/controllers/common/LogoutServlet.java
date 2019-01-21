@@ -1,6 +1,7 @@
 package com.it.academy.controllers.common;
 
 import com.it.academy.common.ControllerUrls;
+import com.it.academy.common.ObjContainer;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 
@@ -19,16 +20,19 @@ import java.io.IOException;
 public class LogoutServlet extends HttpServlet{
 
     private static final long serialVersionUID = 3L;
+    private RequestValidator requestValidator;
+
 
     public LogoutServlet() {
         super();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Logs out the user
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             HttpSession session = request.getSession();
             session.invalidate();
         }

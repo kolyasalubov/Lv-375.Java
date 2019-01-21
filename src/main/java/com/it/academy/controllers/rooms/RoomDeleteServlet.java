@@ -26,17 +26,19 @@ public class RoomDeleteServlet extends HttpServlet{
 
     private static final long serialVersionUID = 17L;
     private RoomService roomService;
+    private RequestValidator requestValidator;
 
     public RoomDeleteServlet() {
         super();
         roomService = ObjContainer.getInstance().getRoomService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             String id = request.getParameter(RoomConstants.ID.toString());
             RoomDto roomDto = new RoomDto();
             roomDto.setIdRoom(id);

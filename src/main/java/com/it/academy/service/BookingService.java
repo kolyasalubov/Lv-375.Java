@@ -94,14 +94,6 @@ public class BookingService {
         return dto;
     }
 
-
-//    public boolean createBooking(BookingDto bookingDto, RoomDto roomDto, LoginDto loginDto) {
-//        Booking booking = dtoToBooking(bookingDto, loginDto);
-//        List<Room> rooms = roomDao.getByFieldName("number", String.valueOf(roomDto.getNumber()));
-//        booking.setRoomId(rooms.get(0).getId());
-//        return saveBookingToDB(booking);
-//    }
-
     public boolean createRoomBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
         Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
         return saveBookingToDB(booking);

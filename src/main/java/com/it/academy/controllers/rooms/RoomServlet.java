@@ -32,18 +32,20 @@ public class RoomServlet extends HttpServlet {
     private static final long serialVersionUID = 5L;
     private BookingService bookingService;
     private RoomService roomService;
+    private RequestValidator requestValidator;
 
     public RoomServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             RoomDto roomDto = new RoomDto();
             String number = request.getParameter(RoomConstants.NUMBER.toString());
             if (number == null){

@@ -32,18 +32,20 @@ public class BookingEditServlet extends HttpServlet{
     private static final long serialVersionUID = 11L;
     private BookingService bookingService;
     private RoomService roomService;
+    private RequestValidator requestValidator;
 
     public BookingEditServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             String id = request.getParameter(BookingConstants.ID.toString());
             BookingRoomDto bookingRoomDto = new BookingRoomDto();
             bookingRoomDto.setIdBooking(id);

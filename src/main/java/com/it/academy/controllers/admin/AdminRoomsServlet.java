@@ -26,28 +26,38 @@ import java.io.IOException;
 public class AdminRoomsServlet extends HttpServlet{
     private static final long serialVersionUID = 14L;
     private RoomService roomService;
+    private RequestValidator requestValidator;
 
     public AdminRoomsServlet() {
         super();
         roomService = ObjContainer.getInstance().getRoomService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
+            if(requestValidator.isAdmin(request)) {
 
-            CollectionDto<RoomDto> rooms = roomService.getRoomCollectionDto();
-            request.setAttribute(RoomConstants.ROOMS.toString(), rooms);
+                CollectionDto<RoomDto> rooms = roomService.getRoomCollectionDto();
+                request.setAttribute(RoomConstants.ROOMS.toString(), rooms);
 
-            if(rooms == null)
-                request.setAttribute("error", "There are no rooms yet!");
+                if (rooms == null)
+                    request.setAttribute("error", "There are no rooms yet!");
 
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ViewUrls.ADMIN_ROOMS_JSP.toString())
-                    .forward(request, response);
+                getServletConfig()
+                        .getServletContext()
+                        .getRequestDispatcher(ViewUrls.ADMIN_ROOMS_JSP.toString())
+                        .forward(request, response);
+            } else {
+                request.setAttribute("error", "You are not the admin!");
+                getServletConfig()
+                        .getServletContext()
+                        .getRequestDispatcher(ViewUrls.HOME_JSP.toString())
+                        .forward(request, response);
+            }
         } else {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.LOGIN_SERVLET);

@@ -27,17 +27,19 @@ import java.io.IOException;
 public class UserEditServlet extends HttpServlet{
     private static final long serialVersionUID = 13L;
     private UserService userService;
+    private RequestValidator requestValidator;
 
     public UserEditServlet() {
         super();
         userService = ObjContainer.getInstance().getUserService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(RequestValidator.isValid(request)) {
+        if(requestValidator.isValid(request)) {
             LoginDto loginDto = (LoginDto) request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString());
             UserDto userDto = userService.getUserDto(loginDto);
 

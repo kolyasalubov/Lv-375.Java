@@ -1,5 +1,6 @@
 package com.it.academy.common;
 
+import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dao.BookingDao;
 import com.it.academy.dao.RoomDao;
 import com.it.academy.dao.UserDao;
@@ -8,7 +9,6 @@ import com.it.academy.service.BookingService;
 import com.it.academy.service.RoomService;
 import com.it.academy.service.UserService;
 
-import javax.ejb.Init;
 
 public class ObjContainer {
 
@@ -23,11 +23,13 @@ public class ObjContainer {
     private BookingService bookingService;
 
     private DateParser dateParser;
+    private RequestValidator requestValidator;
 
     private ObjContainer(){
         initDaos();
         dateParser = new DateParser();
         initServices();
+        requestValidator = new RequestValidator(userService);
     }
 
     private void initDaos(){
@@ -108,5 +110,13 @@ public class ObjContainer {
 
     public void setDateParser(DateParser dateParser) {
         this.dateParser = dateParser;
+    }
+
+    public RequestValidator getRequestValidator() {
+        return requestValidator;
+    }
+
+    public void setRequestValidator(RequestValidator requestValidator) {
+        this.requestValidator = requestValidator;
     }
 }

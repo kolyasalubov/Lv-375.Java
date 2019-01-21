@@ -25,10 +25,12 @@ public class LoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private UserService userService;
+    private RequestValidator requestValidator;
 
     public LoginServlet() {
         super();
         userService = ObjContainer.getInstance().getUserService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
@@ -36,7 +38,7 @@ public class LoginServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletConfig().getServletContext();
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.HOME_SERVLET.toString());
 

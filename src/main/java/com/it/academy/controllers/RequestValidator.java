@@ -9,8 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 
 public class RequestValidator {
 
-    public static boolean isValid(HttpServletRequest request) {
-        UserService userService = ObjContainer.getInstance().getUserService();
+    UserService userService;
+
+    public RequestValidator(UserService userService){
+        this.userService = userService;
+    }
+
+    public boolean isValid(HttpServletRequest request) {
         LoginDto loginDto = (LoginDto) request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString());
 
         return request.isRequestedSessionIdFromCookie()
@@ -18,4 +23,11 @@ public class RequestValidator {
                 && loginDto != null
                 && !userService.isBlocked(loginDto);
     }
+
+    public boolean isAdmin(HttpServletRequest request) {
+        LoginDto loginDto = (LoginDto) request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString());
+
+        return userService.isAdmin(loginDto);
+    }
+
 }

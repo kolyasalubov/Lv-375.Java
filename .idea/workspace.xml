@@ -7,27 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c182d4ec-83f9-4d35-a04b-a3f66b50e4af" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomCreateServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomDeleteServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomEditServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/admin/adminRooms.jsp" afterPath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/admin/adminRooms.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/admin/adminUsers.jsp" afterPath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/admin/adminUsers.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/bookings/bookingProfile.jsp" afterPath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/bookings/bookingProfile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/rooms/roomProfile.jsp" afterPath="$PROJECT_DIR$/out/artifacts/Project_war_exploded/WEB-INF/views/rooms/roomProfile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/common/ControllerUrls.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/common/ControllerUrls.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/constants/BookingConstants.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/constants/BookingConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RequestValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RequestValidator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminRoomsServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminRoomsServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingCreateServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingCreateServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingDeleteServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingDeleteServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingEditServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingEditServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoCRUD.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoCRUD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoRead.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoRead.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/it/academy/service/RoomService.java" afterPath="$PROJECT_DIR$/src/main/java/com/it/academy/service/RoomService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminRooms.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminRooms.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminUsers.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminUsers.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/WEB-INF/views/bookings/bookingProfile.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/bookings/bookingProfile.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/web/WEB-INF/views/rooms/roomProfile.jsp" afterPath="$PROJECT_DIR$/src/web/WEB-INF/views/rooms/roomProfile.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -70,18 +52,38 @@
       <file leaf-file-name="RoomEditServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomEditServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="401">
+              <caret line="87" column="37" lean-forward="false" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoomService.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminRoomsServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminRoomsServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequestValidator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RequestValidator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoomService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/service/RoomService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="117" column="105" lean-forward="true" selection-start-line="117" selection-start-column="105" selection-end-line="117" selection-end-column="105" />
+            <state relative-caret-position="172">
+              <caret line="112" column="49" lean-forward="false" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -90,8 +92,8 @@
       <file leaf-file-name="ADaoRead.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoRead.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="85" column="30" lean-forward="false" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
+            <state relative-caret-position="282">
+              <caret line="84" column="99" lean-forward="false" selection-start-line="84" selection-start-column="99" selection-end-line="84" selection-end-column="99" />
               <folding />
             </state>
           </provider>
@@ -212,13 +214,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/entity/User.java" />
         <option value="$PROJECT_DIR$/src/web/WEB-INF/views/users/userProfileEdit.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RequestValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminUsersServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/common/LoginServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/common/ControllerUrls.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/common/HomeServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminRoomsServlet.java" />
         <option value="$PROJECT_DIR$/src/web/WEB-INF/views/admin/adminRooms.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/constants/BookingConstants.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingCreateServlet.java" />
@@ -230,9 +230,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomDeleteServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomCreateServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoCRUD.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/service/RoomService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoRead.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomEditServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/service/RoomService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminRoomsServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RequestValidator.java" />
       </list>
     </option>
   </component>
@@ -790,7 +792,7 @@
       <workItem from="1548038537800" duration="1390000" />
       <workItem from="1548045261593" duration="16536000" />
       <workItem from="1548066124950" duration="5218000" />
-      <workItem from="1548088620759" duration="12403000" />
+      <workItem from="1548088620759" duration="12858000" />
     </task>
     <servers />
   </component>
@@ -827,7 +829,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196434000" />
+    <option name="totallyTimeSpent" value="196889000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -852,9 +854,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16639742" sideWeight="0.5136157" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279483" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08850227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5589661" sideWeight="0.48638427" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46203554" sideWeight="0.48638427" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08239096" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05815832" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24886535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -997,14 +999,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="57" column="55" lean-forward="false" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RequestValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="55" lean-forward="true" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -1297,22 +1291,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminRoomsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="32" column="5" lean-forward="true" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoRead.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="85" column="30" lean-forward="false" selection-start-line="85" selection-start-column="30" selection-end-line="85" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/bookings/BookingEditServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="333">
@@ -1329,18 +1307,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomEditServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/dao/ADaoRead.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        <state relative-caret-position="282">
+          <caret line="84" column="99" lean-forward="false" selection-start-line="84" selection-start-column="99" selection-end-line="84" selection-end-column="99" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/service/RoomService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="117" column="105" lean-forward="true" selection-start-line="117" selection-start-column="105" selection-end-line="117" selection-end-column="105" />
+        <state relative-caret-position="172">
+          <caret line="112" column="49" lean-forward="false" selection-start-line="112" selection-start-column="49" selection-end-line="112" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/rooms/RoomEditServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="87" column="37" lean-forward="false" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/admin/AdminRoomsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/it/academy/controllers/RequestValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
           <folding />
         </state>
       </provider>

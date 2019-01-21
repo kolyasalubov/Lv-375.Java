@@ -25,17 +25,19 @@ public class HomeServlet extends HttpServlet {
 
     private static final long serialVersionUID = 4L;
     private RoomService roomService;
+    private RequestValidator requestValidator;
 
     public HomeServlet() {
         super();
         roomService = ObjContainer.getInstance().getRoomService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the list of rooms
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             CollectionDto<RoomDto> rooms = roomService.getRoomCollectionDto();
             request.setAttribute(RoomConstants.ROOMS.toString(), rooms);
 

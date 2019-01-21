@@ -29,18 +29,20 @@ public class RoomArchiveServlet extends HttpServlet {
     private static final long serialVersionUID = 6L;
     private BookingService bookingService;
     private RoomService roomService;
+    private RequestValidator requestValidator;
 
     public RoomArchiveServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows archive of the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
 
             String number = request.getParameter(RoomConstants.NUMBER.toString());
             RoomDto roomDto = new RoomDto();

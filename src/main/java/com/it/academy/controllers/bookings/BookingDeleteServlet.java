@@ -28,17 +28,19 @@ public class BookingDeleteServlet extends HttpServlet{
 
     private static final long serialVersionUID = 9L;
     private BookingService bookingService;
+    private RequestValidator requestValidator;
 
     public BookingDeleteServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
+        requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
     /**
      * Shows the bookings in particular room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (RequestValidator.isValid(request)) {
+        if (requestValidator.isValid(request)) {
             String id = request.getParameter(BookingConstants.ID.toString());
             BookingRoomDto bookingRoomDto = new BookingRoomDto();
             bookingRoomDto.setIdBooking(id);
