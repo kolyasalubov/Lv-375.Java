@@ -14,6 +14,6 @@ public final class DataSourceRepository {
     }
 
     public static DataSource getMySqlLocalHost() {
-        return new DataSource( "jdbc:mysql://localhost:3306/ProjectDB?createDatabaseIfNotExist=true", "root", "1111");
+        return new DataSource( "jdbc:mysql://localhost:3306/ProjectDB?createDatabaseIfNotExist=true", System.getenv().get("MY_SQL_LOGIN"), System.getenv().get("MY_SQL_PASSWORD"));
     }
 }
