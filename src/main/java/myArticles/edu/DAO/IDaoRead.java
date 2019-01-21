@@ -1,4 +1,4 @@
-package myArticles.edu.DataBase.DAO;
+package myArticles.edu.DAO;
 
 import java.util.List;
 

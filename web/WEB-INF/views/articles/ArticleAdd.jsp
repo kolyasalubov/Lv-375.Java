@@ -14,7 +14,7 @@
     </style>
     <meta http-equiv="Content-Type" content="text/html;">
     <meta charset="utf-8">
-    <title>Insert title here</title>
+    <title>Add Article</title>
 </head>
 <body>
 <div class="one"><h1>Add new Article</h1></div>

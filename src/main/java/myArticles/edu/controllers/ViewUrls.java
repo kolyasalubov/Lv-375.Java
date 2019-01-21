@@ -7,8 +7,7 @@ public enum ViewUrls {
     USER_PROFILE_JSP("/WEB-INF/views/users/UserProfile.jsp"),
     ARTICLES_PROFILE_JSP("/WEB-INF/views/articles/ArticleProfile.jsp"),
     ARTICLES_ADD_JSP("/WEB-INF/views/articles/ArticleAdd.jsp"),
-    USER_ARTICLES_JSP("/WEB-INF/views/commons/UserArticles.jsp"),
-    ERROR_JSP("/WEB-INF/views/commons/Error.jsp");
+    USER_ARTICLES_JSP("/WEB-INF/views/commons/UserArticles.jsp");
 
     private String url;
 

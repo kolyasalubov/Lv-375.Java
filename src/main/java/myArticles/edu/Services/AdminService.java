@@ -1,11 +1,10 @@
 package myArticles.edu.Services;
 
 
-import myArticles.edu.DataBase.DAO.UserDao;
+import myArticles.edu.DAO.UserDao;
 import myArticles.edu.dto.AllUsersDto;
 import myArticles.edu.dto.PageInfoDto;
 import myArticles.edu.dto.UserDto;
-import myArticles.edu.dto.UsersArticleDto;
 import myArticles.edu.entity.User;
 
 import java.util.ArrayList;
@@ -16,17 +15,16 @@ import java.util.ArrayList;
 public class AdminService {
     private UserDao userDao;
 
-    public AdminService(UserDao userDao){
+    public AdminService(UserDao userDao) {
         this.userDao = userDao;
     }
 
     /**
      * Get all users from database
-     *
      */
-    public AllUsersDto getAllUsers(){
+    public AllUsersDto getAllUsers() {
         AllUsersDto allUsersDto = new AllUsersDto();
-        for(User user : userDao.getAll()){
+        for (User user : userDao.getAll()) {
             UserDto userDto = new UserDto(user.getUserName(),
                     user.getPassword(),
                     user.getEmail(),
@@ -37,29 +35,28 @@ public class AdminService {
         }
         return allUsersDto;
     }
-    public AllUsersDto getAllUsers(PageInfoDto pageInfoDto){
+
+    public AllUsersDto getAllUsers(PageInfoDto pageInfoDto) {
         AllUsersDto allUsersDto = getAllUsers();
-        if(pageInfoDto.getVisible() == 100000){
-            return  allUsersDto;
+        if (pageInfoDto.getVisible() == 100000) {
+            return allUsersDto;
         }
-        int start = allUsersDto.getUsers().size() > pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()-1)
-                ? pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()-1)
+        int start = allUsersDto.getUsers().size() > pageInfoDto.getVisible() * (pageInfoDto.getPageNumber() - 1)
+                ? pageInfoDto.getVisible() * (pageInfoDto.getPageNumber() - 1)
                 : -1;
-        int end = allUsersDto.getUsers().size() > (pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()))
-                ? (pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()))
+        int end = allUsersDto.getUsers().size() > (pageInfoDto.getVisible() * (pageInfoDto.getPageNumber()))
+                ? (pageInfoDto.getVisible() * (pageInfoDto.getPageNumber()))
                 : -1;
-        if(start != -1){
-            if(end != -1){
+        if (start != -1) {
+            if (end != -1) {
                 allUsersDto.setUsers(allUsersDto.getUsers().subList(start, end));
-            }
-            else {
+            } else {
                 allUsersDto.setUsers(allUsersDto.getUsers().subList(start, allUsersDto.getUsers().size()));
             }
+        } else {
+            allUsersDto.setUsers(new ArrayList <>());
         }
-        else {
-            allUsersDto.setUsers(new ArrayList<>());
-        }
-        System.out.println(start +" "+end);
+        System.out.println(start + " " + end);
         return allUsersDto;
     }
 }

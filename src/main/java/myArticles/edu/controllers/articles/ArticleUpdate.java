@@ -4,6 +4,7 @@ import myArticles.edu.Services.ArticleService;
 import myArticles.edu.Services.UserService;
 import myArticles.edu.container.IocContainer;
 import myArticles.edu.controllers.ControllerUrls;
+import myArticles.edu.controllers.ControllersConstant;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.ArticleDto;
@@ -23,27 +24,27 @@ public class ArticleUpdate extends HttpServlet {
     private UserService userService;
 
 
-     public ArticleUpdate(){
+    public ArticleUpdate() {
         articleService = IocContainer.get().getArticleService();
         userService = IocContainer.get().getUserService();
 
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(Security.isActiveSession(request, response)) {
+        if (Security.isActiveSession(request, response)) {
             ArticleDto articleDto = new ArticleDto(
-                    request.getParameter("name"),
-                    request.getParameter("description"),
-                    request.getParameter("url"),
-                    Long.parseLong(request.getParameter("userId")));
-            System.out.println(articleDto.getName()+" " + articleDto.getUserId());
-            if(articleService.updateArticles(articleDto)){
+                    request.getParameter(ControllersConstant.ARTICLE_NAME.toString()),
+                    request.getParameter(ControllersConstant.ARTICLE_DESCRIPTION.toString()),
+                    request.getParameter(ControllersConstant.ARTICLE_URL.toString()),
+                    Long.parseLong(request.getParameter(ControllersConstant.ARTICLES_USER_ID.toString())));
+
+            if (articleService.updateArticles(articleDto)) {
                 getServletConfig()
                         .getServletContext()
                         .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
                         .forward(request, response);
             }
-        }
-        else{
+        } else {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()
@@ -53,6 +54,6 @@ public class ArticleUpdate extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO CREATE LOGOUT
+
     }
 }

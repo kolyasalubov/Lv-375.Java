@@ -17,23 +17,23 @@ import java.io.IOException;
 
 @WebServlet("/changeadminstatus")
 public class ChangeAdminStatus extends HttpServlet {
-    private static final long serialVersionUID = 17L;
+    private static final long serialVersionUID = 15L;
     private UserService userService;
-    public ChangeAdminStatus(){
+
+    public ChangeAdminStatus() {
         userService = IocContainer.get().getUserService();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(Security.isActiveSession(request, response)) {
-            String UserName = request.getParameter("UserName");
+        if (Security.isActiveSession(request, response)) {
+            String UserName = request.getParameter(ControllersConstant.USERNAME.toString());
             UserDto userDto = new UserDto(UserName, "", "", false, false);
             userService.changeAdminStatus(userDto);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ControllerUrls.ALL_USER_SERVLER.toString())
                     .forward(request, response);
-        }
-        else {
+        } else {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()

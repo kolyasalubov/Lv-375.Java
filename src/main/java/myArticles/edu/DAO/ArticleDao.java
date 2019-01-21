@@ -1,8 +1,7 @@
-package myArticles.edu.DataBase.DAO;
+package myArticles.edu.DAO;
 
 
 import myArticles.edu.entity.Article;
-import myArticles.edu.entity.SqlQueries;
 
 import java.util.ArrayList;
 import java.util.List;

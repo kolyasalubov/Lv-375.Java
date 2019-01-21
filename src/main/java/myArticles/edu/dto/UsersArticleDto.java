@@ -11,13 +11,13 @@ public class UsersArticleDto {
     public UsersArticleDto(String userName) {
         this.userName = userName;
         this.articles = new ArrayList <>();
-        //TODO page size
+
     }
 
     public UsersArticleDto(String userName, List <ArticleDto> articles) {
         this.userName = userName;
         this.articles = articles;
-        //TODO page size
+
     }
 
 

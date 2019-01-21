@@ -6,7 +6,7 @@
     </style>
     <meta http-equiv="Content-Type" content="text/html;">
     <meta charset="utf-8">
-    <title>MyArticles</title>
+    <title>MyArticles Login</title>
 </head>
 <body>
 <div class="one"><h1>MyArticles</h1></div>

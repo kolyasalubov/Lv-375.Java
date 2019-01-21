@@ -35,8 +35,8 @@ public class UserEdit extends HttpServlet {
             UserDto userDto = userService.getUserDto((LoginDto) request.getSession().getAttribute(ControllersConstant.LOGIN_DTO.toString()));
             request.setAttribute(ControllersConstant.USER_DTO.toString(), userDto);
 
-            request.setAttribute("Cancel"
-                    , userDto.isAdmin() ? ControllerUrls.ALL_USER_SERVLER.toString()
+            request.setAttribute(ControllersConstant.CANCEL.toString(),
+                    userDto.isAdmin() ? ControllerUrls.ALL_USER_SERVLER.toString()
                             : ControllerUrls.USER_ARTICLES_SERVLET.toString());
 
             getServletConfig()

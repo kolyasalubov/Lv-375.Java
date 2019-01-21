@@ -10,9 +10,9 @@
 <html>
 <head>
     <style type="text/css">
-        <%@include file="../../../resources/css/EditAndAdd.css" %>
+        <%@include file="../../../resources/css/UsersPage.css" %>
     </style>
-    <title>Register</title>
+    <title>MyArticles Register</title>
 </head>
 <body>
 <div class="one"><h1>Register</h1></div>

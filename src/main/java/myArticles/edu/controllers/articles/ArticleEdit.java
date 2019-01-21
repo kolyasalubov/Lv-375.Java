@@ -3,6 +3,7 @@ package myArticles.edu.controllers.articles;
 import myArticles.edu.Services.ArticleService;
 import myArticles.edu.Services.UserService;
 import myArticles.edu.container.IocContainer;
+import myArticles.edu.controllers.ControllersConstant;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.ArticleDto;
@@ -22,25 +23,24 @@ public class ArticleEdit extends HttpServlet {
     private ArticleService articleService;
 
 
-    public ArticleEdit(){
+    public ArticleEdit() {
         articleService = IocContainer.get().getArticleService();
 
     }
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(Security.isActiveSession(request, response)) {
-            System.out.println(request.getQueryString()+"555");
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (Security.isActiveSession(request, response)) {
             ArticleDto articleDto = new ArticleDto(
-                    request.getQueryString().substring(5),
-                    "","",0L
-                    );
+                    request.getParameter(ControllersConstant.ARTICLE_NAME.toString()),
+                    "", "", 0L
+            );
             articleDto = articleService.getFullInfo(articleDto);
-            request.getSession().setAttribute("articleDto",  articleDto);
+            request.getSession().setAttribute("articleDto", articleDto);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.ARTICLES_PROFILE_JSP.toString())
                     .forward(request, response);
-        }
-        else{
+        } else {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()
@@ -49,7 +49,7 @@ public class ArticleEdit extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 }

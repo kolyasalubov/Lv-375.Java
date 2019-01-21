@@ -26,37 +26,32 @@ public class ArticleAdd extends HttpServlet {
     private UserService userService;
 
 
-    public ArticleAdd(){
+    public ArticleAdd() {
         articleService = IocContainer.get().getArticleService();
         userService = IocContainer.get().getUserService();
 
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(Security.isActiveSession(request, response)) {
+        if (Security.isActiveSession(request, response)) {
             LoginDto loginDto = (LoginDto) request.getSession().getAttribute(ControllersConstant.LOGIN_DTO.toString());
             Long userId = userService.getIdUserByLogin(loginDto);
             ArticleDto articleDto = new ArticleDto(
-                    request.getParameter("name"),
-                    request.getParameter("description"),
-                    request.getParameter("url"),
+                    request.getParameter(ControllersConstant.ARTICLE_NAME.toString()),
+                    request.getParameter(ControllersConstant.ARTICLE_DESCRIPTION.toString()),
+                    request.getParameter(ControllersConstant.ARTICLE_URL.toString()),
                     userId);
-            System.out.println(articleDto.getName() + " " + articleDto.getUserId());
-            if(articleService.addArticles(articleDto)){
-                getServletConfig()
-                        .getServletContext()
-                        .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
-                        .forward(request, response);
-            }
-            else{
+
+            if (articleService.addArticles(articleDto)) {
+                response.sendRedirect(request.getContextPath() + ControllerUrls.USER_ARTICLES_SERVLET.toString());
+            } else {
                 request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.ADD_ARTICLE_ERROR.toString());
                 getServletConfig()
                         .getServletContext()
                         .getRequestDispatcher(ViewUrls.ARTICLES_ADD_JSP.toString())
                         .forward(request, response);
             }
-        }
-        else{
+        } else {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()
@@ -66,7 +61,7 @@ public class ArticleAdd extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(Security.isActiveSession(request, response)) {
+        if (Security.isActiveSession(request, response)) {
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.ARTICLES_ADD_JSP.toString())

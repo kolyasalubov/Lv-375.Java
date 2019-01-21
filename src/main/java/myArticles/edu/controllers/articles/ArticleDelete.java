@@ -4,6 +4,7 @@ import myArticles.edu.Services.ArticleService;
 import myArticles.edu.Services.UserService;
 import myArticles.edu.container.IocContainer;
 import myArticles.edu.controllers.ControllerUrls;
+import myArticles.edu.controllers.ControllersConstant;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.ArticleDto;
@@ -22,23 +23,20 @@ public class ArticleDelete extends HttpServlet {
     private ArticleService articleService;
 
 
-    public ArticleDelete(){
+    public ArticleDelete() {
         articleService = IocContainer.get().getArticleService();
     }
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(Security.isActiveSession(request, response)) {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (Security.isActiveSession(request, response)) {
             ArticleDto articleDto = new ArticleDto(
-                    request.getQueryString().substring(5),
+                    request.getParameter(ControllersConstant.ARTICLE_NAME.toString()),
                     "",
                     "",
                     0L);
             articleService.deleteArticles(articleDto);
-            getServletConfig()
-                    .getServletContext()
-                    .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
-                    .forward(request, response);
-        }
-        else{
+            response.sendRedirect(request.getContextPath() + ControllerUrls.USER_ARTICLES_SERVLET.toString());
+        } else {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()
@@ -47,7 +45,7 @@ public class ArticleDelete extends HttpServlet {
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //TODO CREATE LOGOUT
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 }

@@ -26,7 +26,6 @@ public enum ControllerUrls {
     ITEM_DELETE_SERVLET("/articledelete"),
 
     //MainPage
-    ITEM_COUNT_SERVLET("/itemcount"), // Post
     USER_ARTICLES_SERVLET("/userarticle"), // Post // and pagination
 
     //Initialization
@@ -42,4 +41,4 @@ public enum ControllerUrls {
     public String toString() {
         return url;
     }
-    }
+}

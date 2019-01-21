@@ -1,8 +1,8 @@
 package myArticles.edu.Services;
 
 
-import myArticles.edu.DataBase.DAO.ArticleDao;
-import myArticles.edu.DataBase.DAO.UserDao;
+import myArticles.edu.DAO.ArticleDao;
+import myArticles.edu.DAO.UserDao;
 import myArticles.edu.dto.ArticleDto;
 import myArticles.edu.dto.PageInfoDto;
 import myArticles.edu.dto.UserDto;
@@ -27,50 +27,49 @@ public class UserArticlesService {
 
     /**
      * Extract all Article for User from Database
+     *
      * @param userDto - user info
      * @return all user's articles
      */
-    public UsersArticleDto getUsersArticlesDto(UserDto userDto){
+    public UsersArticleDto getUsersArticlesDto(UserDto userDto) {
         User user = new UserDao().getUserEntityByUsername(userDto.getUserName());
         UsersArticleDto usersArticleDto = new UsersArticleDto(user.getUserName());
-        try{
-        for(Article article : articleDao.getByField(UserId_Field, user.getID().toString())){
-            ArticleDto articleDto = new ArticleDto(article.getName(),
-                    article.getDescription(),
-                    article.getUrl(),
-                    article.getUserId());
+        try {
+            for (Article article : articleDao.getByField(UserId_Field, user.getID().toString())) {
+                ArticleDto articleDto = new ArticleDto(article.getName(),
+                        article.getDescription(),
+                        article.getUrl(),
+                        article.getUserId());
 
-            usersArticleDto.addArticleDto(articleDto);
-        }
-        }catch (Exception e){
+                usersArticleDto.addArticleDto(articleDto);
+            }
+        } catch (Exception e) {
             System.out.println("Empty Articles");
         }
         return usersArticleDto;
     }
 
-    public UsersArticleDto getPageUsers(UserDto userDto, PageInfoDto pageInfoDto){
-        UsersArticleDto usersArticleDto= getUsersArticlesDto(userDto);
-        if(pageInfoDto.getVisible() == 100000){
-            return  usersArticleDto;
+    public UsersArticleDto getPageUsers(UserDto userDto, PageInfoDto pageInfoDto) {
+        UsersArticleDto usersArticleDto = getUsersArticlesDto(userDto);
+        if (pageInfoDto.getVisible() == 100000) {
+            return usersArticleDto;
         }
-        int start = usersArticleDto.getArticles().size() > pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()-1)
-                ? pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()-1)
+        int start = usersArticleDto.getArticles().size() > pageInfoDto.getVisible() * (pageInfoDto.getPageNumber() - 1)
+                ? pageInfoDto.getVisible() * (pageInfoDto.getPageNumber() - 1)
                 : -1;
-        int end = usersArticleDto.getArticles().size() > (pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()))
-                ? (pageInfoDto.getVisible()* (pageInfoDto.getPageNumber()))
+        int end = usersArticleDto.getArticles().size() > (pageInfoDto.getVisible() * (pageInfoDto.getPageNumber()))
+                ? (pageInfoDto.getVisible() * (pageInfoDto.getPageNumber()))
                 : -1;
-        if(start != -1){
-            if(end != -1){
+        if (start != -1) {
+            if (end != -1) {
                 usersArticleDto.setArticles(usersArticleDto.getArticles().subList(start, end));
-            }
-            else {
+            } else {
                 usersArticleDto.setArticles(usersArticleDto.getArticles().subList(start, usersArticleDto.getArticles().size()));
             }
-        }
-        else {
+        } else {
             usersArticleDto.setArticles(new ArrayList <>());
         }
-        System.out.println(start +" "+end);
+        System.out.println(start + " " + end);
         return usersArticleDto;
     }
 

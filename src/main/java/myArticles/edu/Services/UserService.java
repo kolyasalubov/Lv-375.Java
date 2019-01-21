@@ -1,7 +1,7 @@
 package myArticles.edu.Services;
 
 
-import myArticles.edu.DataBase.DAO.UserDao;
+import myArticles.edu.DAO.UserDao;
 import myArticles.edu.dto.LoginDto;
 import myArticles.edu.dto.UserDto;
 import myArticles.edu.entity.User;
@@ -24,6 +24,7 @@ public class UserService {
 
     /**
      * Check is users registration process valid or no
+     *
      * @param userDto - Info after registration
      * @return true - valid, false - no
      */
@@ -38,14 +39,14 @@ public class UserService {
         return result;
     }
 
-    private boolean checkValidUpdate(UserDto userDto){
+    private boolean checkValidUpdate(UserDto userDto) {
         boolean result = true;
         try {
             User user = userDao.getByField(EMAIL_FIELD, userDto.getEmail()).get(0);
-            if(!user.getUserName().equals(userDto.getUserName())){
+            if (!user.getUserName().equals(userDto.getUserName())) {
                 result = false;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             //can update user
         }
         return result;
@@ -61,6 +62,7 @@ public class UserService {
 
     /**
      * Try to register user
+     *
      * @param userDto - Info about user
      * @return true - registered, false - error
      */
@@ -78,21 +80,21 @@ public class UserService {
 
     /**
      * Update info about user in Database
+     *
      * @param userDto - new info about user
      * @return true - updated, false - error
      */
     public boolean updateUser(UserDto userDto) {
         Long id = getIdUserByLogin(userDto);
         boolean result = true;
-        if(checkValidUpdate(userDto)) {
+        if (checkValidUpdate(userDto)) {
             User user = new User(id, userDto.getUserName(),
                     userDto.getPassword(),
                     userDto.getEmail(),
                     userDto.isAdmin(),
                     userDto.isBlock());
             userDao.updateAllByEntity(user);
-        }
-        else {
+        } else {
             result = false;
         }
         return result;
@@ -109,6 +111,7 @@ public class UserService {
 
     /**
      * Check is Login process valid or no
+     *
      * @param loginDto - info about login process
      * @return true - info is correct, false - error
      */
@@ -128,20 +131,21 @@ public class UserService {
 
     /**
      * Block or unblock user
-     * @param userDto user's info
      *
+     * @param userDto user's info
      */
-    public boolean changeBlockStatus(UserDto userDto){
+    public boolean changeBlockStatus(UserDto userDto) {
         User user = userDao.getUserEntityByUsername(userDto.getUserName());
         user.setBlock(!user.isBlocked());
         return userDao.updateAllByEntity(user);
     }
+
     /**
      * make user admin or take the right
-     * @param userDto user's info
      *
+     * @param userDto user's info
      */
-    public boolean changeAdminStatus(UserDto userDto){
+    public boolean changeAdminStatus(UserDto userDto) {
         User user = userDao.getUserEntityByUsername(userDto.getUserName());
         user.setAdmin(!user.isAdmin());
         return userDao.updateAllByEntity(user);

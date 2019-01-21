@@ -40,16 +40,15 @@ public class UserLogin extends HttpServlet {
             response.addCookie(cookie);
             //response.sendRedirect(request.getContextPath() +
             //ControllerUrls.USER_ITEMS_SERVLET.toString());
-            if(userDto.isAdmin()) {
+            if (userDto.isAdmin()) {
                 getServletConfig()
                         .getServletContext()
-                        .getRequestDispatcher(ControllerUrls.ALL_USER_SERVLER.toString())//TODO Change to Main page
+                        .getRequestDispatcher(ControllerUrls.ALL_USER_SERVLER.toString())
                         .forward(request, response);
-            }
-            else {
+            } else {
                 getServletConfig()
                         .getServletContext()
-                        .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())//TODO Change to Main page
+                        .getRequestDispatcher(ControllerUrls.USER_ARTICLES_SERVLET.toString())
                         .forward(request, response);
             }
         } else {
@@ -66,7 +65,6 @@ public class UserLogin extends HttpServlet {
             dataBaseConnectionService.createDataTable();
             isFirstStart = false;
         }
-        System.out.println("NUSYA BAKA");
         getServletConfig()
                 .getServletContext()
                 .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

@@ -1,10 +1,9 @@
 package myArticles.edu.container;
 
 
-import myArticles.edu.DataBase.DAO.ArticleDao;
-import myArticles.edu.DataBase.DAO.UserDao;
+import myArticles.edu.DAO.ArticleDao;
+import myArticles.edu.DAO.UserDao;
 import myArticles.edu.Services.*;
-import myArticles.edu.controllers.Security;
 
 public final class IocContainer {
 

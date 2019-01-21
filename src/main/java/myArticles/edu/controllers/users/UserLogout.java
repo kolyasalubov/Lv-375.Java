@@ -12,6 +12,8 @@ import java.io.IOException;
 
 @WebServlet("/logout")
 public class UserLogout extends HttpServlet {
+    private static final long serialVersionUID = 5L;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

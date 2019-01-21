@@ -23,12 +23,12 @@ public class UserCreate extends HttpServlet {
     private static final long serialVersionUID = 2L;
     private UserService userService;
 
-    public UserCreate(){
+    public UserCreate() {
         userService = IocContainer.get().getUserService();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        boolean isAdmin = request.getParameter("isAdmin") != null;
+        boolean isAdmin = request.getParameter(ControllersConstant.IS_ADMIN.toString()) != null;
         if (Security.checkCorrectData(request)) {
             UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
                     request.getParameter(ControllersConstant.PASSWORD.toString()),
@@ -45,8 +45,7 @@ public class UserCreate extends HttpServlet {
                         .getRequestDispatcher(ViewUrls.USER_REGISTER_JSP.toString())
                         .forward(request, response);
             }
-        }
-        else {
+        } else {
             request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.PASSWORD_ERROR.toString());
             getServletConfig()
                     .getServletContext()
@@ -54,8 +53,6 @@ public class UserCreate extends HttpServlet {
                     .forward(request, response);
         }
     }
-
-
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -37,7 +37,7 @@
             </c:if>
     >10 items</option>
     <option value="25"
-            <c:if test="${visibleUsere eq '25'}">
+            <c:if test="${visibleUser eq '25'}">
                 selected="selected"
             </c:if>
     >25 items</option>
@@ -62,8 +62,8 @@
                 <td>${row.getEmail()}</td>
                 <td>${row.isBlock()}</td>
                 <td>${row.isAdmin()}</td>
-                <td><a href="${pageContext.request.contextPath}/changeblockstatus?UserName=${row.getUserName()}"  class="butt">(Un)Block</a></td>
-                <td><a href="${pageContext.request.contextPath}/changeadminstatus?UserName=${row.getUserName()}"  class="butt">(Make) Admin</a></td>
+                <td><a href="${pageContext.request.contextPath}/changeblockstatus?username=${row.getUserName()}"  class="butt">(Un)Block</a></td>
+                <td><a href="${pageContext.request.contextPath}/changeadminstatus?username=${row.getUserName()}"  class="butt">(Make) Admin</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -13,7 +13,7 @@
         <%@include file="../../../resources/css/ArticlePage.css" %>
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>Your Articles</title>
 </head>
 <body>
 <div class="one"><h1>Welcome to your profile</h1></div>
@@ -60,8 +60,8 @@
                 <td>${row.getName()}</td>
                 <td>${row.getDescription()}</td>
                 <td>${row.getUrl()}</td>
-                <td><a href="${pageContext.request.contextPath}/articleedit?Name=${row.getName()}" class="butt">edit</a></td>
-                <td><a href="#" onclick="checkDeleteItem('${hostContext}/articledelete?Name=${row.getName()}')" class="butt">delete</a></td>
+                <td><a href="${pageContext.request.contextPath}/articleedit?name=${row.getName()}" class="butt">edit</a></td>
+                <td><a href="#" onclick="checkDeleteItem('${hostContext}/articledelete?name=${row.getName()}')" class="butt">delete</a></td>
             </tr>
         </c:forEach>
     </table>

@@ -22,12 +22,13 @@ public class UserUpdate extends HttpServlet {
     private static final long serialVersionUID = 4L;
     private UserService userService;
 
-    public UserUpdate(){
+    public UserUpdate() {
         userService = IocContainer.get().getUserService();
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(Security.isActiveSession(request, response)) {
-            if(Security.checkCorrectData(request)) {
+        if (Security.isActiveSession(request, response)) {
+            if (Security.checkCorrectData(request)) {
                 UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
                         request.getParameter(ControllersConstant.PASSWORD.toString()),
                         request.getParameter(ControllersConstant.EMAIL.toString()),
@@ -36,7 +37,11 @@ public class UserUpdate extends HttpServlet {
 
                 if (userService.updateUser(userDto)) {
                     request.getSession().setAttribute(ControllersConstant.USER_DTO.toString(), userDto);
-                    response.sendRedirect(request.getContextPath() + ControllerUrls.USER_ARTICLES_SERVLET.toString());
+                    if (userDto.isAdmin()) {
+                        response.sendRedirect(request.getContextPath() + ControllerUrls.ALL_USER_SERVLER.toString());
+                    } else {
+                        response.sendRedirect(request.getContextPath() + ControllerUrls.USER_ARTICLES_SERVLET.toString());
+                    }
                 } else {
                     request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.UPDATE_ERROR.toString());
                     getServletConfig()
@@ -44,16 +49,14 @@ public class UserUpdate extends HttpServlet {
                             .getRequestDispatcher(ControllerUrls.USER_EDIT_SERVLET.toString())
                             .forward(request, response);
                 }
-            }
-            else {
+            } else {
                 request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.EDIT_PROFILE_PASSWORD_ERROR.toString());
                 getServletConfig()
                         .getServletContext()
                         .getRequestDispatcher(ControllerUrls.USER_EDIT_SERVLET.toString())
                         .forward(request, response);
             }
-        }
-        else{
+        } else {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()

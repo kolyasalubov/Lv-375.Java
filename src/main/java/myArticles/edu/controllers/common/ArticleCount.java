@@ -14,16 +14,16 @@ import java.io.IOException;
 
 @WebServlet("/articlescount")
 public class ArticleCount extends HttpServlet {
-    private static final long serialVersionUID = 13L;
+    private static final long serialVersionUID = 11L;
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(!(request.isRequestedSessionIdValid() && request.isRequestedSessionIdFromCookie())){
+        if (!(request.isRequestedSessionIdValid() && request.isRequestedSessionIdFromCookie())) {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
                     .forward(request, response);
-        }
-        else{
+        } else {
 
             getServletConfig()
                     .getServletContext()

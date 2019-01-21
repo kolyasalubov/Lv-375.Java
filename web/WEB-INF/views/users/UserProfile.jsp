@@ -10,7 +10,7 @@
 <html>
 <head>
     <style type="text/css">
-        <%@include file="../../../resources/css/EditAndAdd.css" %>
+        <%@include file="../../../resources/css/UsersPage.css" %>
     </style>
     <meta http-equiv="Content-Type" content="text/html;">
     <meta charset="utf-8">

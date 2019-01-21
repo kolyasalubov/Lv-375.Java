@@ -1,4 +1,4 @@
-package myArticles.edu.DataBase.DAO;
+package myArticles.edu.DAO;
 
 public interface IDaoCRUD<TEntity> {
     boolean insert(TEntity entity);

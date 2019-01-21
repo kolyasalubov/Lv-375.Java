@@ -3,6 +3,7 @@ package myArticles.edu.controllers.common;
 import myArticles.edu.Services.UserArticlesService;
 import myArticles.edu.container.IocContainer;
 import myArticles.edu.controllers.ControllerUrls;
+import myArticles.edu.controllers.ControllersConstant;
 import myArticles.edu.controllers.Security;
 import myArticles.edu.controllers.ViewUrls;
 import myArticles.edu.dto.ArticleDto;
@@ -20,31 +21,31 @@ import java.io.IOException;
 
 @WebServlet("/userarticle")
 public class UserArticles extends HttpServlet {
-    private static final long serialVersionUID = 11L;
+    private static final long serialVersionUID = 10L;
     private UserArticlesService userArticlesService;
 
-    public UserArticles(){
+    public UserArticles() {
         userArticlesService = IocContainer.get().getUserArticlesService();
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
 
-            String visibleArticle = PageConfiguration.getVisible(request, "visibleArticle");
+            String visibleArticle = PageConfiguration.getVisible(request, ControllersConstant.VISIBLE_ITEM_ARTICLE.toString());
 
             int pageNumber = PageConfiguration.getPageNumber(request);
 
             PageInfoDto pageInfoDto = new PageInfoDto(pageNumber, Integer.parseInt(visibleArticle));
             UsersArticleDto usersArticleDto = userArticlesService.getPageUsers(IocContainer.get()
                     .getUserService()
-                    .getUserDto(((LoginDto) (request.getSession(false).getAttribute("loginDto")))), pageInfoDto);
-            request.setAttribute("usersArticleDto", usersArticleDto);
-            request.setAttribute("countArticles", usersArticleDto.getArticles().size());
+                    .getUserDto(((LoginDto) (request.getSession(false).getAttribute(ControllersConstant.LOGIN_DTO.toString())))), pageInfoDto);
+            request.setAttribute(ControllersConstant.USER_ARTICLE_DTO.toString(), usersArticleDto);
+            request.setAttribute(ControllersConstant.NUMBER_OF_ARTICLES.toString(), usersArticleDto.getArticles().size());
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.USER_ARTICLES_JSP.toString())
                     .forward(request, response);
-        }
-        else {
+        } else {
             Security.endSession(response);
             getServletConfig()
                     .getServletContext()
@@ -55,6 +56,6 @@ public class UserArticles extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       doPost(request, response);
+        doPost(request, response);
     }
 }
