@@ -32,13 +32,11 @@ public class RoomServlet extends HttpServlet {
     private static final long serialVersionUID = 5L;
     private BookingService bookingService;
     private RoomService roomService;
-    private UserService userService;
 
     public RoomServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
-        userService = ObjContainer.getInstance().getUserService();
     }
 
     /**

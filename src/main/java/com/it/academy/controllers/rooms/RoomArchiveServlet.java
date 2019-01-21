@@ -11,6 +11,7 @@ import com.it.academy.dto.BookingUserDto;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.RoomDto;
 import com.it.academy.service.BookingService;
+import com.it.academy.service.RoomService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,10 +28,12 @@ public class RoomArchiveServlet extends HttpServlet {
 
     private static final long serialVersionUID = 6L;
     private BookingService bookingService;
+    private RoomService roomService;
 
     public RoomArchiveServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
+        roomService = ObjContainer.getInstance().getRoomService();
     }
 
     /**
@@ -39,7 +42,11 @@ public class RoomArchiveServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (RequestValidator.isValid(request)) {
 
-            RoomDto roomDto = (RoomDto) request.getAttribute(RoomConstants.ROOM_DTO.toString());
+            String number = request.getParameter(RoomConstants.NUMBER.toString());
+            RoomDto roomDto = new RoomDto();
+            roomDto.setNumber(number);
+            roomDto = roomService.fillRoomDtoInfo(roomDto);
+
             CollectionDto<BookingUserDto> bookings = bookingService.getPastBookingUserCollection(roomDto);
 
             request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
