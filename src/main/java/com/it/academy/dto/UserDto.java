@@ -94,4 +94,19 @@ public class UserDto {
     public void setIsBlocked(String isBlocked) {
         this.isBlocked = isBlocked;
     }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "idUser='" + idUser + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+                ", phone='" + phone + '\'' +
+                ", isAdmin='" + isAdmin + '\'' +
+                ", isBlocked='" + isBlocked + '\'' +
+                '}';
+    }
 }

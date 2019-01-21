@@ -27,31 +27,32 @@
         </p>
     </c:if>
 
-    <form action = "${pageContext.request.contextPath}/registration" method = "POST">
+    <form action = "${pageContext.request.contextPath}/${urlToPost}" method = "POST">
 
         <div class="container">
             <label ><b>Email</b></label>
-            <input type="text" placeholder="Enter email" name="email" required>
+            <input type="text" placeholder="Enter email" name="email" value="${userDto.email}" required>
 
             <label ><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" placeholder="Enter Password" name="password" value="${userDto.password}"required>
 
             <label ><b>Password again</b></label>
-            <input type="password" placeholder="Enter Password again" name="passwordRepeat" required>
+            <input type="password" placeholder="Enter Password again" name="passwordRepeat" value="${userDto.password}" required>
 
             <label ><b>First Name</b></label>
-            <input type="text" placeholder="Enter First Name" name="firstName" required>
+            <input type="text" placeholder="Enter First Name" name="firstName" value="${userDto.firstName}" required>
 
             <label ><b>Last Name</b></label>
-            <input type="text" placeholder="Enter Last Name" name="lastName" >
+            <input type="text" placeholder="Enter Last Name" name="lastName"  value="${userDto.lastName}">
 
             <label ><b>Position</b></label>
-            <input type="text" placeholder="Enter Position" name="position" >
+            <input type="text" placeholder="Enter Position" name="position" value="${userDto.position}" >
 
             <label ><b>Phone</b></label>
-            <input type="text" placeholder="Enter Phone" name="phone" >
+            <input type="text" placeholder="Enter Phone" name="phone" value="${userDto.phone}">
 
-            <button type="submit">Sign up</button>
+            <input type="hidden" name="idUser" value="${userDto.idUser}">
+            <button type="submit"> ${onSubmit} </button>
         </div>
 
         <div class="container" style="background-color:#f1f1f1">

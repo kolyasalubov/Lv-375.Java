@@ -26,6 +26,7 @@ public class UserService {
 
     private User dtoToUser(UserDto userDto){
         User user = new User();
+        user.setId(Long.parseLong(userDto.getIdUser()));
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setFirstName(userDto.getFirstName());
@@ -45,6 +46,7 @@ public class UserService {
         userDto.setLastName(user.getLastName());
         userDto.setPosition(user.getPosition());
         userDto.setPhone(user.getPhone());
+        userDto.setIsAdmin(String.valueOf(user.isAdmin()));
         return userDto;
     }
 

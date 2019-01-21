@@ -38,6 +38,8 @@ public class RegistrationServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.HOME_SERVLET.toString());
         } else {
+            request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Sign up");
+            request.setAttribute(UserConstants.URL_TO_POST.toString(), "registration");
             context.getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
                     .forward(request, response);
         }

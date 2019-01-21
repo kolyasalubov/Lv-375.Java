@@ -45,6 +45,7 @@ public class UserDao extends ADaoExist<User> {
     @Override
     protected List<Object> getUpdateFields(User user) {
         List<Object> list = getFields(user);
+        System.out.println(user.toString());
         list.remove(0);
         list.add(user.getId());
         return list;

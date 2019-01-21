@@ -14,7 +14,10 @@ public enum UserConstants {
     IS_BLOCKED("isBlocked"),
 
     LOGIN_DTO("loginDto"),
-    USER_DTO("userDto");
+    USER_DTO("userDto"),
+
+    URL_TO_POST("urlToPost"),
+    ON_SUBMIT("onSubmit");
 
     private String constant;
 

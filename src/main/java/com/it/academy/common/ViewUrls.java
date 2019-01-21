@@ -11,7 +11,6 @@ public enum ViewUrls {
     BOOKINGS_ARCHIVE_JSP("/WEB-INF/views/bookings/bookingsArchive.jsp"),
 
     USER_PROFILE_JSP("/WEB-INF/views/users/userProfile.jsp"),
-    ADMIN_PROFILE_JSP("/WEB-INF/views/admins/adminProfile.jsp"),
     USER_PROFILE_EDIT_JSP("/WEB-INF/views/users/userProfileEdit.jsp"),
     ROOM_PROFILE_JSP("/WEB-INF/views/rooms/roomProfile.jsp"),
     BOOKING_PROFILE_JSP("/WEB-INF/views/bookings/bookingProfile.jsp"),

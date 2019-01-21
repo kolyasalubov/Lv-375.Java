@@ -9,8 +9,7 @@ public enum ControllerUrls {
 
     USER_SERVLET("/profile"),        //TODO
     USER_EDIT_SERVLET("/user-edit"),        //TODO
-    ADMIN_EDIT_SERVLET("/admin-edit"),	    //TODO
-    USER_UPDATE_SERVLET("/user-update"),    //TODO
+
     ROOM_CREATE_SERVLET("/room-create"),	//TODO
     ROOM_EDIT_SERVLET("/room-edit"),		//TODO
     ROOM_DELETE_SERVLET("/room-delete"),    //TODO
@@ -19,14 +18,14 @@ public enum ControllerUrls {
     BOOKING_EDIT_SERVLET("/booking-edit"),
     BOOKING_DELETE_SERVLET("/booking-delete"),
 
-    ITEM_COUNT_SERVLET("/itemcount"), // ??? pagination ???
+    ITEM_COUNT_SERVLET("/itemcount"), // TODO ??? pagination ???
     HOME_SERVLET("/home"),
 
     ROOM_SERVLET("/room"),
     ROOM_ARCHIVE_SERVLET("/room-archive"),
 
-    BOOKINGS_SERVLET("/bookings"),  //TODO
-    BOOKINGS_ARCHIVE_SERVLET("/bookings-archive"), //TODO
+    BOOKINGS_SERVLET("/bookings"),
+    BOOKINGS_ARCHIVE_SERVLET("/bookings-archive"),
 
     ADMIN_ROOMS_SERVLET("/admin-rooms"), //TODO
     ADMIN_USERS_SERVLET("/admin-users"); //TODO
