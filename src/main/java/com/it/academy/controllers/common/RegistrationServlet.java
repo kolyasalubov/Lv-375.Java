@@ -33,14 +33,16 @@ public class RegistrationServlet extends HttpServlet {
      * Shows the registration form or the main page
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletContext context = getServletConfig().getServletContext();
+
         if (RequestValidator.isValid(request)) {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.HOME_SERVLET.toString());
         } else {
             request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Sign up");
             request.setAttribute(UserConstants.URL_TO_POST.toString(), "registration");
-            context.getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
+            getServletConfig()
+                    .getServletContext()
+                    .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
                     .forward(request, response);
         }
     }
@@ -77,6 +79,8 @@ public class RegistrationServlet extends HttpServlet {
 
         // Show Error Validator
         if(request.getAttribute("error") != null){
+            request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Sign up");
+            request.setAttribute(UserConstants.URL_TO_POST.toString(), "registration");
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())

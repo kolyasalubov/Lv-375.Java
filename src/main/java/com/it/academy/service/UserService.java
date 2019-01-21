@@ -26,7 +26,8 @@ public class UserService {
 
     private User dtoToUser(UserDto userDto){
         User user = new User();
-        user.setId(Long.parseLong(userDto.getIdUser()));
+        if(userDto.getIdUser() != null)
+            user.setId(Long.parseLong(userDto.getIdUser()));
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setFirstName(userDto.getFirstName());
@@ -34,6 +35,7 @@ public class UserService {
         user.setPosition(userDto.getPosition());
         user.setPhone(userDto.getPhone());
         user.setAdmin(Boolean.parseBoolean(userDto.getIsAdmin()));
+        user.setBlocked(Boolean.parseBoolean(userDto.getIsBlocked()));
         return user;
     }
 
@@ -47,6 +49,7 @@ public class UserService {
         userDto.setPosition(user.getPosition());
         userDto.setPhone(user.getPhone());
         userDto.setIsAdmin(String.valueOf(user.isAdmin()));
+        userDto.setIsBlocked(String.valueOf(user.isBlocked()));
         return userDto;
     }
 
@@ -146,7 +149,7 @@ public class UserService {
     private boolean giveRightsToUser(UserDto userDto, String fieldName, String fieldValue){
         boolean result = true;
         try{
-            userDao.updateFieldById(fieldName, String.valueOf(Boolean.parseBoolean(fieldValue)),
+            userDao.updateFieldById(fieldName, fieldValue,
                     Long.parseLong(userDto.getIdUser()));
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());

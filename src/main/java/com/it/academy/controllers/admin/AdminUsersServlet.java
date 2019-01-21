@@ -58,18 +58,18 @@ public class AdminUsersServlet extends HttpServlet {
         String isAdmin = request.getParameter(UserConstants.IS_ADMIN.toString());
         String isBlocked = request.getParameter(UserConstants.IS_BLOCKED.toString());
 
-        // TODO fix
         UserDto userDto = new UserDto();
         userDto.setIdUser(id);
-        if (isAdmin != null) {
+
             userDto.setIsAdmin(isAdmin);
             userService.adminToUser(userDto);
-        } else {
+
             userDto.setIsBlocked(isBlocked);
             userService.blockToUser(userDto);
-        }
 
-        doGet(request, response);
+        response.sendRedirect(request.getContextPath()
+                + ControllerUrls.ADMIN_USERS_SERVLET);
     }
+
 
 }

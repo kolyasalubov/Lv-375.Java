@@ -12,14 +12,14 @@
 <head>
     <title>adminUsers</title>
 
-    <%--<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"--%>
-          <%--type="text/css"/>--%>
-    <%--<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"--%>
-          <%--type="text/css"/>--%>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
+          type="text/css"/>
 
 
 </head>
-<body>
+<body style="margin-top: 60px">
 
 <jsp:include page="/WEB-INF/views/common/navBar.jsp">
     <jsp:param name="active" value="P"/>
@@ -52,7 +52,7 @@
     <tbody>
     <c:forEach var="user" items="${userList}">
 
-        <form id="giveRights" action="${pageContext.request.contextPath}/admin-users" method="POST">
+        <form id="giveRights${user.idUser}" action="${pageContext.request.contextPath}/admin-users" method="POST">
             <tr>
                 <td> ${user.firstName} </td>
                 <td> ${user.lastName} </td>
@@ -62,15 +62,19 @@
                 <c:choose>
                     <c:when test="${user.isAdmin eq true}">
                         <td class="positive">
-                            <div class="ui fitted slider checkbox">
-                                <input type="checkbox" name="isAdmin" value="true" onclick="submitForm()" checked>
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="isAdmin" onclick="submitForm(${user.idUser})" value="true" checked>
+                                <input type="hidden" name="isAdmin" value="false">
+                                <label></label>
                             </div>
                         </td>
                     </c:when>
                     <c:otherwise>
-                        <td class="collapsing">
-                            <div class="ui fitted slider checkbox">
-                                <input type="checkbox" name="isAdmin" onclick="submitForm()" value="true">
+                        <td>
+                            <div class="ui toggle checkbox">
+                                <input type="checkbox" name="isAdmin" onclick="submitForm(${user.idUser})" value="true" >
+                                <input type="hidden" name="isAdmin" value="false">
+                                <label></label>
                             </div>
                         </td>
                     </c:otherwise>
@@ -80,20 +84,24 @@
                     <c:when test="${user.isBlocked eq true}">
                         <td class="negative">
                             <div class="ui toggle checkbox">
-                                <input type="checkbox" name="isBlocked" onclick="submitForm()" value="true" checked>
+                                <input type="checkbox" name="isBlocked" onclick="submitForm(${user.idUser})" value="true" checked>
+                                <input type="hidden" name="isBlocked" value="false">
+                                <label></label>
                             </div>
                         </td>
                     </c:when>
                     <c:otherwise>
                         <td>
-                            <div class="ui toggle checkbox">
-                                <input type="checkbox" name="isBlocked" onclick="submitForm()" value="true">
+                            <div class="ui fitted toggle checkbox">
+                                <input type="checkbox" name="isBlocked" onclick="submitForm(${user.idUser})" value="true">
+                                <input type="hidden" name="isBlocked" value="false">
+                                <label></label>
                             </div>
                         </td>
                     </c:otherwise>
                 </c:choose>
 
-                <input type="hidden" name="idUser" value="${userDto.idUser}">
+                <input type="hidden" name="idUser" value="${user.idUser}">
 
             </tr>
         </form>
@@ -103,17 +111,9 @@
     </tbody>
 </table>
 
-<div class="ui fitted slider checkbox">
-    <input type="checkbox" name="isAdmin" value="true">
-</div>
-
-<div class="ui toggle checkbox">
-    <input type="checkbox" name="isBlocked" value="true">
-</div>
-
 <script>
-    function submitForm() {
-        var form = document.getElementById("giveRights");
+    function submitForm(id) {
+        var form = document.getElementById("giveRights" + id);
         form.submit();
     }
 </script>

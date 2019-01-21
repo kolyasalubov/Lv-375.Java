@@ -28,12 +28,10 @@ public class BookingDeleteServlet extends HttpServlet{
 
     private static final long serialVersionUID = 9L;
     private BookingService bookingService;
-    private RoomService roomService;
 
     public BookingDeleteServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
-        roomService = ObjContainer.getInstance().getRoomService();
     }
 
     /**

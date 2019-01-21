@@ -44,9 +44,6 @@ public class LoginServlet extends HttpServlet {
             context.getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())
                     .forward(request, response);
         }
-
-//        PrintWriter out = new PrintWriter(response.getWriter());
-//        out.println("This a test!!!");
     }
 
     /**
