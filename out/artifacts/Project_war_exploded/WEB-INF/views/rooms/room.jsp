@@ -94,86 +94,101 @@
 
 <c:set var="bookingList" value="${bookings.collection}"/>
 <c:if test="${bookingList ne null && bookingList.size() gt 0}">
-    <div class="bookingist">
-        <c:forEach var="booking" items="${bookingList}">
+    <div class="roomList">
+    <c:forEach var="booking" items="${bookingList}">
 
-            <div class="booking">
-                <p>
-                        ${booking.startDate}
-                    <c:if test="${booking.startDate ne booking.endDate}">
-                        - ${booking.endDate}
-                    </c:if>
-                </p>
-                <p> ${booking.startTime} - ${booking.endTime} </p>
-                <div class="userInfo">
-                    <h5> ${booking.userFirstName} ${booking.userLastName}</h5>
-
-                    <p> ${booking.purpose} </p>
-                </div>
+        <div class="ui special cards">
+            <div class="purple card">
 
                 <c:if test="${(booking.userEmail eq loginDto.email) and (archive eq null)}">
 
-                    <%--TODO urlToGoBack--%>
+                    <div id="btns">
+                        <c:url value='${pageContext.request.contextPath}/booking-edit' var="editUrl">
+                            <c:param name='idBooking' value='${booking.idBooking}'/>
+                            <c:param name='urlToGoBack' value='${pageContext.request.contextPath}/room'/>
+                        </c:url>
+                        <button class="ui purple button" onclick="openPage('${pageScope.editUrl}')">
+                            Edit
+                        </button>
 
-                    <c:url value='${pageContext.request.contextPath}/booking-edit' var="editUrl">
-                        <c:param name='idBooking' value='${booking.idBooking}'/>
-                        <c:param name='urlToGoBack' value='${pageContext.request.contextPath}/room'/>
-                    </c:url>
-                    <button type="button" class="edit" onclick="openPage('${pageScope.editUrl}')">
-                        Edit
-                    </button>
-
-                    <c:url value='${pageContext.request.contextPath}/booking-delete' var="deleteUrl">
-                        <c:param name='idBooking' value='${booking.idBooking}'/>
-                        <c:param name='urlToGoBack' value='${pageContext.request.contextPath}/room'/>
-                    </c:url>
-                    <button type="button" class="delete" onclick="openWithConfirm('${pageScope.deleteUrl}')">
-                        Delete
-                    </button>
+                        <c:url value='${pageContext.request.contextPath}/booking-delete' var="deleteUrl">
+                            <c:param name='idBooking' value='${booking.idBooking}'/>
+                            <c:param name='urlToGoBack' value='${pageContext.request.contextPath}/room'/>
+                        </c:url>
+                        <button class="ui purple button"  onclick="openWithConfirm('${pageScope.deleteUrl}')">
+                            Delete
+                        </button>
+                    </div>
 
                 </c:if>
+
+                <div class="content">
+                    <a class="header"> ${booking.startTime} - ${booking.endTime} </a>
+                    <div class="meta">
+                            <span class="date"> ${booking.startDate}
+                    <c:if test="${booking.startDate ne booking.endDate}">
+                        - ${booking.endDate}
+                    </c:if> </span>
+                    </div>
+                    <div class="meta">
+                        <span class="date"> ${booking.purpose} </span>
+                    </div>
+
+
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="users icon"></i>
+                            ${booking.userFirstName} ${booking.userLastName}
+                    </a>
+                </div>
+
             </div>
 
-        </c:forEach>
+        </div>
+        </div>
+
+
+    </c:forEach>
     </div>
 </c:if>
 
 <div id="error">
-<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
-    <jsp:param name="error" value="${error}"/>
-</jsp:include>
+    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
+        <jsp:param name="error" value="${error}"/>
+    </jsp:include>
 </div>
 
 
 <%--PAGINATION--%>
 <c:if test="${bookingList ne null && bookingList.size() gt 0}">
-<div id="pag">
-<div class="ui pagination menu">
+    <div id="pag">
+        <div class="ui pagination menu">
 
-    <c:forEach begin="1" end='${bookings.pageCount}' varStatus="loop">
+            <c:forEach begin="1" end='${bookings.pageCount}' varStatus="loop">
 
-        <c:url value='${urlToPage}' var="pageUrl">
-            <c:param name='pageOffset' value='${bookings.pageOffset}'/>
-            <c:param name='page' value='${loop.index}'/>
-        </c:url>
+                <c:url value='${urlToPage}' var="pageUrl">
+                    <c:param name='pageOffset' value='${bookings.pageOffset}'/>
+                    <c:param name='page' value='${loop.index}'/>
+                </c:url>
 
-        <a id='${loop.index}' class="item" onclick="openPage('${pageScope.pageUrl}')">
-                ${loop.index}
-        </a>
+                <a id='${loop.index}' class="item" onclick="openPage('${pageScope.pageUrl}')">
+                        ${loop.index}
+                </a>
 
-    </c:forEach>
+            </c:forEach>
 
-    <script>
-        function selectPage(page) {
-            let el = document.getElementById(page);
-            el.classList.add("active");
-        }
+            <script>
+                function selectPage(page) {
+                    let el = document.getElementById(page);
+                    el.classList.add("active");
+                }
 
-        selectPage('${bookings.page}');
-    </script>
+                selectPage('${bookings.page}');
+            </script>
 
-</div>
-</div>
+        </div>
+    </div>
 </c:if>
 
 

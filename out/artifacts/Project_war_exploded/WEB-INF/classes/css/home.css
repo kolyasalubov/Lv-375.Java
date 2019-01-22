@@ -25,3 +25,7 @@
     display: flex;
     justify-content: center;
 }
+
+#btns{
+    margin: 10px;
+}
