@@ -92,7 +92,7 @@
 </c:if>
 
 <%--PAGINATION--%>
-
+<c:if test="${bookingList ne null && bookingList.size() gt 0}">
 <div id="pag">
 <div class="ui pagination menu">
 
@@ -120,6 +120,7 @@
 
 </div>
 </div>
+</c:if>
 
 
 <script type="text/javascript">

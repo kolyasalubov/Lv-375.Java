@@ -23,24 +23,26 @@
     </style>
 
 </head>
-<body style="margin-top: 60px">
+<body style="margin-top: 80px">
 
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/navBar.jsp">
     <jsp:param name="active" value="P"/>
 </jsp:include>
 
+<div class="topTooltipUser">
 <c:if test="${userDto.isAdmin eq true}">
-    <button type="button" class="archive" onclick="openPage('${pageContext.request.contextPath}/admin-users')" >
+    <button class="ui teal button" onclick="openPage('${pageContext.request.contextPath}/admin-users')" >
             Admin page
     </button>
 </c:if>
+</div>
 
 <div class="userInfo">
     <div class="ui segments">
         <div class="ui segment">
             <p> Email </p>
         </div>
-        <div class="ui teal segment">
+        <div class="ui teal segment" id="grey">
             <p> ${userDto.email} </p>
         </div>
     </div>
@@ -49,7 +51,7 @@
         <div class="ui segment">
             <p> First Name </p>
         </div>
-        <div class="ui teal segment">
+        <div class="ui teal segment" id="grey">
             <p> ${userDto.firstName} </p>
         </div>
     </div>
@@ -58,7 +60,7 @@
         <div class="ui segment">
             <p> Last Name </p>
         </div>
-        <div class="ui teal segment">
+        <div class="ui teal segment" id="grey">
             <p> ${userDto.lastName} </p>
         </div>
     </div>
@@ -67,7 +69,7 @@
         <div class="ui segment">
             <p> Phone </p>
         </div>
-        <div class="ui teal segment">
+        <div class="ui teal segment" id="grey">
             <p> ${userDto.phone} </p>
         </div>
     </div>
@@ -76,7 +78,7 @@
         <div class="ui segment">
             <p> Position </p>
         </div>
-        <div class="ui teal segment">
+        <div class="ui teal segment"id="grey" >
             <p> ${userDto.position} </p>
         </div>
     </div>

@@ -116,6 +116,8 @@
 
 </div>
 
+<c:if test="${bookingList ne null && bookingList.size() gt 0}">
+
 <div class="ui pagination menu">
 
     <c:forEach begin="1" end='${rooms.pageCount}' varStatus="loop">
@@ -141,6 +143,7 @@
     </script>
 
 </div>
+</c:if>
 
 
 <script type="text/javascript">

@@ -10,6 +10,12 @@
     margin: 0px 50px;
 }
 
+.topTooltipUser{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 50px;
+}
+
 #room{
     margin: 10px;
     cursor: pointer;
@@ -25,7 +31,25 @@
     display: flex;
     justify-content: center;
 }
-
 #btns{
     margin: 10px;
+}
+
+#conteiner{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+}
+
+.pair{
+    display: flex;
+    justify-content: space-between;
+}
+
+.userInfo{
+    margin: 50px;
+}
+
+#grey{
+    background-color: azure;
 }
