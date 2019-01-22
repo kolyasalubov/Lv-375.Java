@@ -23,7 +23,7 @@
     </style>
 
 </head>
-<body style="margin-top: 60px">
+<body style="margin-top: 80px">
 
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/navBar.jsp">
     <jsp:param name="active" value="P"/>
@@ -31,27 +31,52 @@
 
 <div class="topTooltip">
 
-    <button type="button" onclick="openPage('${pageContext.request.contextPath}/admin-users')">
-        Users
-    </button>
+    <div id="right">
+        <button class="ui teal button" onclick="openPage('${pageContext.request.contextPath}/admin-users')">
+            Users
+        </button>
 
-    <button type="button" onclick="openPage('${pageContext.request.contextPath}/admin-rooms')">
-        Rooms
-    </button>
+        <button class="ui teal button" onclick="openPage('${pageContext.request.contextPath}/admin-rooms')">
+            Rooms
+        </button>
 
-    <%--TODO move to right--%>
-    <button type="button" onclick="openPage('${pageContext.request.contextPath}/room-create')">
-        Add room
-    </button>
+        <button class="ui yellow button" onclick="openPage('${pageContext.request.contextPath}/room-create')">
+            Add room
+        </button>
+
+        <div id="drop">
+
+            <select class="ui dropdown" onchange="selectPerPage(value)">
+                <option value="" hidden disabled> Show per page</option>
+                <option id="1" value="1"> Show 1</option>
+                <option id="5" value="5"> Show 5</option>
+                <option id="10" value="10"> Show 10</option>
+                <option id="15" value="15"> Show 15</option>
+                <option id="20" value="20"> Show 20</option>
+            </select>
+
+            <script>
+                function init(offset) {
+                    let el = document.getElementById(offset);
+                    el.selected = 'true';
+                }
+
+                init('${rooms.pageOffset}');
+            </script>
+
+        </div>
+    </div>
 </div>
 
 <c:set var="roomList" value="${rooms.collection}"/>
 <c:if test="${roomList ne null && roomList.size() gt 0}">
-    <table class="ui selectable celled teal table">
+    <table class="ui selectable celled teal table" id="marg">
         <thead>
         <tr>
             <th>Room number</th>
             <th>Type</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -59,31 +84,26 @@
             <tr>
                 <td> ${room.number} </td>
                 <td> ${room.type} </td>
+                <td><c:url value='${pageContext.request.contextPath}/room-edit' var="editUrl">
+                    <c:param name='idRoom' value='${room.idRoom}'/>
+                </c:url>
+                    <button class="ui yellow button" class="edit" onclick="openPage('${pageScope.editUrl}')">
+                        Edit
+                    </button>
+                </td>
+                <td>
+                    <c:url value='${pageContext.request.contextPath}/room-delete' var="deleteUrl">
+                        <c:param name='idRoom' value='${room.idRoom}'/>
+                    </c:url>
+                    <button class="ui red button" class="delete" onclick="openWithConfirm('${pageScope.deleteUrl}')">
+                        Delete
+                    </button>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
-    <div class="btns">
-        <c:forEach var="room" items="${roomList}">
-            <div class="pair">
-                <c:url value='${pageContext.request.contextPath}/room-edit' var="editUrl">
-                    <c:param name='idRoom' value='${room.idRoom}'/>
-                </c:url>
-                <button type="button" class="edit" onclick="openPage('${pageScope.editUrl}')">
-                    Edit
-                </button>
-
-                <c:url value='${pageContext.request.contextPath}/room-delete' var="deleteUrl">
-                    <c:param name='idRoom' value='${room.idRoom}'/>
-                </c:url>
-                <button type="button" class="delete" onclick="openWithConfirm('${pageScope.deleteUrl}')">
-                    Delete
-                </button>
-            </div>
-        </c:forEach>
-    </div>
-    </table>
 </c:if>
 
 <div id="error">
@@ -94,56 +114,34 @@
 
 <%--PAGINATION--%>
 
-<div>
 
-    <select class="ui dropdown" onchange="selectPerPage(value)">
-        <option value="" hidden disabled> Show per page</option>
-        <option id="1" value="1"> 1</option>
-        <option id="5" value="5"> 5</option>
-        <option id="10" value="10"> 10</option>
-        <option id="15" value="15"> 15</option>
-        <option id="20" value="20"> 20</option>
-    </select>
+<div id="pag">
+    <div class="ui pagination menu">
 
-    <script>
-        function init(offset) {
-            let el = document.getElementById(offset);
-            el.selected = 'true';
-        }
+        <c:forEach begin="1" end='${rooms.pageCount}' varStatus="loop">
 
-        init('${rooms.pageOffset}');
-    </script>
+            <c:url value='${pageContext.request.contextPath}/admin-rooms' var="pageUrl">
+                <c:param name='pageOffset' value='${rooms.pageOffset}'/>
+                <c:param name='page' value='${loop.index}'/>
+            </c:url>
 
+            <a id='${loop.index}' class="item" onclick="openPage('${pageScope.pageUrl}')">
+                    ${loop.index}
+            </a>
+
+        </c:forEach>
+
+        <script>
+            function selectPage(page) {
+                let el = document.getElementById(page);
+                el.classList.add("active");
+            }
+
+            selectPage('${rooms.page}');
+        </script>
+
+    </div>
 </div>
-
-<c:if test="${bookingList ne null && bookingList.size() gt 0}">
-
-<div class="ui pagination menu">
-
-    <c:forEach begin="1" end='${rooms.pageCount}' varStatus="loop">
-
-        <c:url value='${pageContext.request.contextPath}/admin-rooms' var="pageUrl">
-            <c:param name='pageOffset' value='${rooms.pageOffset}'/>
-            <c:param name='page' value='${loop.index}'/>
-        </c:url>
-
-        <a id='${loop.index}' class="item" onclick="openPage('${pageScope.pageUrl}')">
-                ${loop.index}
-        </a>
-
-    </c:forEach>
-
-    <script>
-        function selectPage(page) {
-            let el = document.getElementById(page);
-            el.classList.add("active");
-        }
-
-        selectPage('${rooms.page}');
-    </script>
-
-</div>
-</c:if>
 
 
 <script type="text/javascript">

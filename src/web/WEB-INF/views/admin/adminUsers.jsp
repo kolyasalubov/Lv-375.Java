@@ -23,7 +23,7 @@
     </style>
 
 </head>
-<body style="margin-top: 60px">
+<body style="margin-top: 80px">
 
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/navBar.jsp">
     <jsp:param name="active" value="P"/>
@@ -31,17 +31,42 @@
 
 <div class="topTooltip">
 
-    <button type="button" onclick="openPage('${pageContext.request.contextPath}/admin-users')">
+    <div id="right">
+    <button class="ui teal button" onclick="openPage('${pageContext.request.contextPath}/admin-users')">
         Users
     </button>
 
-    <button type="button" onclick="openPage('${pageContext.request.contextPath}/admin-rooms')">
+    <button class="ui teal button" onclick="openPage('${pageContext.request.contextPath}/admin-rooms')">
         Rooms
     </button>
+
+    <div id="drop">
+
+        <select class="ui dropdown" onchange="selectPerPage(value)">
+            <option value="" hidden disabled> Show per page</option>
+            <option id="1" value="1"> Show 1</option>
+            <option id="5" value="5">  Show 5</option>
+            <option id="10" value="10">  Show 10</option>
+            <option id="15" value="15">  Show 15</option>
+            <option id="20" value="20">  Show 20</option>
+        </select>
+
+        <script>
+            function init(offset) {
+                let el = document.getElementById(offset);
+                el.selected = 'true';
+            }
+
+            init('${users.pageOffset}');
+        </script>
+
+    </div>
+
+    </div>
 </div>
 
 <c:set var="userList" value="${users.collection}"/>
-<table class="ui selectable celled teal table">
+<table class="ui selectable celled teal table" id="marg">
     <thead>
     <tr>
         <th>First Name</th>
@@ -116,28 +141,7 @@
 
 <%--PAGINATION--%>
 
-<div>
-
-    <select class="ui dropdown" onchange="selectPerPage(value)">
-        <option value="" hidden disabled> Show per page</option>
-        <option id="1" value="1"> 1</option>
-        <option id="5" value="5"> 5</option>
-        <option id="10" value="10"> 10</option>
-        <option id="15" value="15"> 15</option>
-        <option id="20" value="20"> 20</option>
-    </select>
-
-    <script>
-        function init(offset) {
-            let el = document.getElementById(offset);
-            el.selected = 'true';
-        }
-
-        init('${users.pageOffset}');
-    </script>
-
-</div>
-
+    <div id="pag">
 <div class="ui pagination menu">
 
     <c:forEach begin="1" end='${users.pageCount}' varStatus="loop">
@@ -163,6 +167,8 @@
     </script>
 
 </div>
+    </div>
+
 
 
 <script type="text/javascript">
