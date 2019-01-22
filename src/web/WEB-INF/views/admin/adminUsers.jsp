@@ -17,10 +17,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
           type="text/css"/>
 
-
-    <%--<style type="text/css">--%>
-        <%--<%@include file="../../../resources/css/toggle.css" %>--%>
-    <%--</style>--%>
+    <style type="text/css">
+        <%@include file="../../../resources/css/home.css" %>
+        <%@include file="../../../resources/css/pagination.css" %>
+    </style>
 
 </head>
 <body style="margin-top: 60px">
