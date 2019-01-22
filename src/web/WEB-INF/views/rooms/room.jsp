@@ -97,7 +97,7 @@
     <div class="roomList">
     <c:forEach var="booking" items="${bookingList}">
 
-        <div class="ui special cards">
+        <div class="ui special cards" id="room">
             <div class="purple card">
 
                 <c:if test="${(booking.userEmail eq loginDto.email) and (archive eq null)}">
@@ -146,8 +146,6 @@
             </div>
 
         </div>
-        </div>
-
 
     </c:forEach>
     </div>

@@ -21,6 +21,7 @@
 
     <style type="text/css">
         <%@include file="../../../resources/css/home.css" %>
+        <%@include file="../../../resources/css/darkForm.css" %>
         <%@include file="../../../resources/css/pagination.css" %>
     </style>
 
@@ -36,11 +37,11 @@
 <form action="${pageContext.request.contextPath}${urlToPost}" method="POST">
 
     <div class="ui container">
-        <h1>New Booking</h1>
+        <h1 id="title">New Booking</h1>
 
         <div class="ui form">
 
-            <div class="field">
+            <div class="field" >
                 <h3>Room Number</h3>
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
@@ -94,10 +95,10 @@
 
         </div>
 
-        <button class="negative ui button left floated" type="button" onclick="goBack()" >
+        <button class="negative ui large button left floated" type="button" onclick="goBack()" >
             Cancel
         </button>
-        <button class="positive ui button right floated" type="submit" > Save </button>
+        <button class="positive ui large button right floated" type="submit" > Save </button>
 
     </div>
 </form>

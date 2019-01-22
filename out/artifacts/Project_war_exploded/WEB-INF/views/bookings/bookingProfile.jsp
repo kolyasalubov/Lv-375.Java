@@ -18,23 +18,30 @@
           type="text/css"/>
     <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css"
           rel="stylesheet" type="text/css"/>
+
+    <style type="text/css">
+        <%@include file="../../../resources/css/home.css" %>
+        <%@include file="../../../resources/css/darkForm.css" %>
+        <%@include file="../../../resources/css/pagination.css" %>
+    </style>
+
 </head>
 <body>
 
-<c:if test="${error ne null}">
-    <p>
-        <font color="red">${error}</font>
-    </p>
-</c:if>
+<div id="error">
+    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
+        <jsp:param name="error" value="${error}"/>
+    </jsp:include>
+</div>
 
 <form action="${pageContext.request.contextPath}${urlToPost}" method="POST">
 
     <div class="ui container">
-        <h1>New Booking</h1>
+        <h1 id="title">New Booking</h1>
 
         <div class="ui form">
 
-            <div class="field">
+            <div class="field" >
                 <h3>Room Number</h3>
                 <div class="ui input left icon">
                     <i class="calendar icon"></i>
@@ -88,10 +95,10 @@
 
         </div>
 
-        <button class="negative ui button left floated" type="button" onclick="goBack()" >
+        <button class="negative ui large button left floated" type="button" onclick="goBack()" >
             Cancel
         </button>
-        <button class="positive ui button right floated" type="submit" > Save </button>
+        <button class="positive ui large button right floated" type="submit" > Save </button>
 
     </div>
 </form>

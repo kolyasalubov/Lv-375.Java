@@ -17,6 +17,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
           type="text/css"/>
 
+    <style type="text/css">
+        <%@include file="../../../resources/css/home.css" %>
+        <%@include file="../../../resources/css/pagination.css" %>
+    </style>
 
 </head>
 <body style="margin-top: 60px">
@@ -82,9 +86,11 @@
     </table>
 </c:if>
 
-<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
-    <jsp:param name="error" value="${error}"/>
-</jsp:include>
+<div id="error">
+    <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
+        <jsp:param name="error" value="${error}"/>
+    </jsp:include>
+</div>
 
 <%--PAGINATION--%>
 
