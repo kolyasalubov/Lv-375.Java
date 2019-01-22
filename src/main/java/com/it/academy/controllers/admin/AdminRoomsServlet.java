@@ -3,10 +3,7 @@ package com.it.academy.controllers.admin;
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
-import com.it.academy.constants.BookingConstants;
-import com.it.academy.constants.PaginationConstants;
-import com.it.academy.constants.RoomConstants;
-import com.it.academy.constants.UserConstants;
+import com.it.academy.constants.*;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.*;
 import com.it.academy.service.PaginationService;
@@ -44,9 +41,10 @@ public class AdminRoomsServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
             if(requestValidator.isAdmin(request)) {
+
                 CollectionDto<RoomDto> rooms = roomService.getRoomCollectionDto();
                 if (rooms == null)
-                    request.setAttribute("error", "There are no rooms yet!");
+                    request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.NO_ROOMS.toString());
                 else {
                     String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
                     String page = request.getParameter(PaginationConstants.PAGE.toString());
@@ -60,7 +58,7 @@ public class AdminRoomsServlet extends HttpServlet{
                         .getRequestDispatcher(ViewUrls.ADMIN_ROOMS_JSP.toString())
                         .forward(request, response);
             } else {
-                request.setAttribute("error", "You are not the admin!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.NOT_THE_ADMIN.toString());
                 getServletConfig()
                         .getServletContext()
                         .getRequestDispatcher(request.getContextPath()

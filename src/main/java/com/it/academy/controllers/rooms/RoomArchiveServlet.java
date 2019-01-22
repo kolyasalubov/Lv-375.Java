@@ -3,10 +3,7 @@ package com.it.academy.controllers.rooms;
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
-import com.it.academy.constants.BookingConstants;
-import com.it.academy.constants.PaginationConstants;
-import com.it.academy.constants.RoomConstants;
-import com.it.academy.constants.UserConstants;
+import com.it.academy.constants.*;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.BookingUserDto;
 import com.it.academy.dto.CollectionDto;
@@ -57,7 +54,7 @@ public class RoomArchiveServlet extends HttpServlet {
             CollectionDto<BookingUserDto> bookings = bookingService.getPastBookingUserCollection(roomDto);
 
             if(bookings == null)
-                request.setAttribute("error", "There are no bookings!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.NO_BOOKINGS.toString());
             else {
                 String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
                 String page = request.getParameter(PaginationConstants.PAGE.toString());
@@ -69,8 +66,6 @@ public class RoomArchiveServlet extends HttpServlet {
             request.setAttribute(RoomConstants.ROOM_DTO.toString(), roomDto);
             request.setAttribute(BookingConstants.ARCHIVE.toString(), true);
 
-            if(bookings == null)
-                request.setAttribute("error", "There are no bookings!");
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.ROOM_JSP.toString())

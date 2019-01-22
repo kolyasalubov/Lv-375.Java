@@ -2,12 +2,9 @@ package com.it.academy.controllers.rooms;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
-import com.it.academy.constants.PaginationConstants;
-import com.it.academy.constants.UserConstants;
+import com.it.academy.constants.*;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
-import com.it.academy.constants.BookingConstants;
-import com.it.academy.constants.RoomConstants;
 import com.it.academy.dto.BookingUserDto;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.LoginDto;
@@ -61,7 +58,7 @@ public class RoomServlet extends HttpServlet {
             CollectionDto<BookingUserDto> bookings = bookingService.getFutureBookingUserCollection(roomDto);
 
             if(bookings == null)
-                request.setAttribute("error", "There are no bookings!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.NO_BOOKINGS.toString());
             else {
                 String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
                 String page = request.getParameter(PaginationConstants.PAGE.toString());

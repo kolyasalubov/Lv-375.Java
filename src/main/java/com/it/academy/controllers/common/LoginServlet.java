@@ -2,6 +2,7 @@ package com.it.academy.controllers.common;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.constants.ErrorConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.UserConstants;
@@ -66,14 +67,14 @@ public class LoginServlet extends HttpServlet {
                         + ControllerUrls.HOME_SERVLET.toString());
 
             } else {
-                request.setAttribute("error", "You are blocked user!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.BLOCKED.toString());
             }
         } else {
-            request.setAttribute("error", "Bad Login or Password!");
+            request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.BAD_CREDITS.toString());
         }
 
         // Show Error Validator
-        if(request.getAttribute("error") != null){
+        if(request.getAttribute(ErrorConstants.ERROR.toString()) != null){
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

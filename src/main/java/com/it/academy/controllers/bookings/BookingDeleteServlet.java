@@ -4,6 +4,7 @@ import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
+import com.it.academy.constants.PaginationConstants;
 import com.it.academy.constants.RoomConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.BookingRoomDto;
@@ -49,7 +50,7 @@ public class BookingDeleteServlet extends HttpServlet{
             bookingService.deleteRoomBooking(bookingRoomDto);
 
             String urlToGoBack = request.getParameter(BookingConstants.URL_TO_GO_BACK.toString());
-            if(urlToGoBack.contains("room")) {
+            if(urlToGoBack.contains(RoomConstants.ROOM.toString())) {
                 request.getSession().setAttribute(RoomConstants.NUMBER.toString(), bookingRoomDto.getRoomNumber());
             }
 

@@ -7,6 +7,7 @@ public enum RoomConstants {
     TYPE("type"),
 
     ROOMS("rooms"),
+    ROOM("room"),
     ROOM_DTO("roomDto");
 
     private String constant;

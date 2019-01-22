@@ -5,6 +5,7 @@ import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
+import com.it.academy.constants.ErrorConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.BookingDto;
@@ -90,21 +91,20 @@ public class BookingEditServlet extends HttpServlet{
             if (bookingService.isFreeTimeExceptFromCurrent(bookingRoomDto, loginDto)) {
                 if (bookingService.updateRoomBooking(bookingRoomDto, loginDto)) {
 
-                    // TODO go back to page from where we came from
                     response.sendRedirect(request.getContextPath()
                             + ControllerUrls.HOME_SERVLET.toString());
                 } else {
-                    request.setAttribute("error", "We can not update your booking!");
+                    request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.INVALID_BOOKING_TO_UPDATE.toString());
                 }
             } else {
-                request.setAttribute("error", "This time is not available!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.INVALID_TIME.toString());
             }
         } else {
-            request.setAttribute("error", "The room does not exist!");
+            request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.ROOM_NOT_EXIST.toString());
         }
 
         // Show Error Validator
-        if (request.getAttribute("error") != null) {
+        if (request.getAttribute(ErrorConstants.ERROR.toString()) != null) {
             doGet(request, response);
         }
     }

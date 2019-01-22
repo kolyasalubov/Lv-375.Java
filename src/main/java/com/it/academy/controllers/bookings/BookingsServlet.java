@@ -4,6 +4,7 @@ import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
+import com.it.academy.constants.ErrorConstants;
 import com.it.academy.constants.PaginationConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
@@ -52,7 +53,7 @@ public class BookingsServlet extends HttpServlet {
             CollectionDto<BookingRoomDto> bookings = bookingService.getFutureBookingRoomCollection(loginDto);
 
             if(bookings == null)
-                request.setAttribute("error", "There are no bookings!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.NO_BOOKINGS.toString());
             else {
                 String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
                 String page = request.getParameter(PaginationConstants.PAGE.toString());

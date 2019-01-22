@@ -3,6 +3,7 @@ package com.it.academy.controllers.admin;
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
+import com.it.academy.constants.ErrorConstants;
 import com.it.academy.constants.PaginationConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
@@ -57,7 +58,7 @@ public class AdminUsersServlet extends HttpServlet {
                         .getRequestDispatcher(ViewUrls.ADMIN_USERS_JSP.toString())
                         .forward(request, response);
             } else {
-                request.setAttribute("error", "You are not the admin!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.NOT_THE_ADMIN.toString());
                 getServletConfig()
                         .getServletContext()
                         .getRequestDispatcher(request.getContextPath()

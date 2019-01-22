@@ -5,6 +5,7 @@ import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
+import com.it.academy.constants.ErrorConstants;
 import com.it.academy.constants.RoomConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
@@ -80,11 +81,11 @@ public class RoomEditServlet extends HttpServlet{
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.ADMIN_ROOMS_SERVLET.toString());
         } else {
-            request.setAttribute("error", "The room already exist!");
+            request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.ROOM_EXIST.toString());
         }
 
         // Show Error Validator
-        if (request.getAttribute("error") != null) {
+        if (request.getAttribute(ErrorConstants.ERROR.toString()) != null) {
             doGet(request, response);
         }
     }

@@ -2,6 +2,7 @@ package com.it.academy.controllers.common;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.constants.ErrorConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.UserConstants;
@@ -40,8 +41,8 @@ public class RegistrationServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath()
                     + ControllerUrls.HOME_SERVLET.toString());
         } else {
-            request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Sign up");
-            request.setAttribute(UserConstants.URL_TO_POST.toString(), "registration");
+            request.setAttribute(UserConstants.ON_SUBMIT.toString(), UserConstants.SIGN_UP.toString());
+            request.setAttribute(UserConstants.URL_TO_POST.toString(), UserConstants.REGISTER.toString());
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.USER_PROFILE_EDIT_JSP.toString())
@@ -73,14 +74,14 @@ public class RegistrationServlet extends HttpServlet {
                                 + ControllerUrls.LOGIN_SERVLET.toString())
                         .forward(request, response);
             } else {
-                request.setAttribute("error", "This email already exists!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.EMAIL_EXIST.toString());
             }
         } else {
-            request.setAttribute("error", "Passwords do not match!");
+            request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.PASS_ERROR.toString());
         }
 
         // Show Error Validator
-        if(request.getAttribute("error") != null){
+        if(request.getAttribute(ErrorConstants.ERROR.toString()) != null){
             doGet(request, response);
         }
     }

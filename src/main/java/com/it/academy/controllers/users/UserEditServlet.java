@@ -4,6 +4,7 @@ import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
+import com.it.academy.constants.ErrorConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.BookingRoomDto;
@@ -45,8 +46,8 @@ public class UserEditServlet extends HttpServlet{
             System.out.println(userDto.toString());
 
             request.setAttribute(UserConstants.USER_DTO.toString(), userDto);
-            request.setAttribute(UserConstants.ON_SUBMIT.toString(), "Save");
-            request.setAttribute(UserConstants.URL_TO_POST.toString(), "user-edit");
+            request.setAttribute(UserConstants.ON_SUBMIT.toString(), UserConstants.SAVE.toString());
+            request.setAttribute(UserConstants.URL_TO_POST.toString(), UserConstants.USER_EDIT.toString());
 
             getServletConfig()
                     .getServletContext()
@@ -79,14 +80,14 @@ public class UserEditServlet extends HttpServlet{
                 response.sendRedirect(request.getContextPath()
                         + ControllerUrls.USER_SERVLET);
             } else {
-                request.setAttribute("error", "This email already exists!");
+                request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.EMAIL_EXIST.toString());
             }
         } else {
-            request.setAttribute("error", "Passwords do not match!");
+            request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.PASS_ERROR.toString());
         }
 
         // Show Error Validator
-        if(request.getAttribute("error") != null){
+        if(request.getAttribute(ErrorConstants.ERROR.toString()) != null){
             doGet(request, response);
         }
     }

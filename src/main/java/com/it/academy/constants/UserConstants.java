@@ -17,6 +17,12 @@ public enum UserConstants {
     USER_DTO("userDto"),
     USERS("users"),
 
+    SIGN_UP("Sign up"),
+    REGISTER("registration"),
+
+    SAVE("Save"),
+    USER_EDIT("user-edit"),
+
     URL_TO_POST("urlToPost"),
     ON_SUBMIT("onSubmit");
 
