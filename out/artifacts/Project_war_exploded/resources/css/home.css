@@ -2,7 +2,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
 }
 
 .topTooltip{
@@ -19,4 +18,10 @@
 #right{
     display: flex;
     justify-content: flex-end;
+    height: 40px;
+}
+
+#error{
+    display: flex;
+    justify-content: center;
 }
