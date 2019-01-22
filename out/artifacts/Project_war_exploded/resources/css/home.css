@@ -1,0 +1,22 @@
+.roomList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.topTooltip{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 50px;
+}
+
+#room{
+    margin: 10px;
+    cursor: pointer;
+}
+
+#right{
+    display: flex;
+    justify-content: flex-end;
+}
