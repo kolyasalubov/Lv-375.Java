@@ -1,0 +1,155 @@
+
+<style>
+
+/*to block with id=trips*/
+#trips {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#trips td, #trips th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#trips tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#trips tr:hover {
+	background-color: #ddd;
+}
+
+#trips th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #B3ACAC;
+	color: white;
+}
+
+body {
+	background-image: url("flight.jpeg");
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #cccccc;
+}
+
+/* Top navbar */
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #B3ACAC;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #B3ACAC;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #B3ACAC;
+  color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+
+/*Dropdown */
+
+.dropbtn {
+  background-color: #B3ACAC;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #B3ACAC;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #B3ACAC;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #B3ACAC;}
+
+.show {display: block;}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  left: 1216px;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #B3ACAC}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #B3ACAC;
+}
+
+</style>
