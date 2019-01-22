@@ -2,11 +2,13 @@ package com.it.academy.controllers.common;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.constants.PaginationConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.RoomConstants;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.RoomDto;
+import com.it.academy.service.PaginationService;
 import com.it.academy.service.RoomService;
 
 import javax.servlet.ServletException;
@@ -25,11 +27,13 @@ public class HomeServlet extends HttpServlet {
 
     private static final long serialVersionUID = 4L;
     private RoomService roomService;
+    private PaginationService<RoomDto> paginationService;
     private RequestValidator requestValidator;
 
     public HomeServlet() {
         super();
         roomService = ObjContainer.getInstance().getRoomService();
+        paginationService =  ObjContainer.getInstance().getPaginationServices().get(PaginationConstants.ROOM_PAGE.toString());
         requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
@@ -39,10 +43,16 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
             CollectionDto<RoomDto> rooms = roomService.getRoomCollectionDto();
-            request.setAttribute(RoomConstants.ROOMS.toString(), rooms);
 
             if (rooms == null)
                 request.setAttribute("error", "There are no rooms yet!");
+            else {
+                String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
+                String page = request.getParameter(PaginationConstants.PAGE.toString());
+
+                rooms = paginationService.updateCollection(rooms, pageOffset, page);
+                request.setAttribute(RoomConstants.ROOMS.toString(), rooms);
+            }
 
             getServletConfig()
                     .getServletContext()

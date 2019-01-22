@@ -1,13 +1,18 @@
 package com.it.academy.common;
 
+import com.it.academy.constants.PaginationConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dao.BookingDao;
 import com.it.academy.dao.RoomDao;
 import com.it.academy.dao.UserDao;
-import com.it.academy.dto.DateParser;
+import com.it.academy.dto.*;
 import com.it.academy.service.BookingService;
+import com.it.academy.service.PaginationService;
 import com.it.academy.service.RoomService;
 import com.it.academy.service.UserService;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ObjContainer {
@@ -21,6 +26,7 @@ public class ObjContainer {
     private UserService userService;
     private RoomService roomService;
     private BookingService bookingService;
+    private Map<String, PaginationService> paginationServices;
 
     private DateParser dateParser;
     private RequestValidator requestValidator;
@@ -30,6 +36,7 @@ public class ObjContainer {
         dateParser = new DateParser();
         initServices();
         requestValidator = new RequestValidator(userService);
+        initPagination();
     }
 
     private void initDaos(){
@@ -42,6 +49,14 @@ public class ObjContainer {
         userService = new UserService(userDao);
         roomService = new RoomService(roomDao);
         bookingService = new BookingService(bookingDao, userDao, roomDao, dateParser);
+    }
+
+    private void initPagination(){
+        paginationServices = new HashMap<>();
+        paginationServices.put(PaginationConstants.ROOM_PAGE.toString(), new PaginationService<RoomDto>());
+        paginationServices.put(PaginationConstants.USER_PAGE.toString(), new PaginationService<UserDto>());
+        paginationServices.put(PaginationConstants.BOOKING_USER_PAGE.toString(), new PaginationService<BookingUserDto>());
+        paginationServices.put(PaginationConstants.BOOKING_ROOM_PAGE.toString(), new PaginationService<BookingRoomDto>());
     }
 
     public static ObjContainer getInstance() {
@@ -118,5 +133,13 @@ public class ObjContainer {
 
     public void setRequestValidator(RequestValidator requestValidator) {
         this.requestValidator = requestValidator;
+    }
+
+    public Map<String, PaginationService> getPaginationServices() {
+        return paginationServices;
+    }
+
+    public void setPaginationServices(HashMap<String, PaginationService> paginationServices) {
+        this.paginationServices = paginationServices;
     }
 }

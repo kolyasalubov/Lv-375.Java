@@ -54,7 +54,6 @@ public class RoomService {
         boolean result = true;
         Room room = dtoToRoom(roomDto);
         try{
-            System.out.println("Room: " + room);
             roomDao.updateEntityById(room);
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());
@@ -109,8 +108,6 @@ public class RoomService {
     public boolean isExistExceptFromCurrent(RoomDto roomDto){
         try{
             List<Room> list = roomDao.getByFieldName("number", roomDto.getNumber());
-            for (Room r: list)
-                System.out.println(r.toString());
             return !((list.size() == 1) && (list.get(0).getId() == Long.parseLong(roomDto.getIdRoom())));
         } catch (Exception e){
             System.out.println("RuntimeException: " + e.getMessage());

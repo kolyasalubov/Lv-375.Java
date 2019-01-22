@@ -14,7 +14,7 @@
 </head>
 <body style="margin-top: 60px">
 
-<jsp:include page="/WEB-INF/views/common/navBar.jsp">
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/navBar.jsp">
     <jsp:param name="active" value="B"/>
 </jsp:include>
 
@@ -28,10 +28,12 @@
         <c:when test="${archive eq null}">
             <c:set var="title" value="Archive"/>
             <c:url value='${pageContext.request.contextPath}/bookings-archive' var="url"/>
+            <c:url value='${pageContext.request.contextPath}/bookings' var="urlToPage"/>
         </c:when>
         <c:otherwise>
             <c:set var="title" value="Current bookings"/>
             <c:url value='${pageContext.request.contextPath}/bookings' var="url"/>
+            <c:url value='${pageContext.request.contextPath}/bookings-archive' var="urlToPage"/>
         </c:otherwise>
     </c:choose>
 
@@ -91,11 +93,69 @@
 
 </c:if>
 
-<c:if test="${error ne null}">
-    <p>
-        <font color="red">${error}</font>
-    </p>
-</c:if>
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
+    <jsp:param name="error" value="${error}" />
+</jsp:include>
+
+<%--PAGINATION--%>
+<div>
+
+    <select class="ui dropdown" onchange="selectPerPage(value)">
+        <option value="" hidden disabled> Show per page</option>
+        <option id="1" value="1"> 1</option>
+        <option id="5" value="5"> 5</option>
+        <option id="10" value="10"> 10</option>
+        <option id="15" value="15"> 15</option>
+        <option id="20" value="20"> 20</option>
+    </select>
+
+    <script>
+        function init(offset) {
+            let el = document.getElementById(offset);
+            el.selected = 'true';
+        }
+
+        init('${bookings.pageOffset}');
+    </script>
+
+</div>
+
+<div class="ui pagination menu">
+
+    <c:forEach begin="1" end='${bookings.pageCount}' varStatus="loop">
+
+        <c:url value='${urlToPage}' var="pageUrl">
+            <c:param name='pageOffset' value='${bookings.pageOffset}'/>
+            <c:param name='page' value='${loop.index}'/>
+        </c:url>
+
+        <a id='${loop.index}' class="item" onclick="openPage('${pageScope.pageUrl}')">
+                ${loop.index}
+        </a>
+
+    </c:forEach>
+
+    <script>
+        function selectPage(page) {
+            let el = document.getElementById(page);
+            el.classList.add("active");
+        }
+
+        selectPage('${bookings.page}');
+    </script>
+
+</div>
+
+
+<script type="text/javascript">
+    <%@include file="../../../resources/js/openPage.js" %>
+</script>
+
+<script>
+    function selectPerPage(value) {
+        openPage('${urlToPage}?pageOffset=' + value);
+    }
+</script>
 
 </body>
 </html>

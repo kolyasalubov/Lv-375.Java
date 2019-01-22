@@ -2,6 +2,7 @@ package com.it.academy.controllers.rooms;
 
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
+import com.it.academy.constants.PaginationConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.common.ViewUrls;
@@ -12,6 +13,7 @@ import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.LoginDto;
 import com.it.academy.dto.RoomDto;
 import com.it.academy.service.BookingService;
+import com.it.academy.service.PaginationService;
 import com.it.academy.service.RoomService;
 import com.it.academy.service.UserService;
 
@@ -32,12 +34,14 @@ public class RoomServlet extends HttpServlet {
     private static final long serialVersionUID = 5L;
     private BookingService bookingService;
     private RoomService roomService;
+    private PaginationService<BookingUserDto> paginationService;
     private RequestValidator requestValidator;
 
     public RoomServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
+        paginationService =  ObjContainer.getInstance().getPaginationServices().get(PaginationConstants.BOOKING_USER_PAGE.toString());
         requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
@@ -55,11 +59,18 @@ public class RoomServlet extends HttpServlet {
             roomDto = roomService.fillRoomDtoInfo(roomDto);
 
             CollectionDto<BookingUserDto> bookings = bookingService.getFutureBookingUserCollection(roomDto);
-            request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
-            request.setAttribute(RoomConstants.ROOM_DTO.toString(), roomDto);
 
             if(bookings == null)
                 request.setAttribute("error", "There are no bookings!");
+            else {
+                String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
+                String page = request.getParameter(PaginationConstants.PAGE.toString());
+
+                bookings = paginationService.updateCollection(bookings, pageOffset, page);
+                request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
+            }
+
+            request.setAttribute(RoomConstants.ROOM_DTO.toString(), roomDto);
 
             getServletConfig()
                     .getServletContext()

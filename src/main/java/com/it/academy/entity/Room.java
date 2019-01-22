@@ -15,7 +15,7 @@ public class Room implements IEntity {
 
         GET_BY_ID(QueryNames.GET_BY_ID, "SELECT * FROM rooms WHERE id = %s;"),
         GET_BY_FIELD(QueryNames.GET_BY_FIELD, "SELECT * FROM rooms WHERE %s = %s;"),
-        GET_ALL(QueryNames.GET_ALL, "SELECT * FROM rooms;"),
+        GET_ALL(QueryNames.GET_ALL, "SELECT * FROM rooms ORDER BY number;"),
 
         UPDATE_ROW_BY_ID(QueryNames.UPDATE_ROW_BY_ID, "UPDATE rooms SET number = '%s', type = '%s' " +
                 "WHERE id = %s;"),

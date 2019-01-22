@@ -20,12 +20,12 @@
 </head>
 <body style="margin-top: 60px">
 
-<jsp:include page="/WEB-INF/views/common/navBar.jsp">
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/navBar.jsp">
     <jsp:param name="active" value="P"/>
 </jsp:include>
 
 <c:if test="${userDto.isAdmin eq true}">
-    <button type="button" class="archive" onclick="openPage('${pageContext.request.contextPath}/admin-users')">
+    <button type="button" class="archive" onclick="openPage('${pageContext.request.contextPath}/admin-users')" >
             Admin page
     </button>
 </c:if>

@@ -3,11 +3,14 @@ package com.it.academy.controllers.admin;
 import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
+import com.it.academy.constants.PaginationConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.LoginDto;
+import com.it.academy.dto.RoomDto;
 import com.it.academy.dto.UserDto;
+import com.it.academy.service.PaginationService;
 import com.it.academy.service.UserService;
 
 import javax.servlet.ServletException;
@@ -24,12 +27,14 @@ import java.io.IOException;
 public class AdminUsersServlet extends HttpServlet {
     private static final long serialVersionUID = 15L;
     private UserService userService;
+    private PaginationService<UserDto> paginationService;
     private RequestValidator requestValidator;
 
     public AdminUsersServlet() {
         super();
         userService = ObjContainer.getInstance().getUserService();
         requestValidator = ObjContainer.getInstance().getRequestValidator();
+        paginationService =  ObjContainer.getInstance().getPaginationServices().get(PaginationConstants.USER_PAGE.toString());
     }
 
     /**
@@ -40,6 +45,11 @@ public class AdminUsersServlet extends HttpServlet {
             if(requestValidator.isAdmin(request)) {
 
                 CollectionDto<UserDto> users = userService.getUserCollectionDto();
+
+                String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
+                String page = request.getParameter(PaginationConstants.PAGE.toString());
+
+                users = paginationService.updateCollection(users, pageOffset, page);
                 request.setAttribute(UserConstants.USERS.toString(), users);
 
                 getServletConfig()

@@ -21,11 +21,9 @@
 <body>
 LOGIN
 
-<c:if test="${error ne null}">
-    <p>
-        <font color="red">${error}</font>
-    </p>
-</c:if>
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
+    <jsp:param name="error" value="${error}"/>
+</jsp:include>
 
     <form action = "${pageContext.request.contextPath}/login" method = "POST">
         <%--<div class="imgcontainer">--%>

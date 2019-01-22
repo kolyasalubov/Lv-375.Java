@@ -18,10 +18,14 @@
           type="text/css"/>
 
 
+    <%--<style type="text/css">--%>
+        <%--<%@include file="../../../resources/css/toggle.css" %>--%>
+    <%--</style>--%>
+
 </head>
 <body style="margin-top: 60px">
 
-<jsp:include page="/WEB-INF/views/common/navBar.jsp">
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/navBar.jsp">
     <jsp:param name="active" value="P"/>
 </jsp:include>
 
@@ -109,6 +113,67 @@
     </c:forEach>
     </tbody>
 </table>
+
+<%--PAGINATION--%>
+
+<div>
+
+    <select class="ui dropdown" onchange="selectPerPage(value)">
+        <option value="" hidden disabled> Show per page</option>
+        <option id="1" value="1"> 1</option>
+        <option id="5" value="5"> 5</option>
+        <option id="10" value="10"> 10</option>
+        <option id="15" value="15"> 15</option>
+        <option id="20" value="20"> 20</option>
+    </select>
+
+    <script>
+        function init(offset) {
+            let el = document.getElementById(offset);
+            el.selected = 'true';
+        }
+
+        init('${users.pageOffset}');
+    </script>
+
+</div>
+
+<div class="ui pagination menu">
+
+    <c:forEach begin="1" end='${users.pageCount}' varStatus="loop">
+
+        <c:url value='${pageContext.request.contextPath}/admin-users' var="pageUrl">
+            <c:param name='pageOffset' value='${users.pageOffset}'/>
+            <c:param name='page' value='${loop.index}'/>
+        </c:url>
+
+        <a id='${loop.index}' class="item" onclick="openPage('${pageScope.pageUrl}')">
+                ${loop.index}
+        </a>
+
+    </c:forEach>
+
+    <script>
+        function selectPage(page) {
+            let el = document.getElementById(page);
+            el.classList.add("active");
+        }
+
+        selectPage('${users.page}');
+    </script>
+
+</div>
+
+
+<script type="text/javascript">
+    <%@include file="../../../resources/js/openPage.js" %>
+</script>
+
+<script>
+    function selectPerPage(value) {
+        openPage('${pageContext.request.contextPath}/admin-users?pageOffset=' + value);
+    }
+</script>
 
 <script>
     function submitForm(id) {

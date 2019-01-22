@@ -4,13 +4,16 @@ import com.it.academy.common.ControllerUrls;
 import com.it.academy.common.ObjContainer;
 import com.it.academy.common.ViewUrls;
 import com.it.academy.constants.BookingConstants;
+import com.it.academy.constants.PaginationConstants;
 import com.it.academy.constants.RoomConstants;
 import com.it.academy.constants.UserConstants;
 import com.it.academy.controllers.RequestValidator;
 import com.it.academy.dto.BookingUserDto;
 import com.it.academy.dto.CollectionDto;
 import com.it.academy.dto.RoomDto;
+import com.it.academy.entity.Booking;
 import com.it.academy.service.BookingService;
+import com.it.academy.service.PaginationService;
 import com.it.academy.service.RoomService;
 
 import javax.servlet.ServletException;
@@ -29,12 +32,14 @@ public class RoomArchiveServlet extends HttpServlet {
     private static final long serialVersionUID = 6L;
     private BookingService bookingService;
     private RoomService roomService;
+    private PaginationService<BookingUserDto> paginationService;
     private RequestValidator requestValidator;
 
     public RoomArchiveServlet() {
         super();
         bookingService = ObjContainer.getInstance().getBookingService();
         roomService = ObjContainer.getInstance().getRoomService();
+        paginationService =  ObjContainer.getInstance().getPaginationServices().get(PaginationConstants.BOOKING_USER_PAGE.toString());
         requestValidator = ObjContainer.getInstance().getRequestValidator();
     }
 
@@ -51,7 +56,16 @@ public class RoomArchiveServlet extends HttpServlet {
 
             CollectionDto<BookingUserDto> bookings = bookingService.getPastBookingUserCollection(roomDto);
 
-            request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
+            if(bookings == null)
+                request.setAttribute("error", "There are no bookings!");
+            else {
+                String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
+                String page = request.getParameter(PaginationConstants.PAGE.toString());
+
+                bookings = paginationService.updateCollection(bookings, pageOffset, page);
+                request.setAttribute(BookingConstants.BOOKINGS.toString(), bookings);
+            }
+
             request.setAttribute(RoomConstants.ROOM_DTO.toString(), roomDto);
             request.setAttribute(BookingConstants.ARCHIVE.toString(), true);
 

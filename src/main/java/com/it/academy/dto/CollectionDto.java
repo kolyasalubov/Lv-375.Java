@@ -5,22 +5,27 @@ import java.util.List;
 public class CollectionDto<TDto> {
 
     private final int DEFAULT_PAGE_OFFSET = 10; // TODO
+    private final int DEFAULT_PAGE = 1; // TODO
 
     private List<TDto> collection;
     private int pageCount;
     private int pageOffset;
+    private int page;
 
     public CollectionDto(){}
 
     public CollectionDto(List<TDto> collection, int pageOffset) {
         this.collection = collection;
+        this.page = DEFAULT_PAGE;
         this.pageOffset = pageOffset;
-        this.pageCount = collection.size() / pageOffset + 1;
+        this.pageCount = calculatePageCount();
     }
 
     public CollectionDto(List<TDto> collection) {
         this.collection = collection;
+        this.page = DEFAULT_PAGE;
         this.pageOffset = DEFAULT_PAGE_OFFSET;
+        this.pageCount = calculatePageCount();
     }
 
     public List<TDto> getCollection() {
@@ -45,6 +50,30 @@ public class CollectionDto<TDto> {
 
     public void setPageOffset(int pageOffset) {
         this.pageOffset = pageOffset;
+        this.pageCount = calculatePageCount();
     }
 
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    @Override
+    public String toString() {
+        return "CollectionDto{" +
+                "DEFAULT_PAGE_OFFSET=" + DEFAULT_PAGE_OFFSET +
+                ", DEFAULT_PAGE=" + DEFAULT_PAGE +
+                ", collection=" + collection +
+                ", pageCount=" + pageCount +
+                ", pageOffset=" + pageOffset +
+                ", page=" + page +
+                '}';
+    }
+
+    private int calculatePageCount(){
+        return (int)Math.ceil((double)collection.size() / pageOffset);
+    }
 }
