@@ -16,7 +16,7 @@
     <%--</style>--%>
 </head>
 <body style="margin-top: 60px">
-ROOM
+
 
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/navBar.jsp">
     <jsp:param name="active" value="H"/>

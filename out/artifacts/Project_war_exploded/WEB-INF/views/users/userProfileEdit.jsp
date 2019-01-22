@@ -11,68 +11,118 @@
 <head>
     <title>userProfileEdit</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css">--%>
-    <%--<link rel="stylesheet" type="text/css" href=" <c:url value = "/resources/css/login.css"/> ">--%>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet"
+          type="text/css"/>
 
     <style type="text/css">
-        <%@include file="../../../resources/css/login.css" %>
+        <%@include file="../../../resources/css/yellowForm.css" %>
     </style>
+
+    <style type="text/css">
+
+        body > .grid {
+            height: 100%;
+        }
+
+        .image {
+            margin-top: -100px;
+        }
+
+        .column {
+            max-width: 450px;
+        }
+
+    </style>
+
 </head>
 <body>
-    userProfileEdit
 
-    <c:if test="${error ne null}">
-        <p>
-            <font color="red">${error}</font>
-        </p>
-    </c:if>
 
-    <form action = "${pageContext.request.contextPath}/${urlToPost}" method = "POST">
+<div class="ui middle aligned center aligned grid" >
+    <div class="column">
 
-        <div class="container">
-            <label ><b>Email</b></label>
-            <input type="text" placeholder="Enter email" name="email"
-                   value="${userDto.email}" maxlength="30" required>
+        <jsp:include page="${pageContext.request.contextPath}/WEB-INF/views/elements/errorMessage.jsp">
+            <jsp:param name="error" value="${error}" />
+        </jsp:include>
 
-            <label ><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password"
-                   value="${userDto.password}" maxlength="20" required>
+        <form class="ui large form" action = "${pageContext.request.contextPath}/${urlToPost}" method = "POST">
+            <div class="ui stacked segment">
 
-            <label ><b>Password again</b></label>
-            <input type="password" placeholder="Enter Password again" name="passwordRepeat"
-                   value="${userDto.password}" maxlength="20" required>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" placeholder="Enter email" name="email"
+                               value="${userDto.email}" maxlength="30" required>
+                    </div>
+                </div>
 
-            <label ><b>First Name</b></label>
-            <input type="text" placeholder="Enter First Name" name="firstName"
-                   value="${userDto.firstName}" maxlength="20" required>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" placeholder="Enter Password" name="password"
+                               value="${userDto.password}" maxlength="20" required>
+                    </div>
+                </div>
 
-            <label ><b>Last Name</b></label>
-            <input type="text" placeholder="Enter Last Name" name="lastName"
-                   value="${userDto.lastName}" maxlength="40" >
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" placeholder="Enter Password again" name="passwordRepeat"
+                               value="${userDto.password}" maxlength="20" required>
+                    </div>
+                </div>
 
-            <label ><b>Phone</b></label>
-            <input type="number" placeholder="Enter Phone" name="phone"
-                   value="${userDto.phone}" maxlength="20" >
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="address book outline icon"></i>
+                        <input type="text" placeholder="Enter First Name" name="firstName"
+                               value="${userDto.firstName}" maxlength="20" required>
+                    </div>
+                </div>
 
-            <label ><b>Position</b></label>
-            <input type="text" placeholder="Enter Position" name="position"
-                   value="${userDto.position}" maxlength="12" >
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="address book icon"></i>
+                        <input type="text" placeholder="Enter Last Name" name="lastName"
+                               value="${userDto.lastName}" maxlength="40" >
+                    </div>
+                </div>
 
-            <input type="hidden" name="idUser" value="${userDto.idUser}">
-            <button type="submit"> ${onSubmit} </button>
-        </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="phone icon"></i>
+                        <input type="number" placeholder="Enter Phone" name="phone"
+                               value="${userDto.phone}" maxlength="20" >
+                    </div>
+                </div>
 
-        <%--TODO go to prev page ---- change eberywhere--%>
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn" onclick="goBack()">
-                Cancel
-            </button>
-        </div>
-    </form>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="suitcase icon"></i>
+                        <input type="text" placeholder="Enter Position" name="position"
+                               value="${userDto.position}" maxlength="12" >
+                    </div>
+                </div>
 
-    <script type="text/javascript">
-        <%@include file="../../../resources/js/openPage.js" %>
-    </script>
+                <input type="hidden" name="idUser" value="${userDto.idUser}">
+
+            </div>
+
+            <button type="submit" class="ui right floated large submit button" id="login"> ${onSubmit} </button>
+            <button type="button" class="ui left floated large negative button" onclick="goBack()"> Cancel </button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    <%@include file="../../../resources/js/openPage.js" %>
+</script>
+
 </body>
 </html>
 

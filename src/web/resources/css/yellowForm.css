@@ -1,0 +1,26 @@
+body{
+    color: rgba(0,0,0,.5);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    height: 600;
+    background: linear-gradient(to right, rgb(235, 240, 100), rgb(248, 183, 190));
+}
+
+h1 {
+    padding-top:50px;
+    font: 600 4em 'Raleway', sans-serif;
+    color: rgba(217, 36, 56, 0.5);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    width: 100%;
+}
+
+#login{
+    background-color: rgb(217, 195, 72);
+}
+
+#main{
+    margin-top: -80px;
+}

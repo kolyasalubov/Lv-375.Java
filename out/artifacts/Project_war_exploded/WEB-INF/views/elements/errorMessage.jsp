@@ -13,9 +13,11 @@
 </head>
 <body>
 <c:if test="${error ne null}">
-    <p>
-        <font color="red">${error}</font>
-    </p>
+    <div class="ui negative message">
+        <div class="header">
+            ${error}
+        </div>
+    </div>
 </c:if>
 </body>
 </html>

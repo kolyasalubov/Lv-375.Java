@@ -1,0 +1,9 @@
+.bar{
+    background-color: #fffdf4 !important;
+}
+
+.el:hover{
+    background-color: #e8e4dc !important;
+    color: #686267 !important;
+}
+

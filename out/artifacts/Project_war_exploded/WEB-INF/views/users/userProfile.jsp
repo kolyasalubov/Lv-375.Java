@@ -76,10 +76,8 @@
         </div>
     </div>
 
-    <button class="positive ui button left floated" type="button"
+    <button class="positive ui button" type="button"
             onclick="openPage('${pageContext.request.contextPath}/user-edit')" > Edit profile </button>
-    <button class="negative ui button right floated" type="button"
-            onclick="openPage('${pageContext.request.contextPath}/logout')" > Log out </button>
 </div>
 
 <script type="text/javascript" charset="UTF-8">
