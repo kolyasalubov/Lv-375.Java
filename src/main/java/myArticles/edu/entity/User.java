@@ -84,6 +84,7 @@ public class User implements IEntity {
         GET_ALL(SqlQueries.GET_ALL, "SELECT * FROM USERS ;"),
         GET_BY_ID(SqlQueries.GET_BY_ID, "SELECT * FROM USERS WHERE Id = %s ;"),
         GET_BY_FIELD(SqlQueries.GET_BY_FIELD, "SELECT * FROM USERS WHERE %s = '%s' ;"),
+        GET_BY_ADMIN(SqlQueries.GET_BY_ADMIN, "SELECT * FROM USERS WHERE %s = %s ;"),
         GET_BY_USERNAME(SqlQueries.GET_BY_USERNAME, "SELECT * FROM USERS WHERE Username = '%s' ;"),
         GET_BY_TWO_FIELD(SqlQueries.GET_BY_TWO_FIELD, "SELECT * FROM USERS WHERE %s = '%s' OR %s = '%s' ;"),
         DELETE_BY_ID(SqlQueries.DELETE_BY_ID, "DELETE FROM USERS WHERE Id = %s ;"),

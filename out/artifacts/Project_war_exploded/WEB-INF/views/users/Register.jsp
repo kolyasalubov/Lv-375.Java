@@ -32,10 +32,8 @@
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" required>
         <input type="hidden" id="isBlock" name="isBlock" value="false">
+        <input type="hidden" id="isAdmin" name="isAdmin" value="false">
         <div id="lower">
-
-                <input type="checkbox" id = "checkbox" name="isAdmin" value="1">
-           <label for="checkbox">Admin</label>
             <input type="submit" value="Register">
             <input type="button" value="Login" onclick="openPage('${pageContext.request.contextPath}/login')">
         </div><!--/ lower-->

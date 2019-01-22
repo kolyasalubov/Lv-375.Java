@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * This Class start working when u press 'Edit profile" in user's name page
+ */
 @WebServlet("/useredit")
 public class UserEdit extends HttpServlet {
     private static final long serialVersionUID = 3L;
@@ -30,11 +33,19 @@ public class UserEdit extends HttpServlet {
         userService = IocContainer.get().getUserService();
     }
 
+    /**
+     * Here we get info about user from database
+     * and set into request to send on jsp
+     * @param request - HttpRequest
+     * @param response - HttpResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             UserDto userDto = userService.getUserDto((LoginDto) request.getSession().getAttribute(ControllersConstant.LOGIN_DTO.toString()));
             request.setAttribute(ControllersConstant.USER_DTO.toString(), userDto);
-
+            //Check who is our user Admin or simply user
             request.setAttribute(ControllersConstant.CANCEL.toString(),
                     userDto.isAdmin() ? ControllerUrls.ALL_USER_SERVLER.toString()
                             : ControllerUrls.USER_ARTICLES_SERVLET.toString());
@@ -44,7 +55,7 @@ public class UserEdit extends HttpServlet {
                     .getRequestDispatcher(ViewUrls.USER_PROFILE_JSP.toString())
                     .forward(request, response);
         } else {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

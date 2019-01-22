@@ -86,21 +86,55 @@ abstract class ADaoRead<TEntity> implements IDaoRead<TEntity> {
         }
     }
 
+    /**
+     * get entity's object by id
+     * @param id - entity's id
+     * @return - entity object
+     */
     @Override
     public TEntity getById(Long id) {
         return this.getQueryResult(String.format((this.sqlQueries.get(SqlQueries.GET_BY_ID)).toString(), id), SqlQueries.GET_BY_ID).get(0);
     }
 
+    /**
+     * get all object
+     * @return all entity objects
+     */
     @Override
     public List <TEntity> getAll() {
         return this.getQueryResult((this.sqlQueries.get(SqlQueries.GET_ALL)).toString(), SqlQueries.GET_ALL);
     }
 
+    /**
+     * return all entity object with the same field
+     * @param fieldName - field Name
+     * @param fieldText - field text
+     * @return - list of entity
+     */
     public List <TEntity> getByField(String fieldName, String fieldText) {
         String query = String.format((this.sqlQueries.get(SqlQueries.GET_BY_FIELD)).toString(), fieldName, fieldText);
         return this.getQueryResult(query, SqlQueries.GET_BY_FIELD);
     }
 
+    /**
+     * return list of users, which are admins
+     * @param fieldName - field name
+     * @param fieldText - field text
+     * @return
+     */
+    public List <TEntity> getByAdmin(String fieldName, String fieldText) {
+        String query = String.format((this.sqlQueries.get(SqlQueries.GET_BY_ADMIN)).toString(), fieldName, fieldText);
+        return this.getQueryResult(query, SqlQueries.GET_BY_ADMIN);
+    }
+
+    /**
+     * return list of entity where one of fields is correct
+     * @param firstField - first field name
+     * @param firstText - first field text
+     * @param secondField - second field name
+     * @param secondText - second field text
+     * @return - list of entity
+     */
     public List <TEntity> getByTwoField(String firstField, String firstText, String secondField, String secondText) {
         String query = String.format((this.sqlQueries.get(SqlQueries.GET_BY_TWO_FIELD)).toString(), firstField, firstText, secondField, secondText);
         return this.getQueryResult(query, SqlQueries.GET_BY_TWO_FIELD);

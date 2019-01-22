@@ -46,10 +46,15 @@ public class ArticleService {
         return checkValid(articleDto) && articleDao.insert(article);
     }
 
+    /**
+     * Get all info about Article used only name
+     * @param articleDto - info about article
+     * @return - full info about article with the same name
+     */
     public ArticleDto getFullInfo(ArticleDto articleDto) {
         Article article = articleDao.getByField(ARTICLENAME, articleDto.getName()).get(0);
-        ArticleDto newarticleDto = new ArticleDto(article.getName(), article.getDescription(), article.getUrl(), article.getUserId());
-        return newarticleDto;
+        ArticleDto newArticleDto = new ArticleDto(article.getName(), article.getDescription(), article.getUrl(), article.getUserId());
+        return newArticleDto;
     }
 
     /**
@@ -68,6 +73,11 @@ public class ArticleService {
         return articleDao.updateAllByEntity(article);
     }
 
+    /**
+     * Check Article's name for unique when try to add new
+     * @param articleDto - info about Article
+     * @return true - add, false - error
+     */
     private boolean checkValid(ArticleDto articleDto) {
         boolean result = true;
         try {

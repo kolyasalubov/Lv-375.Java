@@ -5,6 +5,7 @@ public enum SqlQueries {
     GET_BY_ID,
     GET_ALL,
     GET_BY_FIELD,
+    GET_BY_ADMIN,
     GET_BY_TWO_FIELD,
     GET_BY_USERNAME,
     DELETE_BY_ID,

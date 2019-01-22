@@ -8,14 +8,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * This class is responsible for Security
+ */
 public class Security {
-    public static HttpServletResponse endSession(HttpServletResponse response) {
+
+    /**
+     * In this method we delete cookie and session
+     * @param request - HttpRequest
+     * @param response - HttpRequest
+     * @return response without users info
+     */
+    public static HttpServletResponse endSession(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().invalidate();
         Cookie cookie = new Cookie("name", "");
         cookie.setMaxAge(0);
         response.addCookie(cookie);
         return response;
     }
 
+    /**
+     * Check is our Session active or not
+     * @param request - HttpRequest
+     * @param response - HttpRequest
+     * @return
+     */
     public static boolean isActiveSession(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(false); // Do not Create new Session
         Cookie idSessionCookie = null;
@@ -32,6 +49,11 @@ public class Security {
                 && (idSessionCookie.getValue().equals(session.getId()));
     }
 
+    /**
+     * Check is user's data correct or not
+     * @param request - HttpRequest
+     * @return
+     */
     public static boolean checkCorrectData(HttpServletRequest request) {
         return request.getParameter(ControllersConstant.PASSWORD.toString()) != null
                 && request.getParameter(ControllersConstant.REPEAT_PASSWORD.toString()) != null

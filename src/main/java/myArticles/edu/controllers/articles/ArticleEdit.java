@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * This class start working when user press button "Edit Article"
+ * We get all info about article from Database and show it into page
+ */
 @WebServlet("/articleedit")
 public class ArticleEdit extends HttpServlet {
     private static final long serialVersionUID = 7L;
@@ -28,6 +32,13 @@ public class ArticleEdit extends HttpServlet {
 
     }
 
+    /**
+     * Get all info about user and set it into request
+     * @param request - HttpRequest
+     * @param response - HttpResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             ArticleDto articleDto = new ArticleDto(
@@ -41,7 +52,7 @@ public class ArticleEdit extends HttpServlet {
                     .getRequestDispatcher(ViewUrls.ARTICLES_PROFILE_JSP.toString())
                     .forward(request, response);
         } else {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

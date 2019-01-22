@@ -27,14 +27,15 @@
     </c:if>
     <form action="${pageContext.request.contextPath}/userupdate" method="post">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" style="background: #f0f0f0" value="${userDto.getUserName()}" readonly>
+        <input type="text" id="username" name="username" style="background: #f0f0f0" value="${userDto.getUserName()}"
+               readonly>
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" value="${userDto.getEmail()}" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
         <label for="repeat">Repeat Password:</label>
         <input type="password" id="repeat" name="repeat" required>
-        <input type="hidden" id="isAdmin" name="isAdmin"  value="${userDto.isAdmin()}">
+        <input type="hidden" id="isAdmin" name="isAdmin" value="${userDto.isAdmin()}">
         <input type="hidden" id="isBlock" name="isBlock" value="${userDto.isBlock()}">
 
 

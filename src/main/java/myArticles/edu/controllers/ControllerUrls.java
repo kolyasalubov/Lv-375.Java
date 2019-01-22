@@ -1,5 +1,8 @@
 package myArticles.edu.controllers;
 
+/**
+ * This class contains all Urls used in controllers
+ */
 public enum ControllerUrls {
     //Login Logout and simplyUrl
 

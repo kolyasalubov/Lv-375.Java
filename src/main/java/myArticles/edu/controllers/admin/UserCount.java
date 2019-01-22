@@ -1,4 +1,4 @@
-package myArticles.edu.controllers.common;
+package myArticles.edu.controllers.admin;
 
 import myArticles.edu.controllers.ControllerUrls;
 import myArticles.edu.controllers.Security;
@@ -18,7 +18,7 @@ public class UserCount extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (!(request.isRequestedSessionIdValid() && request.isRequestedSessionIdFromCookie())) {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

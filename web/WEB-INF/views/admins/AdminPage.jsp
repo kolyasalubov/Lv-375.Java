@@ -9,18 +9,21 @@
 <c:set var="hostContext" value="${fn:substring(hostUrl, 0, fn:length(hostUrl) - fn:length(hostUri))}${pageContext.request.contextPath}" />
 <html>
 <head>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style type="text/css">
-        <%@include file="../../../resources/css/ArticlePage.css" %>
+        <%@include file="../../../resources/css/bootstrap.min.css" %>
+        <%@include file="../../../resources/css/common.css" %>
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>All Users</title>
 </head>
 <body>
 <div class="one"><h1>All Users Page</h1></div>
-<a href="${pageContext.request.contextPath}/logout" class="logout">Logout</a>
-<a href="${pageContext.request.contextPath}/useredit" class="editprofile">Edit Profile</a>
+<a href="${pageContext.request.contextPath}/logout" class="btn btn-outline-dark" id="log">Logout</a>
+<a href="${pageContext.request.contextPath}/useredit" class="btn btn-outline-primary" id="editprofile">Edit Profile</a>
 <br><br>
-<select id="idvisibleUser" onchange="selectVisibleUsers('${hostContext}/usercount?visibleUser=')">
+<select id="idvisibleUser" class="custom-select" onchange="selectVisibleUsers('${hostContext}/usercount?visibleUser=')">
     <option value="100000"
             <c:if test="${visibleUser eq '100000'}">
                 selected="selected"
@@ -45,15 +48,15 @@
 <br><br>
 <c:set var="countUsers" value="${allUsersDto.users}"/>
 <c:if test="${countUsers ne null && countUsers.size() gt 0}">
-    <table border="1">
+    <table border="1" class="table table-striped" id="tableUser">
         <tr>
             <th>Name</th>
             <th>Password</th>
             <th>Email</th>
             <th>IsBlock</th>
             <th>IsAdmin</th>
-            <th>Block</th>
-            <th>Make Admin</th>
+            <th>Block Status</th>
+            <th>Admin Status</th>
         </tr>
         <c:forEach var="row" items="${countUsers}">
             <tr>
@@ -62,8 +65,8 @@
                 <td>${row.getEmail()}</td>
                 <td>${row.isBlock()}</td>
                 <td>${row.isAdmin()}</td>
-                <td><a href="${pageContext.request.contextPath}/changeblockstatus?username=${row.getUserName()}"  class="butt">(Un)Block</a></td>
-                <td><a href="${pageContext.request.contextPath}/changeadminstatus?username=${row.getUserName()}"  class="butt">(Make) Admin</a></td>
+                <td><a type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" href="${pageContext.request.contextPath}/changeblockstatus?username=${row.getUserName()}" style="color: #1c7430">Change</a></td>
+                <td><a type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" href="${pageContext.request.contextPath}/changeadminstatus?username=${row.getUserName()}" style="color: #1c7430">Change</a></td>
             </tr>
         </c:forEach>
     </table>
@@ -71,16 +74,16 @@
     <br><br>
 
 </c:if>
-<ul class="pagination">
-    <li><a href="${hostContext}/alluser?pageNumber=1" class="butt">1</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=2" class="butt">2</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=3" class="butt">3</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=4" class="butt">4</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=6" class="butt">6</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=7" class="butt">7</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=8" class="butt">8</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=9" class="butt">9</a></li>
-    <li><a href="${hostContext}/alluser?pageNumber=10" class="butt">10</a></li>
+<ul class="pagination" id="pagin">
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=1" >1</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=2" >2</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=3" >3</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=4" >4</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=6" >6</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=7" >7</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=8" >8</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=9" >9</a></li>
+    <li class="page-item"><a class="page-link" href="${hostContext}/alluser?pageNumber=10" >10</a></li>
 </ul>
 <script type="text/javascript">
     function selectVisibleUsers(url) {

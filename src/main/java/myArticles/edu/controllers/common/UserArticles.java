@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * this Servlet get all info about user's main page and
+ * set all info with user want to see into DTO object
+ */
 @WebServlet("/userarticle")
 public class UserArticles extends HttpServlet {
     private static final long serialVersionUID = 10L;
@@ -28,11 +32,18 @@ public class UserArticles extends HttpServlet {
         userArticlesService = IocContainer.get().getUserArticlesService();
     }
 
+    /**
+     * Method which work with all information about page
+     * @param request - HttpRequest
+     * @param response - HttpResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
-
+        if (Security.isActiveSession(request, response)) {
+            //How much Articles user want to see on page
             String visibleArticle = PageConfiguration.getVisible(request, ControllersConstant.VISIBLE_ITEM_ARTICLE.toString());
-
+            //number of page where user is know
             int pageNumber = PageConfiguration.getPageNumber(request);
 
             PageInfoDto pageInfoDto = new PageInfoDto(pageNumber, Integer.parseInt(visibleArticle));
@@ -46,7 +57,7 @@ public class UserArticles extends HttpServlet {
                     .getRequestDispatcher(ViewUrls.USER_ARTICLES_JSP.toString())
                     .forward(request, response);
         } else {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

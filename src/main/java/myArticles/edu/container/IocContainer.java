@@ -5,6 +5,9 @@ import myArticles.edu.DAO.ArticleDao;
 import myArticles.edu.DAO.UserDao;
 import myArticles.edu.Services.*;
 
+/**
+ * This Class is a container, where we save object
+ */
 public final class IocContainer {
 
     private static volatile IocContainer instance = null;
@@ -36,6 +39,10 @@ public final class IocContainer {
         adminService = new AdminService(userDao);
     }
 
+    /**
+     * Lazy initialization
+     * @return Singleton out container
+     */
     public static IocContainer get() {
         if (instance == null) {
             synchronized (IocContainer.class) {

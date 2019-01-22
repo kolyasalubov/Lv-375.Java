@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Servlet with is responsible for Admin page
+ * In this class we analyze info about page and return Dto object to Jsp
+ */
 @WebServlet("/alluser")
 public class AllUser extends HttpServlet {
     private static final long serialVersionUID = 12L;
@@ -28,11 +32,18 @@ public class AllUser extends HttpServlet {
         adminService = IocContainer.get().getAdminService();
     }
 
+    /**
+     * Method which work with all information about page
+     * @param request - HttpRequest
+     * @param response - HttpResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.isRequestedSessionIdFromCookie() && request.isRequestedSessionIdValid()) {
-
+        if (Security.isActiveSession(request, response)) {
+            //How much Users admin want to see on page
             String visibleUser = PageConfiguration.getVisible(request, ControllersConstant.VISIBLE_ITEM_USER.toString());
-
+            //NumberOfPage where admin is know
             int pageNumber = PageConfiguration.getPageNumber(request);
 
             PageInfoDto pageInfoDto = new PageInfoDto(pageNumber, Integer.parseInt(visibleUser));
@@ -44,7 +55,7 @@ public class AllUser extends HttpServlet {
                     .getRequestDispatcher(ViewUrls.ADMIN_PAGE_JSP.toString())
                     .forward(request, response);
         } else {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

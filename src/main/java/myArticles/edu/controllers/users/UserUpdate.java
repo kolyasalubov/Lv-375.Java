@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * In this class realised update users information or
+ * send error if its impossible
+ */
 @WebServlet("/userupdate")
 public class UserUpdate extends HttpServlet {
     private static final long serialVersionUID = 4L;
@@ -26,6 +30,15 @@ public class UserUpdate extends HttpServlet {
         userService = IocContainer.get().getUserService();
     }
 
+    /**
+     * In this method we get all new info about user and check is it correct
+     * Check is password correct and send error if not
+     * Check is user's new Email free and send error if not
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             if (Security.checkCorrectData(request)) {
@@ -57,7 +70,7 @@ public class UserUpdate extends HttpServlet {
                         .forward(request, response);
             }
         } else {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

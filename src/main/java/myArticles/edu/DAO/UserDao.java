@@ -46,6 +46,11 @@ public final class UserDao extends ADaoCRUD <User> {
         return result;
     }
 
+    /**
+     * get user object by name
+     * @param username - name
+     * @return - user object
+     */
     public User getUserEntityByUsername(String username) {
         return getByField(USERNAME_FIELDNAME, username).get(0);
     }

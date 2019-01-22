@@ -18,6 +18,9 @@ import myArticles.edu.dto.UserDto;
 
 import java.io.IOException;
 
+/**
+ * This Servlet is responsible for creating new user
+ */
 @WebServlet("/usercreate")
 public class UserCreate extends HttpServlet {
     private static final long serialVersionUID = 2L;
@@ -27,15 +30,22 @@ public class UserCreate extends HttpServlet {
         userService = IocContainer.get().getUserService();
     }
 
+    /**
+     * In this method we get all info about user from request
+     * And try to add new user into Database , or add info about error in page, if we get it
+     * @param request - HttpRequest
+     * @param response - HttpResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        boolean isAdmin = request.getParameter(ControllersConstant.IS_ADMIN.toString()) != null;
         if (Security.checkCorrectData(request)) {
             UserDto userDto = new UserDto(request.getParameter(ControllersConstant.USERNAME.toString()),
                     request.getParameter(ControllersConstant.PASSWORD.toString()),
                     request.getParameter(ControllersConstant.EMAIL.toString()),
-                    isAdmin,
+                    Boolean.valueOf(request.getParameter(ControllersConstant.IS_ADMIN.toString())),
                     Boolean.valueOf(request.getParameter(ControllersConstant.IS_BLOCK.toString())));
-            System.out.println(userDto.getUserName());
+
             if (userService.registerUser(userDto)) {
                 response.sendRedirect(request.getContextPath() + ControllerUrls.LOGIN_SERVLET.toString());
             } else {

@@ -17,8 +17,8 @@ public class ArticleCount extends HttpServlet {
     private static final long serialVersionUID = 11L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (!(request.isRequestedSessionIdValid() && request.isRequestedSessionIdFromCookie())) {
-            Security.endSession(response);
+        if (!Security.isActiveSession(request, response)) {
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

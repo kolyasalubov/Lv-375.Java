@@ -1,5 +1,8 @@
 package myArticles.edu.controllers;
 
+/**
+ * This class contains all view's urls
+ */
 public enum ViewUrls {
     LOGIN_JSP("/WEB-INF/views/users/Login.jsp"),
     USER_REGISTER_JSP("/WEB-INF/views/users/Register.jsp"),

@@ -136,8 +136,12 @@ public class UserService {
      */
     public boolean changeBlockStatus(UserDto userDto) {
         User user = userDao.getUserEntityByUsername(userDto.getUserName());
-        user.setBlock(!user.isBlocked());
-        return userDao.updateAllByEntity(user);
+        if(getAdminCount() <= 1
+                && userDto.getUserName().equals(userDao.getByAdmin(ADMIN_FIELD, "True").get(0).getUserName())){
+            return false;
+        }
+            user.setBlock(!user.isBlocked());
+            return userDao.updateAllByEntity(user);
     }
 
     /**
@@ -147,7 +151,19 @@ public class UserService {
      */
     public boolean changeAdminStatus(UserDto userDto) {
         User user = userDao.getUserEntityByUsername(userDto.getUserName());
-        user.setAdmin(!user.isAdmin());
-        return userDao.updateAllByEntity(user);
+        if(getAdminCount() <= 1
+                && userDto.getUserName().equals(userDao.getByAdmin(ADMIN_FIELD, "True").get(0).getUserName())){
+            return false;
+        }
+            user.setAdmin(!user.isAdmin());
+            return userDao.updateAllByEntity(user);
+    }
+
+    /**
+     * Count how mush users are Admin
+     * @return
+     */
+    private int getAdminCount(){
+       return userDao.getByAdmin(ADMIN_FIELD, "True").size();
     }
 }

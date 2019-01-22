@@ -17,6 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * This Servlet start working when user press "Update" into "Edit Article" page
+ * Update info about Article, or show error if it is impossible
+ */
 @WebServlet("/articleupdate")
 public class ArticleUpdate extends HttpServlet {
     private static final long serialVersionUID = 8L;
@@ -30,6 +34,14 @@ public class ArticleUpdate extends HttpServlet {
 
     }
 
+    /**
+     * In this method we get all info from request and try to update article
+     * if it is impossible add error in page
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             ArticleDto articleDto = new ArticleDto(
@@ -45,7 +57,7 @@ public class ArticleUpdate extends HttpServlet {
                         .forward(request, response);
             }
         } else {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

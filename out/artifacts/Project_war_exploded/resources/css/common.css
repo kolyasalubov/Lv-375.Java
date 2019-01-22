@@ -1,0 +1,106 @@
+body{
+    background: #D8E6F3;
+}
+
+#tableArticle, #tableUser{
+
+    margin: auto;
+    padding-top: -200px;
+    width: 50%;
+}
+#pagin{
+    margin-left: 38.7%;
+    position: center;
+}
+
+#log{
+    position: absolute;
+    right: 1%;
+    top: 15%;
+    width: auto;
+    padding: 10px;
+    border-radius: 15px;
+
+}
+#editprofile{
+    position: absolute;
+    right: 7%;
+    top: 15%;
+    width: auto;
+    padding: 10px;
+    border-radius: 15px;
+
+}
+.one {
+    background: #D8E6F3;
+    padding: 20px 20px;
+    margin-left: -10px;
+    text-align: center;
+}
+.one h1 {
+    font-family: 'Righteous', cursive;
+    position: relative;
+    color: #3CA1D9;
+    display: inline-block;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    font-size: 3em;
+    padding: 11px 60px;
+    margin: 0;
+    line-height: 1;
+}
+
+.createarticle {
+    position: absolute;
+    margin: auto auto auto 43%;
+    display: inline-block;
+    padding: 1.2em 2em;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: white;
+}
+.createarticle::before {
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border-radius: 4px;
+    transition: box-shadow .5s ease, -webkit-transform .2s ease;
+    transition: box-shadow .5s ease, transform .2s ease;
+    transition: box-shadow .5s ease, transform .2s ease, -webkit-transform .2s ease;
+    will-change: transform;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+.createarticle:hover::before {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+.createarticle::after {
+    margin: auto;
+    position: relative;
+    display: inline-block;
+    content: attr(data-title);
+    transition: -webkit-transform .2s ease;
+    transition: transform .2s ease;
+    transition: transform .2s ease, -webkit-transform .2s ease;
+    font-weight: bold;
+    letter-spacing: .01em;
+    will-change: transform;
+
+}
+#idvisibleArticle, #idvisibleUser{
+    background: #ebebeb;
+    font-family: 'Righteous', cursive;
+    width: auto;
+}
+

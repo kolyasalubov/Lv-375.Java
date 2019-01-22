@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Servler with is responsible for adding new Article or show, what it's impossible
+ */
 @WebServlet("/articleadd")
 public class ArticleAdd extends HttpServlet {
     private static final long serialVersionUID = 6L;
@@ -32,6 +35,14 @@ public class ArticleAdd extends HttpServlet {
 
     }
 
+    /**
+     * Here we get all info about new Article from request
+     * Check can we add it, and add error if not
+     * @param request - HttpRequest
+     * @param response - HttpResponse
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (Security.isActiveSession(request, response)) {
             LoginDto loginDto = (LoginDto) request.getSession().getAttribute(ControllersConstant.LOGIN_DTO.toString());
@@ -42,9 +53,11 @@ public class ArticleAdd extends HttpServlet {
                     request.getParameter(ControllersConstant.ARTICLE_URL.toString()),
                     userId);
 
+            //Try to add Article
             if (articleService.addArticles(articleDto)) {
                 response.sendRedirect(request.getContextPath() + ControllerUrls.USER_ARTICLES_SERVLET.toString());
             } else {
+                //Add error into page
                 request.setAttribute(ControllersConstant.ERROR.toString(), ControllersConstant.ADD_ARTICLE_ERROR.toString());
                 getServletConfig()
                         .getServletContext()
@@ -52,7 +65,7 @@ public class ArticleAdd extends HttpServlet {
                         .forward(request, response);
             }
         } else {
-            Security.endSession(response);
+            Security.endSession(request, response);
             getServletConfig()
                     .getServletContext()
                     .getRequestDispatcher(ViewUrls.LOGIN_JSP.toString())

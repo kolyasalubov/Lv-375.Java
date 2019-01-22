@@ -1,5 +1,8 @@
 package myArticles.edu.controllers;
 
+/**
+ * Class with contains all constant which used in controllers
+ */
 public enum ControllersConstant {
     //User Info
     USERNAME("username"),
@@ -38,7 +41,14 @@ public enum ControllersConstant {
     VISIBLE_ITEM_ARTICLE("visibleArticle"),
     VISIBLE_ITEM_USER("visibleUser"),
     NUMBER_OF_ARTICLES("countArticles"),
-    NUMBER_OF_USERS("countUsers");
+    NUMBER_OF_USERS("countUsers"),
+    //CONSTANT
+    TRUE("true"),
+    FALSE("false"),
+    //Default parameter
+    ADMIN_USERNAME("admin"),
+    ADMIN_PASSWORD("admin"),
+    ADMIN_EMAIL("admin");
 
 
     private String field;

@@ -48,28 +48,36 @@ public class UserArticlesService {
         }
         return usersArticleDto;
     }
-
+    /**
+     * In this method we get Articles with we need to show on page
+     * used information in PageInfoDto object
+     * @param pageInfoDto - info about page
+     * @return - Dto object with all Articles with we must show
+     */
     public UsersArticleDto getPageUsers(UserDto userDto, PageInfoDto pageInfoDto) {
         UsersArticleDto usersArticleDto = getUsersArticlesDto(userDto);
         if (pageInfoDto.getVisible() == 100000) {
             return usersArticleDto;
         }
+        // start = -1 in case if articles is less then we need, in another case we found start index
         int start = usersArticleDto.getArticles().size() > pageInfoDto.getVisible() * (pageInfoDto.getPageNumber() - 1)
                 ? pageInfoDto.getVisible() * (pageInfoDto.getPageNumber() - 1)
                 : -1;
+        // end = -1 in case if articles is less then we need, in another case we found end index
         int end = usersArticleDto.getArticles().size() > (pageInfoDto.getVisible() * (pageInfoDto.getPageNumber()))
                 ? (pageInfoDto.getVisible() * (pageInfoDto.getPageNumber()))
                 : -1;
         if (start != -1) {
+                //get sublist with articles what we need
             if (end != -1) {
                 usersArticleDto.setArticles(usersArticleDto.getArticles().subList(start, end));
             } else {
+                //get all articles after start index
                 usersArticleDto.setArticles(usersArticleDto.getArticles().subList(start, usersArticleDto.getArticles().size()));
             }
         } else {
             usersArticleDto.setArticles(new ArrayList <>());
         }
-        System.out.println(start + " " + end);
         return usersArticleDto;
     }
 
