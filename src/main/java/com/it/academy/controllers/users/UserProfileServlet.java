@@ -21,9 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * RoomServlet configures archive of bookings in particular room
+ * Class UserProfileServlet configures preview of user info
  */
-@WebServlet({"/profile"})  //  ROOM_ARCHIVE_SERVLET
+@WebServlet({"/profile"})
 public class UserProfileServlet extends HttpServlet{
     private static final long serialVersionUID = 12L;
     private UserService userService;
@@ -36,7 +36,7 @@ public class UserProfileServlet extends HttpServlet{
     }
 
     /**
-     * Shows the bookings in particular room
+     * Shows the page with current user info
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {

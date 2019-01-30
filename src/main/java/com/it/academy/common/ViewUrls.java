@@ -1,5 +1,8 @@
 package com.it.academy.common;
 
+/**
+ * Enum ViewUrls keeps all urls which can be used in the web UI
+ */
 public enum ViewUrls {
 
     LOGIN_JSP("/WEB-INF/views/common/login.jsp"),

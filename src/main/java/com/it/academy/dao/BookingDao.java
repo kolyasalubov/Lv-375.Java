@@ -8,12 +8,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class BookingDao provides all basic methods to operate with Booking Entity
+ */
 public class BookingDao extends ADaoExist<Booking> {
 
     public BookingDao() {
         super();
     }
 
+
+    /**
+     * Implementation of abstract method from ADaoRead
+     */
     @Override
     protected void init() {
         for (Booking.BookingQueries bookingQueries : Booking.BookingQueries.values()) {
@@ -21,6 +28,9 @@ public class BookingDao extends ADaoExist<Booking> {
         }
     }
 
+    /**
+     * Implementation of abstract method from ADaoRead
+     */
     @Override
     protected Booking createInstance(List<String> list) {
         return new Booking(
@@ -29,6 +39,9 @@ public class BookingDao extends ADaoExist<Booking> {
         );
     }
 
+    /**
+     * Implementation of abstract method from ADaoCRUD
+     */
     @Override
     protected List<Object> getFields(Booking booking) {
         List<Object> list = new ArrayList<>();
@@ -41,6 +54,9 @@ public class BookingDao extends ADaoExist<Booking> {
         return list;
     }
 
+    /**
+     * Implementation of abstract method from ADaoCRUD
+     */
     @Override
     protected List<Object> getUpdateFields(Booking booking) {
         List<Object> list = getFields(booking);
@@ -49,6 +65,9 @@ public class BookingDao extends ADaoExist<Booking> {
         return list;
     }
 
+    /**
+     * Implementation of abstract method from ADaoExist
+     */
     @Override
     protected List<Object> getExistFields(Booking booking) {
         List<Object> list = new ArrayList<>();
@@ -60,14 +79,24 @@ public class BookingDao extends ADaoExist<Booking> {
         return list;
     }
 
+
+    /**
+     * Gets List of future bookings
+     */
     public List<Booking> getFutureByField(String fieldName, String fieldValue){
         return getBookingsByTime(fieldName, fieldValue, QueryNames.GET_FUTURE_BY_FIELD);
     }
 
+    /**
+     * Gets List of past bookings
+     */
     public List<Booking> getPastByField(String fieldName, String fieldValue){
         return getBookingsByTime(fieldName, fieldValue, QueryNames.GET_PAST_BY_FIELD);
     }
 
+    /**
+     * Execute query which gets List of Bookings for some period of time (past/future)
+     */
     private List<Booking> getBookingsByTime(String fieldName, String fieldValue, QueryNames queryName){
         String currentDateTime = getCurrentDateTime();
         String sql = String.format(sqlQueries.get(queryName),
@@ -75,6 +104,9 @@ public class BookingDao extends ADaoExist<Booking> {
         return getQueryResult(sql, queryName);
     }
 
+    /**
+     * Gets current time in MySql format
+     */
     private String getCurrentDateTime(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();

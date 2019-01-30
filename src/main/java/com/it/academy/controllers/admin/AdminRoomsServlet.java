@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * RoomServlet configures archive of bookings in particular room
+ * Class AdminRoomsServlet configures admin preview of the list of rooms
  */
 @WebServlet({"/admin-rooms"})
 public class AdminRoomsServlet extends HttpServlet{
@@ -36,7 +36,7 @@ public class AdminRoomsServlet extends HttpServlet{
     }
 
     /**
-     * Shows the bookings in particular room
+     * Shows the page with all the rooms only to admins
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
@@ -46,6 +46,7 @@ public class AdminRoomsServlet extends HttpServlet{
                 if (rooms == null)
                     request.setAttribute(ErrorConstants.ERROR.toString(), ErrorConstants.NO_ROOMS.toString());
                 else {
+                    // read parameters to create a pagination
                     String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
                     String page = request.getParameter(PaginationConstants.PAGE.toString());
 

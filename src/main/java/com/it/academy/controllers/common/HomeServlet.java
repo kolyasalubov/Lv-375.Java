@@ -21,7 +21,7 @@ import java.io.IOException;
 
 
 /**
- * HomeServlet configures home page
+ * Class HomeServlet configures home page
  */
 @WebServlet({"/home"})  //  HOME_SERVLET
 public class HomeServlet extends HttpServlet {

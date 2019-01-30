@@ -1,5 +1,8 @@
 package com.it.academy.dto;
 
+/**
+ * Class BookingUserDto represents DTO object for operations with Bookings with user info
+ */
 public class BookingUserDto extends BookingDto {
 
     private String userFirstName;

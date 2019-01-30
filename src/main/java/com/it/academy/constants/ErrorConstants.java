@@ -1,10 +1,12 @@
 package com.it.academy.constants;
 
+/**
+ * Enum ErrorConstants keeps all constants which are connected with Errors
+ */
 public enum ErrorConstants {
 
     NO_ROOMS("There are no rooms yet!"),
     NO_BOOKINGS("There are no bookings yet!"),
-    NO_USERS("There are no users yet!"),
 
     NOT_THE_ADMIN("You are not the admin!"),
 
@@ -19,9 +21,6 @@ public enum ErrorConstants {
 
     EMAIL_EXIST("This email already exists!"),
     PASS_ERROR("Passwords do not match!"),
-
-
-
 
     ERROR("error");
 

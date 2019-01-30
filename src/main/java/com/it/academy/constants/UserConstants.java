@@ -1,5 +1,8 @@
 package com.it.academy.constants;
 
+/**
+ * Enum UsersConstants keeps all constants which are connected with Users
+ */
 public enum UserConstants {
 
     ID("idUser"),

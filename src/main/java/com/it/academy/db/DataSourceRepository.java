@@ -1,6 +1,8 @@
 package com.it.academy.db;
 
-
+/**
+ * Class DataSourceRepository provide methods to get different DataSources
+ */
 public final class DataSourceRepository {
 
     private DataSourceRepository(){}

@@ -14,7 +14,9 @@ import com.it.academy.service.UserService;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Class ObjContainer keeps instances of all unchangeable objects in the app.
+ */
 public class ObjContainer {
 
     private static volatile ObjContainer instance = null;
@@ -31,9 +33,15 @@ public class ObjContainer {
     private DateParser dateParser;
     private RequestValidator requestValidator;
 
+    /**
+     * Init objects in the constructor.
+     */
     private ObjContainer(){
+
+        // has to be init before Services, as is used there
         initDaos();
         dateParser = new DateParser();
+
         initServices();
         requestValidator = new RequestValidator(userService);
         initPagination();
@@ -59,6 +67,9 @@ public class ObjContainer {
         paginationServices.put(PaginationConstants.BOOKING_ROOM_PAGE.toString(), new PaginationService<BookingRoomDto>());
     }
 
+    /**
+     * @return an instance of ObjContainer due to the Singleton pattern
+     */
     public static ObjContainer getInstance() {
         if (instance == null) {
             synchronized (ObjContainer.class) {

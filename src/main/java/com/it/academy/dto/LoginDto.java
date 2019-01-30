@@ -1,5 +1,8 @@
 package com.it.academy.dto;
 
+/**
+ * Class LoginDto represents DTO object for storing in App the current logged in user
+ */
 public class LoginDto {
 
     private String email;

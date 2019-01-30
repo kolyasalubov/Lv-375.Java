@@ -22,9 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * RoomServlet configures archive of bookings in particular room
+ * Class UserEditServlet configures edition of user info
  */
-@WebServlet({"/user-edit"})  //  ROOM_ARCHIVE_SERVLET
+@WebServlet({"/user-edit"})
 public class UserEditServlet extends HttpServlet{
     private static final long serialVersionUID = 13L;
     private UserService userService;
@@ -37,7 +37,7 @@ public class UserEditServlet extends HttpServlet{
     }
 
     /**
-     * Shows the bookings in particular room
+     * Shows the form to edit user info
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(requestValidator.isValid(request)) {
@@ -61,7 +61,7 @@ public class UserEditServlet extends HttpServlet{
 
 
     /**
-     * Signs up the user
+     * Reads data from edition form and update user in DB
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter(UserConstants.EMAIL.toString());

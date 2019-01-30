@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+/**
+ * Class ADaoCRUD provides basic create, update, delete and create table operations
+ */
 abstract public class ADaoCRUD<TEntity> extends ADaoRead<TEntity> implements IDaoCRUD<TEntity> {
 
     protected final static String DATABASE_INPUT_ERROR = "Database Input Error";
@@ -15,10 +18,19 @@ abstract public class ADaoCRUD<TEntity> extends ADaoRead<TEntity> implements IDa
         super();
     }
 
+    /**
+     * Convert Entity in the List with its fields
+     */
     protected abstract List<Object> getFields(TEntity entity);
 
+    /**
+     * Convert Entity in the List with its fields which will be used in UPDATE queries
+     */
     protected abstract List<Object> getUpdateFields(TEntity entity);
 
+    /**
+     * Executes query using Statement
+     */
     protected boolean executeQuery(String query, QueryNames queryName) {
         boolean result;
         Statement statement = null;
@@ -44,7 +56,9 @@ abstract public class ADaoCRUD<TEntity> extends ADaoRead<TEntity> implements IDa
         return result;
     }
 
-    // Create
+    /**
+     * Inserts the entity in DB
+     */
     public boolean insert(TEntity entity) {
         List<Object> fields = getFields(entity);
         fields.remove(0);
@@ -52,13 +66,18 @@ abstract public class ADaoCRUD<TEntity> extends ADaoRead<TEntity> implements IDa
         return executeQuery(sql, QueryNames.INSERT);
     }
 
-    // Update
+    /**
+     * Updates the entity in DB by Id
+     */
     public boolean updateEntityById(TEntity entity) {
         String sql = String.format(sqlQueries.get(QueryNames.UPDATE_ROW_BY_ID),
                 getUpdateFields(entity).toArray());
         return executeQuery(sql, QueryNames.UPDATE_ROW_BY_ID);
     }
 
+    /**
+     * Updates the entity in DB by field
+     */
     public boolean updateEntityByField(TEntity entity, String whereFieldName, String whereFieldValue) {
         List<Object> list = getUpdateFields(entity);
         list.remove(list.size() - 1);
@@ -69,18 +88,26 @@ abstract public class ADaoCRUD<TEntity> extends ADaoRead<TEntity> implements IDa
         return executeQuery(sql, QueryNames.UPDATE_ROW_BY_FIELD);
     }
 
-    // Delete
+    /**
+     * Deletes the entity in DB by Id
+     */
     public boolean deleteById(long id) {
         String sql = String.format(sqlQueries.get(QueryNames.DELETE_BY_ID), id);
         return executeQuery(sql, QueryNames.DELETE_BY_ID);
     }
 
+    /**
+     * Deletes the entity in DB by field
+     */
     public boolean deleteByFieldName(String whereFieldName, String whereFieldValue) {
         String query = String.format(sqlQueries.get(QueryNames.DELETE_BY_FIELD),
                 whereFieldName, whereFieldValue);
         return executeQuery(query, QueryNames.DELETE_BY_FIELD);
     }
 
+    /**
+     * Creates table if it not already exists
+     */
     public boolean createTableIfNotExists(){
         return executeQuery(sqlQueries.get(QueryNames.CREATE_TABLE), QueryNames.CREATE_TABLE);
     }

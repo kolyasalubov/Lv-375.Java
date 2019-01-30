@@ -1,5 +1,8 @@
 package com.it.academy.entity;
 
+/**
+ * Class Booking contains queries for operation with Bookings
+ */
 public class Booking implements IEntity {
 
     public static enum BookingQueries {
@@ -15,7 +18,6 @@ public class Booking implements IEntity {
                 "FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE" +
                 ")"),
 
-        // TODO complicated query with FOREIGN KEYS
         INSERT(QueryNames.INSERT, "INSERT INTO bookings(room_id, user_id, start_date, end_date, purpose) " +
                 "VALUES ('%s', '%s', '%s', '%s', '%s');"),
 
@@ -28,7 +30,6 @@ public class Booking implements IEntity {
                 "WHERE %s = '%s' AND end_date <= '%s' " +      // '%s' --> current date
                 "ORDER BY start_date DESC;"),
 
-        // TODO complicated query with FOREIGN KEYS
         UPDATE_ROW_BY_ID(QueryNames.UPDATE_ROW_BY_ID, "UPDATE bookings " +
                 "SET room_id = '%s', user_id = '%s', start_date = '%s', end_date = '%s', purpose = '%s' " +
                 "WHERE id = %s;"),

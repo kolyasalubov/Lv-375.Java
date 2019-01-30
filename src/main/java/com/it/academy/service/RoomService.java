@@ -10,6 +10,10 @@ import com.it.academy.entity.Room;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Class RoomService provides methods for operations with rooms
+ */
 public class RoomService {
 
     private RoomDao roomDao;
@@ -31,6 +35,9 @@ public class RoomService {
         return room;
     }
 
+    /**
+     * Create RoomDto based on Room
+     */
     private RoomDto roomToDto(Room room){
         RoomDto roomDto = new RoomDto();
         roomDto.setIdRoom(String.valueOf(room.getId()));
@@ -39,6 +46,9 @@ public class RoomService {
         return roomDto;
     }
 
+    /**
+     * Adds new Room to DB
+     */
     public boolean createRoom(RoomDto roomDto){
         boolean result = true;
         Room room = dtoToRoom(roomDto);
@@ -50,6 +60,9 @@ public class RoomService {
         } return result;
     }
 
+    /**
+     * Update Room in DB
+     */
     public boolean updateRoom(RoomDto roomDto){
         boolean result = true;
         Room room = dtoToRoom(roomDto);
@@ -61,6 +74,9 @@ public class RoomService {
         } return result;
     }
 
+    /**
+     * Get Collection of all Rooms
+     */
     public CollectionDto<RoomDto> getRoomCollectionDto() {
         CollectionDto<RoomDto> rooms = null;
         try {
@@ -76,15 +92,25 @@ public class RoomService {
         return rooms;
     }
 
+    /**
+     * Get RoomDto from DB by id
+     */
     public RoomDto getById(RoomDto roomDto){
         return roomToDto(roomDao.getById(Long.parseLong(roomDto.getIdRoom())));
     }
 
+
+    /**
+     * Get RoomDto object by RoomDto with number
+     */
     public RoomDto fillRoomDtoInfo(RoomDto roomDto){
         Room room = roomDao.getByFieldName("number", roomDto.getNumber()).get(0);
         return roomToDto(room);
     }
 
+    /**
+     * Delete Room from DB
+     */
     public boolean deleteRoom(RoomDto roomDto){
         boolean result = true;
         try{
@@ -95,6 +121,9 @@ public class RoomService {
         } return result;
     }
 
+    /**
+     * Checks if the room with some number is already in DB
+     */
     public boolean isExist(RoomDto roomDto){
         boolean result = true;
         try{
@@ -105,6 +134,9 @@ public class RoomService {
         } return result;
     }
 
+    /**
+     * Checks if the room with some number (except from current room) is already in DB
+     */
     public boolean isExistExceptFromCurrent(RoomDto roomDto){
         try{
             List<Room> list = roomDao.getByFieldName("number", roomDto.getNumber());

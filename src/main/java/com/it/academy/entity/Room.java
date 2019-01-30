@@ -1,5 +1,8 @@
 package com.it.academy.entity;
 
+/**
+ * Class Room contains queries for operation with Rooms
+ */
 public class Room implements IEntity {
 
     public static enum RoomQueries {

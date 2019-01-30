@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class ConnectionManager provides methods for properly creation and use of DB connection
+ */
 public class ConnectionManager {
 
     private final static String FAILED_CREATE_CONNECTION = "Failed to Create Connection";
@@ -14,6 +17,8 @@ public class ConnectionManager {
     private static volatile ConnectionManager instance = null;
 
     private DataSource dataSource;
+
+    // Map with all the connections
     private final Map<Long, Connection> connections;
 
     private ConnectionManager() {
@@ -24,6 +29,9 @@ public class ConnectionManager {
         return getInstance(null);
     }
 
+    /**
+     * Gets instance of connection
+     */
     public static ConnectionManager getInstance(DataSource dataSource) {
         if (instance == null) {
             synchronized (ConnectionManager.class) {
@@ -36,6 +44,9 @@ public class ConnectionManager {
         return instance;
     }
 
+    /**
+     * Configures DataStore
+     */
     private void checkDataSourceStatus(DataSource dataSource) {
 		/*-		dataSource		this.dataSource		    Action
 		 * 			null			null				create default
@@ -51,6 +62,9 @@ public class ConnectionManager {
         }
     }
 
+    /**
+     * Sets dataSource to connection and close all connections
+     */
     private void setDataSource(DataSource dataSource) {
         synchronized (ConnectionManager.class) {
             this.dataSource = dataSource;
@@ -71,6 +85,9 @@ public class ConnectionManager {
         getAllConnections().put(Thread.currentThread().getId(), connection);
     }
 
+    /**
+     * Gets new connection and add it to the map of all connections
+     */
     public Connection getConnection() {
         Connection connection = getAllConnections().get(Thread.currentThread().getId());
         if (connection == null) {
@@ -88,6 +105,9 @@ public class ConnectionManager {
     }
 
 
+    /**
+     * Close all connections from map with all connections
+     */
     public static void closeAllConnections() {
         if (instance != null) {
             for (Long key : instance.getAllConnections().keySet()) {

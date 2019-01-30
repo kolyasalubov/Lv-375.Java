@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * BookingsServlet configures bookings of current user
+ * Class BookingsServlet configures bookings of current user
  */
 @WebServlet({"/bookings"})  //  BOOKINGS_SERVLET
 public class BookingsServlet extends HttpServlet {

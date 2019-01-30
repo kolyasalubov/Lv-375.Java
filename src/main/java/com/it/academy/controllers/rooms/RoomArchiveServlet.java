@@ -21,9 +21,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * RoomServlet configures archive of bookings in particular room
+ * Class RoomArchiveServlet configures archive of bookings in particular room
  */
-@WebServlet({"/room-archive"})  //  ROOM_ARCHIVE_SERVLET
+@WebServlet({"/room-archive"})
 public class RoomArchiveServlet extends HttpServlet {
 
     private static final long serialVersionUID = 6L;

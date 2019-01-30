@@ -1,5 +1,9 @@
 package com.it.academy.constants;
 
+
+/**
+ * Enum RoomConstants keeps all constants which are connected with Rooms
+ */
 public enum RoomConstants {
 
     ID("idRoom"),

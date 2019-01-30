@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * HomeServlet configures home page
+ * Class BookingDeleteServlet configures deletion of booking
  */
 @WebServlet({"/booking-delete"})
 public class BookingDeleteServlet extends HttpServlet{
@@ -38,7 +38,7 @@ public class BookingDeleteServlet extends HttpServlet{
     }
 
     /**
-     * Shows the bookings in particular room
+     * Delete a certain booking and return to page we came from
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
@@ -50,7 +50,7 @@ public class BookingDeleteServlet extends HttpServlet{
             bookingService.deleteRoomBooking(bookingRoomDto);
 
             String urlToGoBack = request.getParameter(BookingConstants.URL_TO_GO_BACK.toString());
-            if(urlToGoBack.contains(RoomConstants.ROOM.toString())) {
+            if(urlToGoBack.contains(RoomConstants.ROOM.toString())) { // to go back to the room from where we came from
                 request.getSession().setAttribute(RoomConstants.NUMBER.toString(), bookingRoomDto.getRoomNumber());
             }
 

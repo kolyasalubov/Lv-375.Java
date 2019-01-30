@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * HomeServlet configures home page
+ * Class RoomDeleteServlet configures deletion of room
  */
 @WebServlet({"/room-delete"})
 public class RoomDeleteServlet extends HttpServlet{
@@ -35,7 +35,7 @@ public class RoomDeleteServlet extends HttpServlet{
     }
 
     /**
-     * Shows the bookings in particular room
+     * Delete a certain room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {

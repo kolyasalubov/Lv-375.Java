@@ -1,5 +1,8 @@
 package com.it.academy.constants;
 
+/**
+ * Enum PaginationConstants keeps all constants which are connected with Pagination
+ */
 public enum PaginationConstants {
 
     PAGE_OFFSET("pageOffset"),

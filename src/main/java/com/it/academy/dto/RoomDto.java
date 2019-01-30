@@ -1,5 +1,8 @@
 package com.it.academy.dto;
 
+/**
+ * Class RoomDto represents DTO object for operations with Rooms
+ */
 public class RoomDto {
 
     private String idRoom;

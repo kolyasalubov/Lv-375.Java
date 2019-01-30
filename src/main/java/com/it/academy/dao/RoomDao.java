@@ -5,12 +5,19 @@ import com.it.academy.entity.Room;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class RoomDao provides all basic methods to operate with Room Entity
+ */
 public class RoomDao extends ADaoCRUD<Room> {
 
     public RoomDao(){
         super();
     }
 
+
+    /**
+     * Implementation of abstract method from ADaoRead
+     */
     @Override
     protected void init() {
         for(Room.RoomQueries roomQueries : Room.RoomQueries.values()){
@@ -18,6 +25,9 @@ public class RoomDao extends ADaoCRUD<Room> {
         }
     }
 
+    /**
+     * Implementation of abstract method from ADaoRead
+     */
     @Override
     protected Room createInstance(List<String> list) {
         return new Room(
@@ -27,6 +37,9 @@ public class RoomDao extends ADaoCRUD<Room> {
         );
     }
 
+    /**
+     * Implementation of abstract method from ADaoCRUD
+     */
     @Override
     protected List<Object> getFields(Room room) {
         List<Object> list = new ArrayList<>();
@@ -36,6 +49,9 @@ public class RoomDao extends ADaoCRUD<Room> {
         return list;
     }
 
+    /**
+     * Implementation of abstract method from ADaoCRUD
+     */
     @Override
     protected List<Object> getUpdateFields(Room room) {
         List<Object> list = getFields(room);

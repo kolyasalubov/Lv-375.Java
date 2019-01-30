@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * HomeServlet configures home page
+ * Class BookingEditServlet configures page of booking edition
  */
 @WebServlet({"/booking-edit"})
 public class BookingEditServlet extends HttpServlet{
@@ -43,7 +43,7 @@ public class BookingEditServlet extends HttpServlet{
     }
 
     /**
-     * Shows the bookings in particular room
+     * Shows the form to edit booking
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
@@ -67,7 +67,7 @@ public class BookingEditServlet extends HttpServlet{
 
 
     /**
-     * Shows the bookings in particular room
+     * Reads data from edition form and update booking in DB
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter(BookingConstants.ID.toString());

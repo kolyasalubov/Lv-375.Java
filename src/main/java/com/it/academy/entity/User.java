@@ -1,6 +1,8 @@
 package com.it.academy.entity;
 
-
+/**
+ * Class User contains queries for operation with Users
+ */
 public class User implements IEntity {
 
     public static enum UserQueries {

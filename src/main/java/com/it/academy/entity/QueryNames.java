@@ -1,5 +1,8 @@
 package com.it.academy.entity;
 
+/**
+ * Enum QueryNames contains names of all queries
+ */
 public enum QueryNames {
 
     CREATE_TABLE,

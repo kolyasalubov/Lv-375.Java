@@ -2,10 +2,14 @@ package com.it.academy.dto;
 
 import java.util.List;
 
+/**
+ * Class CollectionDto represents DTO object with List of some entity
+ */
 public class CollectionDto<TDto> {
 
-    private final int DEFAULT_PAGE_OFFSET = 10; // TODO
-    private final int DEFAULT_PAGE = 1; // TODO
+    // constants for pagination
+    private final int DEFAULT_PAGE_OFFSET = 10; // if user do not choose
+    private final int DEFAULT_PAGE = 1; // display the first page by default
 
     private List<TDto> collection;
     private int pageCount;

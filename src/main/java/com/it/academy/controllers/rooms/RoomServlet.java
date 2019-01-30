@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * RoomServlet configures bookings in particular room
+ * Class RoomServlet configures bookings in particular room
  */
 @WebServlet({"/room"})  //  ROOM_SERVLET
 public class RoomServlet extends HttpServlet {

@@ -6,12 +6,18 @@ import com.it.academy.entity.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class UserDao provides all basic methods to operate with User Entity
+ */
 public class UserDao extends ADaoExist<User> {
 
     public UserDao(){
         super();
     }
 
+    /**
+     * Implementation of abstract method from ADaoRead
+     */
     @Override
     protected void init() {
         for(User.UserQueries userQueries : User.UserQueries.values()){
@@ -19,6 +25,9 @@ public class UserDao extends ADaoExist<User> {
         }
     }
 
+    /**
+     * Implementation of abstract method from ADaoRead
+     */
     @Override
     protected User createInstance(List<String> list) {
         return new User(
@@ -28,6 +37,9 @@ public class UserDao extends ADaoExist<User> {
         );
     }
 
+    /**
+     * Implementation of abstract method from ADaoCRUD
+     */
     @Override
     protected List<Object> getFields(User user) {
         List<Object> list = new ArrayList<>();
@@ -42,6 +54,9 @@ public class UserDao extends ADaoExist<User> {
     }
 
 
+    /**
+     * Implementation of abstract method from ADaoCRUD
+     */
     @Override
     protected List<Object> getUpdateFields(User user) {
         List<Object> list = getFields(user);
@@ -51,6 +66,9 @@ public class UserDao extends ADaoExist<User> {
         return list;
     }
 
+    /**
+     * Implementation of abstract method from ADaoExist
+     */
     @Override
     protected List<Object> getExistFields(User user) {
         List<Object> list = new ArrayList<>();
@@ -59,18 +77,18 @@ public class UserDao extends ADaoExist<User> {
         return list;
     }
 
+    /**
+     * Execute query which update some field of entity by id
+     */
     public boolean updateFieldById(String setFieldName, String setFieldValue, long id) {
         String sql = String.format(sqlQueries.get(QueryNames.UPDATE_FIELD_BY_ID),
                 setFieldName, setFieldValue, id);
         return executeQuery(sql, QueryNames.UPDATE_FIELD_BY_ID);
     }
 
-    public boolean updateFieldByField(String setFieldName, String setFieldValue, String whereFieldName, String whereFieldValue) {
-        String sql = String.format(sqlQueries.get(QueryNames.UPDATE_FIELD_BY_FIELD),
-                setFieldName, setFieldValue, whereFieldName, whereFieldValue);
-        return executeQuery(sql, QueryNames.UPDATE_FIELD_BY_FIELD);
-    }
-
+    /**
+     * Checks if the entity with some email except from the current entity exists
+     */
     public boolean isEmailExist(String email){
         List<User> list = getByFieldName("email", email);
         if(list == null){

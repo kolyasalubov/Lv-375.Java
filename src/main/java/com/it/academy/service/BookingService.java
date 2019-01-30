@@ -14,6 +14,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * Class BookingService provides methods for operations with bookings
+ */
 public class BookingService {
 
     private BookingDao bookingDao;
@@ -35,6 +38,9 @@ public class BookingService {
         this.dateParser = dateParser;
     }
 
+    /**
+     * Create Booking based on BookingDto and LoginDto
+     */
     private Booking dtoToBooking(BookingDto bookingDto, LoginDto loginDto) {
         Booking booking = new Booking();
         if (bookingDto.getIdBooking() != null)
@@ -49,6 +55,9 @@ public class BookingService {
         return booking;
     }
 
+    /**
+     * Create Booking based on BookingRoomDto and LoginDto
+     */
     private Booking roomDtoToBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
         Booking booking = dtoToBooking(bookingRoomDto, loginDto);
         List<Room> rooms = roomDao.getByFieldName("number", bookingRoomDto.getRoomNumber());
@@ -57,6 +66,9 @@ public class BookingService {
     }
 
 
+    /**
+     * Create BookingDto based on Booking
+     */
     private BookingDto bookingToBookingDto(Booking booking) {
         BookingDto dto = new BookingDto();
 
@@ -75,6 +87,9 @@ public class BookingService {
         return dto;
     }
 
+    /**
+     * Create BookingUserDto based on Booking
+     */
     private BookingUserDto bookingToBookingUserDto(Booking booking) {
         BookingUserDto dto = new BookingUserDto(bookingToBookingDto(booking));
 
@@ -85,6 +100,9 @@ public class BookingService {
         return dto;
     }
 
+    /**
+     * Create BookingRoomDto based on Booking
+     */
     private BookingRoomDto bookingToBookingRoomDto(Booking booking) {
         BookingRoomDto dto = new BookingRoomDto(bookingToBookingDto(booking));
 
@@ -94,22 +112,11 @@ public class BookingService {
         return dto;
     }
 
+    /**
+     * Adds new booking to DB
+     */
     public boolean createRoomBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
         Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
-        return saveBookingToDB(booking);
-    }
-
-    public boolean isFreeTime(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
-        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
-        return !bookingDao.isExist(booking);
-    }
-
-    public boolean isFreeTimeExceptFromCurrent(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
-        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
-        return !bookingDao.isExistExceptFromCurrent(booking);
-    }
-
-    private boolean saveBookingToDB(Booking booking) {
         boolean result = true;
         try {
             bookingDao.insert(booking);
@@ -120,6 +127,25 @@ public class BookingService {
         return result;
     }
 
+    /**
+     * Checks if the time from Booking is available
+     */
+    public boolean isFreeTime(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
+        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
+        return !bookingDao.isExist(booking);
+    }
+
+    /**
+     * Checks if the time from Booking is available (do not take in account the current booking)
+     */
+    public boolean isFreeTimeExceptFromCurrent(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
+        Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
+        return !bookingDao.isExistExceptFromCurrent(booking);
+    }
+
+    /**
+     * Update Booking in DB
+     */
     public boolean updateRoomBooking(BookingRoomDto bookingRoomDto, LoginDto loginDto) {
         boolean result = true;
         Booking booking = roomDtoToBooking(bookingRoomDto, loginDto);
@@ -132,6 +158,9 @@ public class BookingService {
         return result;
     }
 
+    /**
+     * Delete Booking from DB
+     */
     public boolean deleteRoomBooking(BookingRoomDto bookingRoomDto) {
         boolean result = true;
         try {
@@ -143,6 +172,10 @@ public class BookingService {
         return result;
     }
 
+
+    /**
+     * Get BookingRoomDto object by BookingRoomDto with id
+     */
     public BookingRoomDto getBookingRoomDto(BookingRoomDto bookingRoomDto){
         BookingRoomDto result = null;
         try {
@@ -170,6 +203,9 @@ public class BookingService {
         return getBookingUserCollection(roomDto, true);
     }
 
+    /**
+     * Get Collection of BookingRoom (past or future)
+     */
     private CollectionDto<BookingRoomDto> getBookingRoomCollection(LoginDto loginDto, boolean isPast) {
         List<BookingRoomDto> dtos = new ArrayList<>();
         CollectionDto<BookingRoomDto> collection = null;
@@ -186,6 +222,9 @@ public class BookingService {
         return collection;
     }
 
+    /**
+     * Get Collection of BookingUser (past or future)
+     */
     private CollectionDto<BookingUserDto> getBookingUserCollection(RoomDto roomDto, boolean isPast) {
         List<BookingUserDto> dtos = new ArrayList<>();
         CollectionDto<BookingUserDto> collection = null;
@@ -203,6 +242,9 @@ public class BookingService {
     }
 
 
+    /**
+     * Gets list of past or future Bookings
+     */
     private List<Booking> getByTime(String fieldName, String fieldValue, boolean isPast) {
         return isPast ? bookingDao.getPastByField(fieldName, fieldValue)
                 : bookingDao.getFutureByField(fieldName, fieldValue);

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * RoomServlet configures archive of bookings in particular room
+ * Class AdminUsersServlet configures admin interaction with users
  */
 @WebServlet({"/admin-users"})
 public class AdminUsersServlet extends HttpServlet {
@@ -39,7 +39,7 @@ public class AdminUsersServlet extends HttpServlet {
     }
 
     /**
-     * Shows the bookings in particular room
+     * Shows the page with all the users only to admins
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
@@ -47,6 +47,7 @@ public class AdminUsersServlet extends HttpServlet {
 
                 CollectionDto<UserDto> users = userService.getUserCollectionDto();
 
+                // read parameters to create a pagination
                 String pageOffset = request.getParameter(PaginationConstants.PAGE_OFFSET.toString());
                 String page = request.getParameter(PaginationConstants.PAGE.toString());
 
@@ -73,7 +74,8 @@ public class AdminUsersServlet extends HttpServlet {
 
 
     /**
-     * Signs up the user
+     * Updates User status is_blocked and is_admin in the database
+     * during the one call only the one of them is updated
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter(UserConstants.ID.toString());

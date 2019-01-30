@@ -11,12 +11,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class ADaoRead provides basic read operation
+ */
 abstract public class ADaoRead<TEntity> implements IDaoRead<TEntity> {
 
     protected final static String QUERY_NOT_FOUND = "Query not found %s";
     protected final static String EMPTY_RESULTSET = "Empty ResultSet by Query %s";
     protected final static String DATABASE_READING_ERROR = "Database Reading Error";
 
+    // Map with all queries and their names
     protected final Map<Enum<?>, String> sqlQueries;
 
     protected ADaoRead() {
@@ -24,11 +28,19 @@ abstract public class ADaoRead<TEntity> implements IDaoRead<TEntity> {
         init();
     }
 
+    /**
+     * Fill the map sqlQueries with the Entity's queries
+     */
     protected abstract void init();
 
+    /**
+     * Convert the List with Entity's fields to Entity
+     */
     protected abstract TEntity createInstance(List<String> list);
 
-    // Read
+    /**
+     * Execute query using Statement which gets List of Entities
+     */
     protected List<TEntity> getQueryResult(String query, QueryNames queryName) {
 
         List<TEntity> all = new ArrayList<>();
@@ -76,16 +88,25 @@ abstract public class ADaoRead<TEntity> implements IDaoRead<TEntity> {
         return all;
     }
 
+    /**
+     * Gets Entity by Id
+     */
     public TEntity getById(long id) {
         String sql = String.format(sqlQueries.get(QueryNames.GET_BY_ID), id);
         return getQueryResult(sql, QueryNames.GET_BY_ID).get(0);
     }
 
+    /**
+     * Gets List of Entities by field
+     */
     public List<TEntity> getByFieldName(String fieldName, String fieldValue) {
         String sql = String.format(sqlQueries.get(QueryNames.GET_BY_FIELD), fieldName, fieldValue);
         return getQueryResult(sql, QueryNames.GET_BY_FIELD);
     }
 
+    /**
+     * Gets List of all Entities
+     */
     public List<TEntity> getAll() {
         String sql = sqlQueries.get(QueryNames.GET_ALL);
         return getQueryResult(sql, QueryNames.GET_ALL);

@@ -1,5 +1,8 @@
 package com.it.academy.dto;
 
+/**
+ * Class BookingDto represents DTO object for operations with Bookings
+ */
 public class BookingDto {
 
     private String idBooking;

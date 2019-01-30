@@ -24,9 +24,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * BookingsServlet configures bookings of current user
+ * Class BookingsArchiveServlet configures archive of bookings of current user
  */
-@WebServlet({"/bookings-archive"})  //  BOOKINGS_ARCHIVE_SERVLET
+@WebServlet({"/bookings-archive"})
 public class BookingsArchiveServlet extends HttpServlet {
 
     private static final long serialVersionUID = 8L;
@@ -42,7 +42,7 @@ public class BookingsArchiveServlet extends HttpServlet {
     }
 
     /**
-     * Shows the bookings of current user
+     * Shows the archive of bookings of current user
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {

@@ -1,5 +1,8 @@
 package com.it.academy.dto;
 
+/**
+ * Class BookingRoomDto represents DTO object for operations with Bookings with roomNumber
+ */
 public class BookingRoomDto extends BookingDto {
 
     private String roomNumber;

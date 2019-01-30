@@ -17,9 +17,9 @@ import java.io.IOException;
 
 
 /**
- * RegistrationServlet configures registration page
+ * Class RegistrationServlet configures registration page
  */
-@WebServlet({"/registration"})  //  REGISTRATION_SERVLET
+@WebServlet({"/registration"})
 public class RegistrationServlet extends HttpServlet {
 
     private static final long serialVersionUID = 2L;

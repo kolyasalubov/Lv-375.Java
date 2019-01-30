@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Class PropertiesReader reads properties from FILE_NAME file
+ */
 public class PropertiesReader {
 
     private static final String FILE_NAME = "DBconfig.properties";
@@ -14,7 +17,6 @@ public class PropertiesReader {
         try {
             InputStream input = this.getClass().getClassLoader()
                     .getResourceAsStream(FILE_NAME);
-//            InputStream input = new FileInputStream(System.getProperty("user.dir") + "/web/WEB-INF/classes/" + FILE_NAME);
             prop = new Properties();
             prop.load(input);
         } catch (IOException e) {

@@ -1,5 +1,8 @@
 package com.it.academy.db;
 
+/**
+ * Class DataSource provide access to information of DataSource
+ */
 public final class DataSource {
 
     private String connectionUrl;

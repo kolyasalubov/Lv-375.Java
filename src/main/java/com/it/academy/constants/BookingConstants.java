@@ -1,5 +1,8 @@
 package com.it.academy.constants;
 
+/**
+ * Enum BookingConstants keeps all constants which are connected with Bookings
+ */
 public enum BookingConstants {
 
     ID("idBooking"),

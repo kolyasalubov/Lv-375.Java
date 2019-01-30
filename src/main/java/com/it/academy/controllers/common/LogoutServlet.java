@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * LogoutServlet configures logout button
+ * Class LogoutServlet configures logout button
  */
 @WebServlet({"/logout"})  // LOGOUT_SERVLET
 public class LogoutServlet extends HttpServlet{

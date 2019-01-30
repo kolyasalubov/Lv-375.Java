@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * HomeServlet configures home page
+ * Class RoomEditServlet configures page of room edition
  */
 @WebServlet({"/room-edit"})
 public class RoomEditServlet extends HttpServlet{
@@ -39,7 +39,7 @@ public class RoomEditServlet extends HttpServlet{
     }
 
     /**
-     * Shows the bookings in particular room
+     * Shows the form to edit room info
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
@@ -64,7 +64,7 @@ public class RoomEditServlet extends HttpServlet{
 
 
     /**
-     * Shows the bookings in particular room
+     * Reads data from edition form and update room in DB
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter(RoomConstants.ID.toString());

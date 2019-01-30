@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * LoginServlet configures the first page
+ * Class LoginServlet configures the first page
  */
 @WebServlet({"/", "/login"})  //  ROOT_SERVLET, LOGIN_SERVLET
 public class LoginServlet extends HttpServlet {

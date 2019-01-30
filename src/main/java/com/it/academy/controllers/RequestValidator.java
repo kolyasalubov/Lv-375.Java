@@ -12,6 +12,10 @@ import com.it.academy.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+/**
+ * Class RequestValidator validate request for some parameter
+ */
 public class RequestValidator {
 
     UserService userService;
@@ -20,6 +24,9 @@ public class RequestValidator {
         this.userService = userService;
     }
 
+    /**
+     * Checks if current user is logged in
+     */
     public boolean isValid(HttpServletRequest request) {
         LoginDto loginDto = (LoginDto) request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString());
 
@@ -29,6 +36,9 @@ public class RequestValidator {
                 && !userService.isBlocked(loginDto);
     }
 
+    /**
+     * Checks if current user is admin
+     */
     public boolean isAdmin(HttpServletRequest request) {
         LoginDto loginDto = (LoginDto) request.getSession().getAttribute(UserConstants.LOGIN_DTO.toString());
 

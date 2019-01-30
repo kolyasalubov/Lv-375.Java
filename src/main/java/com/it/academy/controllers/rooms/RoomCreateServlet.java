@@ -22,9 +22,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * HomeServlet configures home page
+ * Class RoomCreateServlet configures page of room creation
  */
-@WebServlet({"/room-create"})  //  HOME_SERVLET
+@WebServlet({"/room-create"})
 public class RoomCreateServlet extends HttpServlet {
 
     private static final long serialVersionUID = 16L;
@@ -38,7 +38,7 @@ public class RoomCreateServlet extends HttpServlet {
     }
 
     /**
-     * Shows the bookings in particular room
+     * Shows the form to create room
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (requestValidator.isValid(request)) {
@@ -56,7 +56,7 @@ public class RoomCreateServlet extends HttpServlet {
 
 
     /**
-     * Shows the bookings in particular room
+     * Reads data from creation form and add room to DB
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String number = request.getParameter(RoomConstants.NUMBER.toString());

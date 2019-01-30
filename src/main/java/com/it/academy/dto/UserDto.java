@@ -1,5 +1,8 @@
 package com.it.academy.dto;
 
+/**
+ * Class UserDto represents DTO object for operations with Users
+ */
 public class UserDto {
 
     private String idUser;
