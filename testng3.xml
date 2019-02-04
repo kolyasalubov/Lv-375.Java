@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Suite30">
+	<parameter name="url" value="http://mysite.com"/>
+	<parameter name="connectionString" value="jdbc:mysql..."/>
+
+	<test name="Test30">
+		<parameter name="number" value="212"/>
+		<classes>
+			<class name="com.softserve.edu.TestNGTest6" />
+			<class name="com.softserve.edu.TestNGTest61" />
+		</classes>
+	</test> <!-- Test -->
+
+</suite> <!-- Suite -->
