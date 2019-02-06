@@ -63,31 +63,31 @@
 		<maven.surefire.plugin.version>2.21.0</maven.surefire.plugin.version>
 		<!-- - - - - - Mock - - - - - -->
 		<org.mockito.version>1.10.19</org.mockito.version>
-		<org.powermock.version>1.7.3</org.powermock.version>
+		<org.powermock.version>1.7.4</org.powermock.version>
 		<!-- - - - - - Logging - - - - - -->
 		<org.slf4j.version>1.7.25</org.slf4j.version>
 	</properties>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.1.RELEASE</version>
+<!-- 	<parent> -->
+<!-- 		<groupId>org.springframework.boot</groupId> -->
+<!-- 		<artifactId>spring-boot-starter-parent</artifactId> -->
+<!-- 		<version>2.0.1.RELEASE</version> -->
 		<!-- <version>1.5.8.RELEASE</version> -->
-	</parent>
+<!-- 	</parent> -->
 
-	<repositories>
-		<repository>
-			<id>spring-releases</id>
-			<url>https://repo.spring.io/libs-release</url>
-		</repository>
-	</repositories>
+<!-- 	<repositories> -->
+<!-- 		<repository> -->
+<!-- 			<id>spring-releases</id> -->
+<!-- 			<url>https://repo.spring.io/libs-release</url> -->
+<!-- 		</repository> -->
+<!-- 	</repositories> -->
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-releases</id>
-			<url>https://repo.spring.io/libs-release</url>
-		</pluginRepository>
-	</pluginRepositories>
+<!-- 	<pluginRepositories> -->
+<!-- 		<pluginRepository> -->
+<!-- 			<id>spring-releases</id> -->
+<!-- 			<url>https://repo.spring.io/libs-release</url> -->
+<!-- 		</pluginRepository> -->
+<!-- 	</pluginRepositories> -->
 
 	<dependencies>
 		<!-- - - - - - DB - - - - - -->
@@ -101,11 +101,11 @@
 		<!-- <artifactId>jtds</artifactId> -->
 		<!-- <version>${net.sourceforge.jtds.version}</version> -->
 		<!-- </dependency> -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<!-- <version>${mysql.connector.version}</version> -->
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>mysql</groupId> -->
+<!-- 			<artifactId>mysql-connector-java</artifactId> -->
+ 			<!-- <version>${mysql.connector.version}</version> -->
+<!-- 		</dependency> -->
 		<!-- <dependency> -->
 		<!-- <groupId>org.postgresql</groupId> -->
 		<!-- <artifactId>postgresql</artifactId> -->
@@ -180,31 +180,31 @@
 		<!-- <artifactId>spring-webmvc</artifactId> -->
 		<!-- <version>${org.springframework.version}</version> -->
 		<!-- </dependency> -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<!-- - - - - - JSON - - - - - -->
-		<dependency>
-			<groupId>com.jayway.jsonpath</groupId>
-			<artifactId>json-path</artifactId>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-web</artifactId> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-test</artifactId> -->
 <!-- 			<scope>test</scope> -->
-		</dependency>
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-data-jpa</artifactId> -->
+<!-- 		</dependency> -->
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-starter-tomcat</artifactId> -->
+<!-- 			<scope>provided</scope> -->
+<!-- 		</dependency> -->
+		<!-- - - - - - JSON - - - - - -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.jayway.jsonpath</groupId> -->
+<!-- 			<artifactId>json-path</artifactId> -->
+ 			<!-- <scope>test</scope> -->
+<!-- 		</dependency> -->
 		<!-- <dependency> -->
 		<!-- <groupId>com.fasterxml.jackson.core</groupId> -->
 		<!-- <artifactId>jackson-databind</artifactId> -->
@@ -221,6 +221,25 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${org.testng.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- - - - Mock Object - - - -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${org.mockito.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>${org.powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-testng</artifactId>
+			<version>${org.powermock.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -242,12 +261,12 @@
 	<build>
 		<plugins>
 
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<!-- <version>2.0.1.RELEASE</version> -->
-				<!-- <version>1.5.8.RELEASE</version> -->
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.springframework.boot</groupId> -->
+<!-- 				<artifactId>spring-boot-maven-plugin</artifactId> -->
+<!-- 				<version>2.0.1.RELEASE</version> -->
+<!-- 				<version>1.5.8.RELEASE</version> -->
+<!-- 			</plugin> -->
 
 			<!-- <plugin> -->
 			<!-- <groupId>org.apache.maven.plugins</groupId> -->

@@ -1,12 +1,13 @@
-package com.softserve.edu;
+package com.softserve.edu.stub;
 
-import com.softserve.edu.dao.UserDao;
+import com.softserve.edu.dao.IUserDao;
 import com.softserve.edu.service.UserService;
 
 public class Appl {
 
 	public static void main(String[] args) {
-		UserService userService = new UserService(new UserDao());
+		IUserDao userDao = new OutDotUserDaoStub();
+		UserService userService = new UserService(userDao);
 		System.out.println("result = " + userService.getLastDigits());
 	}
 }
