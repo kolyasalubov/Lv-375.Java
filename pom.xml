@@ -225,11 +225,11 @@
 		</dependency>
 
 		<!-- - - - Mock Object - - - -->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>${org.mockito.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.mockito</groupId> -->
+<!-- 			<artifactId>mockito-all</artifactId> -->
+<!-- 			<version>${org.mockito.version}</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-mockito</artifactId>

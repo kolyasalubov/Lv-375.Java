@@ -12,6 +12,10 @@ public class ProductService {
 		//productDao = new ProductDao();
 	}
 
+	public ProductService() {
+		productDao = new ProductDao();
+	}
+
 	public IProductDao getProductDao() {
 		return productDao;
 	}
