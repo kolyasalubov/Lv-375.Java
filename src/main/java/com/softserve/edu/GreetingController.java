@@ -22,7 +22,7 @@ public class GreetingController {
 	//@RequestMapping("/")
 	public String greeting() {
 		// Call classes from service layer
-		return "redirect:/greeting";
+		return "redirect: /greeting";
 	}
 
 }

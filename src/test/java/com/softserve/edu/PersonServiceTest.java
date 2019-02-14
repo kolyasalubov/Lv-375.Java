@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ import com.softserve.edu.service.PersonService;
 
 @TestExecutionListeners(MockitoTestExecutionListener.class)
 @SpringBootTest
-public class PersonServiceTest {
+public class PersonServiceTest extends AbstractTestNGSpringContextTests {
 
 	@MockBean
 	private PersonRepository personRepository;
