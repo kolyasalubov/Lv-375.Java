@@ -46,4 +46,8 @@ public class Person implements Serializable {
 		this.city = city;
 	}
 	
+	@Override
+	public String toString() {
+		return getPid() + "  " + getName() + "  " +  getCity()  ;
+	}
 }

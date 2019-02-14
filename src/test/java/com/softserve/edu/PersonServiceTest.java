@@ -1,5 +1,8 @@
 package com.softserve.edu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +13,7 @@ import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.entity.Person;
 import com.softserve.edu.repository.PersonRepository;
 import com.softserve.edu.service.PersonService;
 
@@ -25,8 +29,27 @@ public class PersonServiceTest extends AbstractTestNGSpringContextTests {
 
 	@Test
 	public void testSomethingOnWidgetService() {
-		Mockito.when(personRepository.findByName("ivan")).thenReturn(null);
-		Assert.assertEquals(personService.findByName("ivan"), null);
+		// Precondition
+		List<Person> expectedPersons = new ArrayList<>();
+		Person testPerson = new Person();
+		testPerson.setPid(0);
+		testPerson.setName("SuperIvan");
+		testPerson.setCity("SuperCity");
+		expectedPersons.add(testPerson);
+		//
+		Mockito.when(personRepository.findByName("ivan")).thenReturn(expectedPersons);
+		// Steps
+		List<Person> actualPersons = personService.findByName("ivan");
+		Assert.assertEquals(actualPersons.size(), expectedPersons.size());
+		Assert.assertEquals(actualPersons.get(0).getName(),
+				expectedPersons.get(0).getName());
+		//
+		//actualPersons = personService.findByName("petro");
+		actualPersons = personService.findByName("ivan");
+		System.out.println("actualPersons: " + actualPersons);
+		//
+		//Mockito.when(personRepository.findByName("ivan")).thenReturn(null);
+		//Assert.assertEquals(personService.findByName("ivan"), null);
 	}
 
 }
