@@ -48,6 +48,6 @@ public class Person implements Serializable {
 	
 	@Override
 	public String toString() {
-		return getPid() + "  " + getName() + "  " +  getCity()  ;
+		return "Person: id = " + getPid() + " name = " + getName() + " city = " +  getCity()  ;
 	}
 }
