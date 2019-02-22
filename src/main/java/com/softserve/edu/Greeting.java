@@ -16,4 +16,11 @@ public class Greeting {
 	public String getContent() {
 		return content;
 	}
+	
+    public void swap(int arg0, int arg1) {
+        int arg = arg0;
+        arg0 = arg1;
+        arg1 = arg;
+    }
+
 }
