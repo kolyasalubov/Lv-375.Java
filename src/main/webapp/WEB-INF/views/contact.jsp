@@ -55,8 +55,9 @@
 				<td><form:input path="telephone" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit"
-					value='<spring:message code="label.addcontact"/>' /></td>
+				<td colspan="2">
+					<input type="submit"
+					   value='<spring:message code="label.addcontact"/>' /></td>
 			</tr>
 		</table>
 	</form:form>

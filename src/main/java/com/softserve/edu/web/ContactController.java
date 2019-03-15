@@ -32,14 +32,18 @@ public class ContactController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addContact(@ModelAttribute("contact") Contact contact,
+    public String addContact(
+    		@ModelAttribute("contact")
+    		Contact contact,
             BindingResult result) {
         contactService.addContact(contact);
         return "redirect:/index";
     }
 
     @RequestMapping("/delete/{contactId}")
-    public String deleteContact(@PathVariable("contactId") Integer contactId) {
+    public String deleteContact(
+    		@PathVariable("contactId")
+    		Integer contactId) {
         contactService.removeContact(contactId);
         return "redirect:/index";
     }

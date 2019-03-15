@@ -46,10 +46,12 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 
  
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>
-    <property name="url" value="jdbc:jtds:sqlserver://CLASS02/Lv166p;instance=SQLEXPRESS;"/>
-    <property name="username" value="db157"/>
-    <property name="password" value="db157"/>
+<!--     <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/> -->
+<!--     <property name="url" value="jdbc:jtds:sqlserver://CLASS02/Lv166p;instance=SQLEXPRESS;"/> -->
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost:3306/lv375"/>
+    <property name="username" value="root"/>
+    <property name="password" value="root"/>
 </bean>
 
 
@@ -63,7 +65,8 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 		<!-- <property name="configLocation"> <value>classpath:hibernate.cfg.xml</value> 
 			</property>  -->
 		<property name="packagesToScan" value="com.softserve.edu.entity" />
-		<!-- <property name="packagesToScan"> <list> <value>com.softserve.edu.entity</value> 
+		<!-- <property name="packagesToScan">
+		     <list> <value>com.softserve.edu.entity</value> 
 			</list> </property> -->
 		<!--
 		<property name="configurationClass">
@@ -77,7 +80,8 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.dialect">${jdbc.dialect}</prop> -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop>
+<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
 			</props>
 		</property>
